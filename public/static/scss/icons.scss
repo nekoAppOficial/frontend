@@ -1,0 +1,96 @@
+:root {
+	--ICON-color: #b9bbbe;
+}
+
+i.icon {
+	color: var(--ICON-color);
+	display: inline-block;
+	background-color: currentColor;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	mask-repeat: no-repeat;
+	mask-position: center;
+	width: var(--size);
+	height: var(--size);
+
+	path {
+		fill: currentColor;
+	}
+
+	&.size-half {
+		--size: 15px;
+	}
+
+	&.size-1,
+	& {
+		--size: 25px;
+	}
+
+	&.size-2 {
+		--size: 50px;
+	}
+
+	&.size-3 {
+		--size: 75px;
+	}
+
+	&.settings {
+		-webkit-mask-image: url(../icons/solid/cog.svg);
+		mask-image: url(../icons/solid/cog.svg);
+	}
+
+	&.voice-chat {
+		-webkit-mask-image: url(../icons/solid/volume-up.svg);
+		mask-image: url(../icons/solid/volume-up.svg);
+	}
+
+	&.chevron-down {
+		-webkit-mask-image: url(../icons/solid/chevron-down.svg);
+		mask-image: url(../icons/solid/chevron-down.svg);
+	}
+	&.mobile-alt {
+		-webkit-mask-image: url(../icons/solid/mobile-alt.svg);
+		mask-image: url(../icons/solid/mobile-alt.svg);
+	}
+	&.check {
+		-webkit-mask-image: url(../icons/solid/check.svg);
+		mask-image: url(../icons/solid/check.svg);
+	}
+	&.times {
+		-webkit-mask-image: url(../icons/solid/times.svg);
+		mask-image: url(../icons/solid/times.svg);
+	}
+	&.slash {
+		-webkit-mask-image: url(../icons/solid/slash.svg);
+		mask-image: url(../icons/solid/slash.svg);
+	}
+
+	&.hashtag {
+		-webkit-mask-image: url(../icons/solid/hashtag.svg);
+		mask-image: url(../icons/solid/hashtag.svg);
+	}
+
+	&.plus {
+		-webkit-mask-image: url(../icons/solid/plus.svg);
+		mask-image: url(../icons/solid/plus.svg);
+	}
+
+	&.compass {
+		-webkit-mask-image: url(../icons/solid/compass.svg);
+		mask-image: url(../icons/solid/compass.svg);
+	}
+
+	&.certificate {
+		-webkit-mask-image: url(../icons/solid/certificate.svg);
+		mask-image: url(../icons/solid/certificate.svg);
+	}
+
+	&.trash-alt {
+		-webkit-mask-image: url(../icons/solid/trash-alt.svg);
+		mask-image: url(../icons/solid/trash-alt.svg);
+	}
+	&.exclamation-circle {
+		-webkit-mask-image: url(../icons/solid/exclamation-circle.svg);
+		mask-image: url(../icons/solid/exclamation-circle.svg);
+	}
+}

@@ -1,0 +1,41 @@
+:root {
+  --online: var(--success);
+  --offline: var(--secondary);
+  --afk: var(--warning);
+  --dnd: var(--danger);
+  --background: var(--background-primary);
+}
+
+.indicator {
+  display: block;
+  border-radius: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 0.23rem solid var(--background);
+}
+.indicator.online {
+  background-color: var(--online);
+}
+.indicator.offline {
+  background-color: var(--offline);
+}
+.indicator.dnd {
+  background-color: var(--dnd);
+}
+.indicator.afk {
+  background-color: var(--afk);
+}
+.indicator.mobile {
+  border-radius: 0;
+}
+.indicator.mobile.online {
+  fill: var(--online);
+}
+.indicator.mobile.afk {
+  fill: var(--afk);
+}
+.indicator.mobile.dnd {
+  fill: var(--dnd);
+}
+
+/*# sourceMappingURL=indicators.css.map */

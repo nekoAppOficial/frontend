@@ -1,0 +1,31 @@
+:root {
+	--slider-background: var(--background-shade);
+	--slider-active-background: var(--primary);
+	--slider-pill-background: var(--text-default);
+}
+
+.slider {
+	-webkit-appearance: none;
+	border-radius: 0.25rem;
+	background-color: var(--slider-background);
+	height: 0.5rem;
+	outline: none;
+
+	&::-webkit-slider-thumb,
+	&::-moz-range-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 0.6rem;
+		height: 1.5rem;
+		outline: none;
+		border: none;
+		border-radius: 0.2rem;
+		color: var(--slider-pill-background);
+		background-color: var(--slider-pill-background);
+		cursor: pointer;
+	}
+
+	&::-moz-range-progress {
+		background-color: var(--slider-active-background);
+	}
+}

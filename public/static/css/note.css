@@ -1,0 +1,33 @@
+:root {
+  --background-note: var(--background-tertiary);
+  --border-note: var(--background-floating);
+  --background-info: var(--primary-hover);
+  --border-info: var(--primary);
+  --background-warning: var(--warning-hover);
+  --border-warning: var(--warning);
+  --background-danger: var(--danger-hover);
+  --border-danger: var(--danger);
+}
+
+.note {
+  border: 1px solid var(--border-note);
+  background: var(--background-note);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  margin: 0.25rem;
+  width: 100%;
+}
+.note.info {
+  border: 1px solid var(--border-info);
+  background: var(--background-info);
+}
+.note.warning {
+  background: var(--background-warning);
+  border: 1px solid var(--border-warning);
+}
+.note.danger {
+  background: var(--background-danger);
+  border: 1px solid var(--border-danger);
+}
+
+/*# sourceMappingURL=note.css.map */

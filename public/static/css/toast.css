@@ -1,0 +1,64 @@
+:root {
+  --toast-bg-color: #6c757d;
+  --toast-timeline-color: #495057;
+}
+
+#toast-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  z-index: -1;
+  transition: all 0.2s;
+}
+#toast-wrapper .toast {
+  border: none;
+  border-radius: 0.25em;
+  padding: 0.2em 0.5em;
+  margin: 0.5em;
+  opacity: 0;
+  background-color: var(--toast-bg-color);
+  animation-name: opacity;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+}
+#toast-wrapper .toast .toast-title {
+  margin-top: 0.2em;
+  font-weight: bold;
+  color: #fff;
+}
+#toast-wrapper .toast .toast-content {
+  margin-bottom: 0.5em;
+  font-size: 0.9rem;
+}
+#toast-wrapper .toast .toast-timeline {
+  margin: 0.25em;
+  height: 0.2em;
+  background-color: var(--toast-timeline-color);
+  animation-name: timeline;
+  animation-delay: 0.2s;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+}
+
+@keyframes timeline {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+@keyframes opacity {
+  5% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*# sourceMappingURL=toast.css.map */

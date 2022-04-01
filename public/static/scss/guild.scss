@@ -1,0 +1,99 @@
+:root {
+	--guild-container-background: var(--background-tertiary);
+	--guild-container-secondary: var(--background-primary);
+	--guild-pill: var(--text-default);
+}
+
+.guild-container {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--guild-container-background);
+	padding-top: 0.5rem;
+	max-width: 66px;
+}
+
+.guild {
+	display: flex;
+	margin-right: 0.6rem;
+	align-items: center;
+	margin-bottom: 0.5rem;
+	cursor: pointer;
+
+	&.unread .pill {
+		background-color: var(--guild-pill);
+		height: 0.6rem;
+		width: 0.25rem;
+	}
+	&.active {
+		border-radius: 25%;
+	}
+	.img {
+		width: 48px;
+		height: 48px;
+		border-radius: 50%;
+		transition: border-radius 0.1s ease, background-color 0.15s ease;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: var(--background-primary);
+		text-align: center;
+		overflow: hidden;
+		user-select: none;
+		color: var(--text-default);
+
+		&:hover {
+			background: var(--primary);
+			color: var(--text-strong);
+		}
+	}
+	&.active img {
+		border-radius: 35%;
+	}
+	&.active .pill {
+		height: 2.5rem !important;
+		width: 0.25rem;
+		background-color: var(--guild-pill);
+	}
+	&.home a {
+		width: 48px;
+		height: 48px;
+		border-radius: 50%;
+		background-color: var(--guild-container-secondary);
+	}
+	&.separator {
+		margin: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		hr {
+			margin: 0;
+			padding: 0;
+			margin-bottom: 0.5rem;
+			width: 40%;
+			border: none;
+			border-bottom: 2px solid var(--guild-container-secondary);
+		}
+	}
+
+	&:hover {
+		.pill {
+			height: 1.25rem;
+			width: 0.25rem;
+			background-color: var(--guild-pill);
+		}
+		.img {
+			border-radius: 35%;
+		}
+	}
+
+	.pill {
+		height: 0rem;
+		width: 0.25rem;
+		background-color: transparent;
+		border-top-right-radius: 0.5rem;
+		border-bottom-right-radius: 0.5rem;
+		margin-right: 0.3rem;
+		transition: height 0.2s;
+	}
+}

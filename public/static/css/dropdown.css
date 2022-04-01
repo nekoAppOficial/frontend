@@ -1,0 +1,75 @@
+:root {
+  --dropdown-background: var(--background-secondary);
+  --dropdown-padding: 8px;
+  --dropdown-border-radius: 4px;
+}
+
+.dropdown {
+  background: var(--dropdown-background);
+  border-radius: var(--dropdown-border-radius);
+  user-select: none;
+  position: relative;
+}
+.dropdown.open {
+  border: 1px solid var(--background-tertiary);
+}
+.dropdown.open .control {
+  border: none;
+}
+.dropdown .item {
+  display: flex;
+  min-height: 38px;
+  padding: var(--dropdown-padding);
+  cursor: pointer;
+}
+.dropdown .item:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+.dropdown .item.selected {
+  background: var(--background-tertiary);
+}
+.dropdown .item .left {
+  flex-grow: 1;
+}
+.dropdown .item .icon {
+  --size: 16px;
+  color: var(--text-muted);
+  display: inline-block;
+}
+.dropdown .item .name {
+  color: var(--text-default);
+}
+.dropdown .item span, .dropdown .item {
+  display: flex;
+  align-items: center;
+}
+.dropdown .item span > *, .dropdown .item > * {
+  margin: 0 0.2rem;
+}
+.dropdown .control {
+  border: 1px solid var(--background-tertiary);
+  border-radius: var(--dropdown-border-radius);
+}
+.dropdown .control:hover {
+  background: none;
+}
+.dropdown.open .menu {
+  display: block;
+}
+.dropdown .menu {
+  display: none;
+  box-shadow: rgba(32, 34, 37, 0.5) 0px 1px 5px 0px;
+  position: absolute;
+  width: 100%;
+  background: var(--dropdown-background);
+  border: 1px solid var(--background-tertiary);
+  border-radius: var(--dropdown-border-radius);
+  overflow: hidden;
+  border-top-left-radius: none;
+  border-top-right-radius: none;
+  z-index: 1;
+  max-height: 350px;
+  overflow: auto;
+}
+
+/*# sourceMappingURL=dropdown.css.map */

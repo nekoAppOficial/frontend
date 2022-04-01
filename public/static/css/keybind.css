@@ -1,0 +1,31 @@
+:root {
+  --keybind-background: var(--background-shade);
+  --keybind-border-color: var(--background-tertiary);
+  --keybind-shadow-color: var(--background-tertiary);
+  --keybind-text-color: var(--interactive-hover);
+  --keybind-text-color-secondary: var(--interactive);
+}
+
+.keybind {
+  background-color: var(--keybind-background);
+  color: var(--keybind-text-color);
+  border: 1px solid var(--background-primary);
+  box-shadow: inset 0 -4px 0 var(--keybind-shadow-color);
+  padding: 3px 6px 4px;
+  text-align: center;
+  outline: 0;
+  font-weight: 500;
+  border-radius: 4px;
+  margin-right: 3px;
+  user-select: none;
+  text-transform: uppercase;
+  height: 28px;
+}
+.keybind:active {
+  height: 24px;
+  color: var(--keybind-text-color-secondary);
+  border: 1px solid var(--keybind-border-color);
+  box-shadow: inset 0 -2px 0 var(--background-primary);
+}
+
+/*# sourceMappingURL=keybind.css.map */

@@ -1,0 +1,44 @@
+:root {
+  --input-radius: 3px;
+  --input-background: rgba(0, 0, 0, 0.1);
+  --input-color: var(--text-default);
+  --input-font-size: 16px;
+  --input-font-weight: 400;
+  --input-padding: 10px;
+}
+
+.input-wrapper {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.input-wrapper .label {
+  margin-bottom: var(--element-margin);
+}
+
+.input {
+  background-color: var(--input-background);
+  border-radius: var(--input-radius);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  color: var(--input-color);
+  display: block;
+  font-size: var(--input-font-size);
+  font-weight: var(--input-font-weight);
+  margin: 0;
+  outline-style: none;
+  padding: var(--input-padding);
+  width: calc(100% - var(--input-padding) * 2);
+  max-width: 600px;
+  transition: border-color 0.2s ease-in-out;
+  font-family: sans-serif;
+}
+.input:focus {
+  border-color: var(--primary);
+}
+.input.textarea {
+  resize: none;
+  height: 84.4px;
+  padding-right: 31.69px;
+}
+
+/*# sourceMappingURL=input-fields.css.map */

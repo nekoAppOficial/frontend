@@ -1,0 +1,135 @@
+:root {
+  --switch-off: var(--danger);
+  --switch-on: var(--success);
+  --switch-icon-selected: var(--text-default);
+  --switch-width: 60px;
+  --switch-slider-size: 26px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  min-width: var(--switch-width);
+  cursor: pointer;
+}
+.switch.disabled {
+  opacity: 1;
+  cursor: no-drop;
+}
+.switch input {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+.switch input:checked + .slider {
+  background-color: var(--switch-on);
+}
+.switch input:checked + .slider:before,
+.switch input:checked + .slider .icon {
+  transform: translateX(var(--switch-slider-size));
+}
+.switch input:checked + .slider .off {
+  opacity: 0;
+  transform: scale(0) translateX(var(--switch-slider-size));
+}
+.switch input:checked + .slider .on {
+  opacity: 1;
+  transform: scale(1) translateX(var(--switch-slider-size));
+}
+.switch input:disabled + .slider {
+  opacity: 0.3;
+  cursor: no-drop;
+}
+.switch .label ~ .slider {
+  top: -5px;
+  right: -70px;
+}
+.switch .slider {
+  position: absolute;
+  cursor: pointer;
+  width: var(--switch-width);
+  height: 34px;
+  right: 0;
+  top: 0;
+  display: block;
+  background-color: var(--background-inactive);
+  transition: 0.4s;
+  border-radius: 34px;
+}
+.switch .slider .icon {
+  position: absolute;
+  transition: 0.4s;
+  --size: 15px;
+  top: 9.5px;
+  left: 9.5px;
+}
+.switch .slider .off {
+  color: var(--background-inactive);
+  transform: none;
+}
+.switch .slider .on {
+  opacity: 0;
+  color: var(--switch-on);
+  transform: scale(0);
+}
+.switch .slider:before {
+  border-radius: 50%;
+  position: absolute;
+  content: "";
+  height: var(--switch-slider-size);
+  width: var(--switch-slider-size);
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.radio-switch {
+  border: 1px solid var(--background-tertiary);
+  border-radius: 4px;
+  height: 28px;
+  width: 98px;
+  display: grid;
+  grid-auto-flow: column;
+  overflow: hidden;
+}
+.radio-switch label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-primary);
+}
+.radio-switch label:hover {
+  background: var(--background-hover);
+  cursor: pointer;
+}
+.radio-switch label.deny .icon {
+  color: var(--switch-off);
+}
+.radio-switch label.deny.selected {
+  background: var(--danger);
+}
+.radio-switch label.passthrough.selected {
+  background: var(--background-shade);
+}
+.radio-switch label.allow .icon {
+  color: var(--switch-on);
+}
+.radio-switch label.allow.selected {
+  background: var(--success);
+}
+.radio-switch label.selected .icon {
+  color: var(--switch-icon-selected);
+}
+.radio-switch label .icon {
+  --size: 14px;
+}
+.radio-switch label input {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+/*# sourceMappingURL=switch.css.map */

@@ -1,0 +1,160 @@
+:root {
+	--switch-off: var(--danger);
+	--switch-on: var(--success);
+	--switch-icon-selected: var(--text-default);
+	--switch-width: 60px;
+	--switch-slider-size: 26px;
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	min-width: var(--switch-width);
+	cursor: pointer;
+
+	&.disabled {
+		opacity: 1;
+		cursor: no-drop;
+	}
+
+	input {
+		visibility: hidden;
+		width: 0;
+		height: 0;
+
+		&:checked + .slider {
+			background-color: var(--switch-on);
+			&:before,
+			.icon {
+				transform: translateX(var(--switch-slider-size));
+			}
+
+			.off {
+				opacity: 0;
+				transform: scale(0) translateX(var(--switch-slider-size));
+			}
+
+			.on {
+				opacity: 1;
+				transform: scale(1) translateX(var(--switch-slider-size));
+			}
+		}
+
+		&:disabled + .slider {
+			opacity: 0.3;
+			cursor: no-drop;
+		}
+	}
+
+	.label ~ .slider {
+		top: -5px;
+		right: -70px;
+	}
+
+	.slider {
+		position: absolute;
+		cursor: pointer;
+		width: var(--switch-width);
+		height: 34px;
+		right: 0;
+		top: 0;
+		display: block;
+		background-color: var(--background-inactive);
+		transition: 0.4s;
+		border-radius: 34px;
+
+		.icon {
+			position: absolute;
+			transition: 0.4s;
+			--size: 15px;
+			top: 9.5px;
+			left: 9.5px;
+		}
+
+		.off {
+			color: var(--background-inactive);
+			transform: none;
+		}
+
+		.on {
+			opacity: 0;
+			color: var(--switch-on);
+			transform: scale(0);
+		}
+
+		&:before {
+			border-radius: 50%;
+			position: absolute;
+			content: "";
+			height: var(--switch-slider-size);
+			width: var(--switch-slider-size);
+			left: 4px;
+			bottom: 4px;
+			background-color: white;
+			-webkit-transition: 0.4s;
+			transition: 0.4s;
+		}
+	}
+}
+
+.radio-switch {
+	border: 1px solid var(--background-tertiary);
+	border-radius: 4px;
+	height: 28px;
+	width: 98px;
+	display: grid;
+	grid-auto-flow: column;
+	overflow: hidden;
+
+	label {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: var(--background-primary);
+
+		&:hover {
+			background: var(--background-hover);
+			cursor: pointer;
+		}
+
+		&.deny {
+			.icon {
+				color: var(--switch-off);
+			}
+
+			&.selected {
+				background: var(--danger);
+			}
+		}
+
+		&.passthrough.selected {
+			background: var(--background-shade);
+		}
+
+		&.allow {
+			.icon {
+				color: var(--switch-on);
+			}
+
+			&.selected {
+				background: var(--success);
+			}
+		}
+
+		&.selected {
+			.icon {
+				color: var(--switch-icon-selected);
+			}
+		}
+
+		.icon {
+			--size: 14px;
+		}
+		input {
+			visibility: hidden;
+			width: 0;
+			height: 0;
+			margin: 0;
+		}
+	}
+}

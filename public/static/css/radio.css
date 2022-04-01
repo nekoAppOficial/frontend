@@ -1,0 +1,40 @@
+:root {
+  --background-radio: var(--background-secondary);
+  --background-radio-active: var(--background-tertiary);
+  --background-radio-hover: var(--secondary-hover);
+  --radio-button-border-color: var(--text-secondary);
+  --radio-button-border-color-active: var(--text-strong);
+  --radio-button-border-color-hover: var(--interactive-hover);
+  --radio-button-fill-active: var(--primary);
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  background-color: var(--background-radio);
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 0.2rem;
+  margin-bottom: 0.25rem;
+  user-select: none;
+}
+.radio:hover {
+  background-color: var(--background-radio-hover);
+}
+.radio > svg {
+  margin-right: 0.5rem;
+}
+.radio .innerFill {
+  fill: transparent;
+}
+.radio:hover .innerFill {
+  fill: transparent;
+}
+.radio.active .innerFill {
+  fill: var(--radio-button-fill-active);
+}
+.radio.active {
+  background-color: var(--background-radio-active);
+}
+
+/*# sourceMappingURL=radio.css.map */

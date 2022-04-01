@@ -1,0 +1,113 @@
+/* BACKGROUND #18191c */
+/* TEXT #b9bbbe */
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.popup {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  background: #18191c;
+  padding: 6px 8px;
+  border-radius: 4px;
+  min-width: 188px;
+  max-width: 320px;
+  /* transition: 0.1s; */
+}
+
+.popup > .scroller > .separator {
+  margin: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.popup > .scroller > div[role=group] > .item {
+  padding: 6px 8px;
+  border-radius: 2px;
+  user-select: none;
+}
+
+.popup > .scroller > div[role=group] > .item[data-type=normal]:hover {
+  color: var(--text-strong);
+  background: var(--primary);
+  cursor: pointer;
+}
+
+.popup > .scroller > div[role=group] > .item[data-type=slider]:hover {
+  color: var(--text-strong);
+}
+
+.popup > .scroller > div[role=group] > .item > .label {
+  color: var(--text-default);
+}
+
+/* Slider */
+.popup > .scroller > div[role=group] > .item > .slider {
+  position: relative;
+  width: 100%;
+}
+
+.popup > .scroller > div[role=group] > .item > .slider > #slider {
+  -webkit-appearance: none;
+  /* Override default CSS styles */
+  appearance: none;
+  outline: none;
+  background: #4f545c;
+  border-radius: 4px;
+  height: 8px;
+  width: 100%;
+}
+
+.popup > .scroller > div[role=group] > .item > .slider > #slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* Override default CSS styles */
+  position: relative;
+  appearance: none;
+  width: 10px;
+  display: block;
+  height: 24px;
+  border-radius: 3px;
+  background: #fff;
+  border: 1px solid #dcddde;
+  -webkit-box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05), 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05), 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  z-index: 6;
+}
+
+.popup > .scroller > div[role=group] > .item > .slider > #slider::-webkit-slider-thumb:hover {
+  cursor: ew-resize;
+}
+
+.popup > .scroller > div[role=group] > .item > .slider > #progressBar {
+  position: absolute;
+  background: #7289da;
+  border-radius: 4px;
+  width: 50%;
+  height: 7.3px;
+  top: 36%;
+  left: 0;
+}
+
+.popup > .scroller > div[role=group] > .item > .slider > #selector > #grabber {
+  position: absolute;
+  width: 9px;
+  height: 22px;
+  border-radius: 3px;
+  background: #fff;
+  top: -13%;
+  border: 1px solid #dcddde;
+  -webkit-box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05), 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05), 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
+  cursor: ew-resize;
+  z-index: 5;
+}
+
+/*# sourceMappingURL=popup.css.map */
+/*# sourceMappingURL=popup.css.map */
+
+/*# sourceMappingURL=popup.css.map */

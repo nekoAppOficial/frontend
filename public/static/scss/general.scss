@@ -1,0 +1,69 @@
+// Fosscord color scheme:
+$primary: #4768ff;
+$success: #38e654;
+$danger: #ff3a3b;
+$secondary: #747f8d;
+$warning: #faa61a;
+
+// Discord color scheme:
+// $primary: #7289da;
+// $secondary: #747f8d;
+// $success: #43b581;
+// $danger: #f04747;
+// $warning: #faa61a;
+
+:root {
+	--primary: #{$primary};
+	--primary-shade: #5c6fb1;
+	--primary-hover: #{rgba($primary, 0.1)};
+	--primary-active: #4e5d94;
+	--secondary: #{$secondary};
+	--secondary-hover: #{rgba($secondary, 0.1)};
+	--success: #{$success};
+	--success-hover: #{rgba($success, 0.1)};
+	--danger: #{$danger};
+	--danger-hover: #{rgba($danger, 0.1)};
+	--warning: #{$warning};
+	--warning-hover: #{rgba($warning, 0.1)};
+	--background-primary: #36393f;
+	--background-secondary: #2f3136;
+	--background-tertiary: #202225;
+	--background-shade: #4f545c;
+	--background-floating: #18191c;
+	--background-inactive: #72767c;
+	--background-hover: #4f545c29;
+	--background-active: #50535b;
+	--interactive: #b9bbbe;
+	--interactive-active: var(--text-default);
+	--interactive-hover: #dcddde;
+	--background-modal: #484c52;
+	--element-margin: 8px;
+	--elevation-low: 0 1px 0 rgba(4, 4, 5, 0.2), 0 1.5px 0 rgba(6, 6, 7, 0.05), 0 2px 0 rgba(4, 4, 5, 0.05);
+	--elevation-medium: 0 4px 4px rgba(0, 0, 0, 0.16);
+	--elevation-high: 0 8px 16px rgba(0, 0, 0, 0.24);
+}
+
+.disabled,
+*:disabled {
+	cursor: not-allowed;
+	opacity: 0.3;
+}
+
+.noselect,
+.item {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	user-select: none;
+}
+
+.visibleOnHover {
+	opacity: 0;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.marginHeight {
+	margin: var(--element-margin) 0;
+}

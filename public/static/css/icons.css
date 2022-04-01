@@ -1,0 +1,84 @@
+:root {
+  --ICON-color: #b9bbbe;
+}
+
+i.icon {
+  color: var(--ICON-color);
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  width: var(--size);
+  height: var(--size);
+}
+i.icon path {
+  fill: currentColor;
+}
+i.icon.size-half {
+  --size: 15px;
+}
+i.icon.size-1, i.icon {
+  --size: 25px;
+}
+i.icon.size-2 {
+  --size: 50px;
+}
+i.icon.size-3 {
+  --size: 75px;
+}
+i.icon.settings {
+  -webkit-mask-image: url(../icons/solid/cog.svg);
+  mask-image: url(../icons/solid/cog.svg);
+}
+i.icon.voice-chat {
+  -webkit-mask-image: url(../icons/solid/volume-up.svg);
+  mask-image: url(../icons/solid/volume-up.svg);
+}
+i.icon.chevron-down {
+  -webkit-mask-image: url(../icons/solid/chevron-down.svg);
+  mask-image: url(../icons/solid/chevron-down.svg);
+}
+i.icon.mobile-alt {
+  -webkit-mask-image: url(../icons/solid/mobile-alt.svg);
+  mask-image: url(../icons/solid/mobile-alt.svg);
+}
+i.icon.check {
+  -webkit-mask-image: url(../icons/solid/check.svg);
+  mask-image: url(../icons/solid/check.svg);
+}
+i.icon.times {
+  -webkit-mask-image: url(../icons/solid/times.svg);
+  mask-image: url(../icons/solid/times.svg);
+}
+i.icon.slash {
+  -webkit-mask-image: url(../icons/solid/slash.svg);
+  mask-image: url(../icons/solid/slash.svg);
+}
+i.icon.hashtag {
+  -webkit-mask-image: url(../icons/solid/hashtag.svg);
+  mask-image: url(../icons/solid/hashtag.svg);
+}
+i.icon.plus {
+  -webkit-mask-image: url(../icons/solid/plus.svg);
+  mask-image: url(../icons/solid/plus.svg);
+}
+i.icon.compass {
+  -webkit-mask-image: url(../icons/solid/compass.svg);
+  mask-image: url(../icons/solid/compass.svg);
+}
+i.icon.certificate {
+  -webkit-mask-image: url(../icons/solid/certificate.svg);
+  mask-image: url(../icons/solid/certificate.svg);
+}
+i.icon.trash-alt {
+  -webkit-mask-image: url(../icons/solid/trash-alt.svg);
+  mask-image: url(../icons/solid/trash-alt.svg);
+}
+i.icon.exclamation-circle {
+  -webkit-mask-image: url(../icons/solid/exclamation-circle.svg);
+  mask-image: url(../icons/solid/exclamation-circle.svg);
+}
+
+/*# sourceMappingURL=icons.css.map */

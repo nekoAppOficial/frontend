@@ -1,0 +1,80 @@
+:root {
+  --text-strong: #fff;
+  --text-default: #dcddde;
+  --text-size: 16px;
+  --text-secondary: #b9bbbe;
+  --text-title: #8e9297;
+  --text-link: var(--primary);
+  --text-anchor: #ffffff;
+  --text-muted: #72767d;
+  --text-success: var(--success);
+  --text-danger: var(--danger);
+  --text-warning: var(--warning);
+}
+
+p {
+  margin: 0;
+}
+
+.text {
+  font-size: var(--text-size);
+  color: var(--text-default);
+}
+.text.strong {
+  color: var(--text-strong);
+}
+.text.secondary {
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+.text.muted {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.text.title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-title);
+  user-select: none;
+}
+.text.danger {
+  color: var(--text-danger);
+}
+.text.warning {
+  color: var(--text-warning);
+}
+.text.success {
+  color: var(--text-success);
+}
+.text.anchor {
+  color: var(--text-anchor);
+  text-decoration: none;
+}
+.text.anchor:hover {
+  text-decoration: underline;
+}
+.text.headline {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: --element-margin;
+  color: var(--text-strong);
+}
+
+.text.link,
+a {
+  color: var(--text-link);
+  text-decoration: none;
+  font-weight: 500;
+}
+.text.link:hover,
+a:hover {
+  text-decoration: underline;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=text.css.map */

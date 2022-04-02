@@ -3,12 +3,12 @@ import {useEffect, useState} from 'react';
 const ChatPrivate = (props) => {
     const [message, setMessage] = useState('');
     const [userId, setUserId] = useState(window.location.pathname.split(`@me/`)[1]);
-    const [user, setUser] = useState({messages: []});
+    const [user, setUser] = useState({messages: [], user: {username: ``}});
     const [messages, setMessagens] = useState([]);
 
     useEffect(() => {
      props.socket.emit(`getUser`, {userID: userId, token: localStorage.getItem('token')})
-    }, false)
+    }, [false])
 
     useEffect(() => {
       props.socket.on(`getUserProfile`, (user) => {
@@ -26,7 +26,7 @@ const ChatPrivate = (props) => {
           document.querySelector(`.scroller-kQBbkU`).scrollTo(0, 9999999999999999999999)
         } 
       })
-    }, false)
+    }, [false])
     
 
     return <div className="chat-2ZfjoI">
@@ -45,7 +45,7 @@ const ChatPrivate = (props) => {
               <div className="icon-HW4tZ- two-1t2_74 image-2ssF8k" />
             </div>
           </div>
-          <div className="title-3ChJ_v">Enviar para <strong>@{user.username}</strong>
+          <div className="title-3ChJ_v">Enviar para <strong>@{user.user.username}</strong>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@ const ChatPrivate = (props) => {
           </svg>
         </div>
         <span className="hiddenVisually-2ydA7k">Mensagem direta</span>
-        <h3 role="button" className="cursorPointer-3JF56F title-17SveM base-21yXnu size16-rrJ6ag">{user.username}</h3>
+        <h3 role="button" className="cursorPointer-3JF56F title-17SveM base-21yXnu size16-rrJ6ag">{user.user.username}</h3>
         <div aria-label="Não perturbar" className="status-12NUUC disableFlex-3I_kDH">
           <svg width={10} height={15} viewBox="0 0 10 15" className="mask-2Me5HY">
             <mask id="1266c8e2-8cdd-4e53-8969-fee6e2a6d1e9">
@@ -159,7 +159,7 @@ const ChatPrivate = (props) => {
                     </svg>
                   </div>
                   <h1 className="header-1dhDWV base-21yXnu size32-5yOQel">{user.username}</h1>
-                  <div className="size16-rrJ6ag description-22d6ux">Este é o começo do seu histórico de mensagens diretas com <strong>@{user.username}</strong>. <div className="container-12Vzf8">
+                  <div className="size16-rrJ6ag description-22d6ux">Este é o começo do seu histórico de mensagens diretas com <strong>@{user.user.username}</strong>. <div className="container-12Vzf8">
                       <div className="colorHeaderSecondary-g5teka size14-3fJ-ot">Nenhum servidor em comum</div>
                       <div className="divider-2BCfFf" />
                       <button 
@@ -228,12 +228,12 @@ const ChatPrivate = (props) => {
                 <div className="textArea-2CLwUE textA reaSlate-9-y-k2 slateContainer-3x9zil">
                   <div>
                     <div
-                    id={`inputElement`}
-                    
+      
                     className="markup-eYLPri editor-H2NA06 slateTextArea-27tjG0 fontSize16Padding-XoMpjI" style={{position: 'relative', outline: 'none', whiteSpace: 'no-wrap', overflow: `hidden`}}>
                       <div 
                       data-slate-node="element">
                         <input 
+                        id={`inputElement`}
                         onKeyDown={(e) => {
                           setMessage(e.target.value)
                         }}
@@ -247,7 +247,7 @@ const ChatPrivate = (props) => {
                           border: `none`,
                           color: `white`
                         }}
-                        placeholder={`Conversar em @${user.username}`}/>
+                        placeholder={`Conversar em @${user.user.username}`}/>
                       </div>
                     </div>
                   </div>
@@ -353,7 +353,11 @@ const Message = props => {
     </div>
     <div id="message-accessories-959854144162758668" className="container-2sjPya" />
     <div className="buttonContainer-1502pf">
-      <div className="buttons-3dF5Kd container-2gUZhU isHeader-2bbX-L" aria-label="Ações de mensagem">
+      <div 
+      style={{
+        opacity: `1`
+      }}
+      className="buttons-3dF5Kd container-2gUZhU isHeader-2bbX-L" aria-label="Ações de mensagem">
         <div className="wrapper-2vIMkT">
           <div className="button-3bklZh" aria-label="Adicionar reação" aria-controls="popout_41" aria-expanded="false" role="button" tabIndex={0}>
             <svg className="icon-1zidb7" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">

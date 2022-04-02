@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 const MyFriends = (props) => {
     return <div className="peopleColumn-1wMU14" role="tabpanel" id="online-tab" tabIndex={-1}>
     <div className="searchBar-2aylmZ container-2oNtJn medium-2NClDM">
@@ -111,11 +113,13 @@ const CardFriend = (props) => {
         }
         { props.friend.statusAmizade === `accept` &&
         <div className="actions-YHvpIT">
-            <div className="actionButton-3-B2x-" aria-label="Mensagem" role="button" tabIndex={0}>
-                <svg className="icon-1WVg4I" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24" fill="none">
-                <path fill="currentColor" d="M4.79805 3C3.80445 3 2.99805 3.8055 2.99805 4.8V15.6C2.99805 16.5936 3.80445 17.4 4.79805 17.4H7.49805V21L11.098 17.4H19.198C20.1925 17.4 20.998 16.5936 20.998 15.6V4.8C20.998 3.8055 20.1925 3 19.198 3H4.79805Z" />
-                </svg>
-            </div>
+            <Link to={`/channels/@me/${props.friend.id}`}>
+                <div className="actionButton-3-B2x-" aria-label="Mensagem" role="button" tabIndex={0}>
+                    <svg className="icon-1WVg4I" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24" fill="none">
+                    <path fill="currentColor" d="M4.79805 3C3.80445 3 2.99805 3.8055 2.99805 4.8V15.6C2.99805 16.5936 3.80445 17.4 4.79805 17.4H7.49805V21L11.098 17.4H19.198C20.1925 17.4 20.998 16.5936 20.998 15.6V4.8C20.998 3.8055 20.1925 3 19.198 3H4.79805Z" />
+                    </svg>
+                </div>
+            </Link>
             <div 
             onClick={() => {
                 props.socket.emit(`recuseFriend`, {

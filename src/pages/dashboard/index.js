@@ -36,7 +36,6 @@ const Dashboard = props => {
         socket.on(`online`, user => {
             setLoading(true)
         })
-        
     }, false)
 
     React.useEffect(() => {
@@ -47,7 +46,7 @@ const Dashboard = props => {
             socket.emit(`getFriends`, localStorage.getItem('token'))
         })
         setLoading(true)
-    }, [myFriends, socket])
+    }, [false])
     
 
     return <>

@@ -11,7 +11,7 @@ const Login = props => {
 
   const login = async() => {
     //Fecth register post
-    const response = await axios.post('http://localhost:7000/auth', {
+    const response = await axios.post('https://server-nekoapp.herokuapp.com/auth', {
         username,
         password
     });

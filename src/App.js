@@ -33,6 +33,7 @@ function App(props) {
         }
         { page === `dashboard` && logged &&
         <Dashboard 
+        chat={props.chat}
         setLogged={setLogged}
         setPage={setPage}/>
         }

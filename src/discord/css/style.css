@@ -74766,7 +74766,7 @@ html .invoiceCancelRow-3s2UuC{
     background-image:url(https://discord.com/assets/04457b30c1c2fcb344cb4d12913c5191.svg/accc8b41fc38a312f8279b963469033d.svg)
 }
 .step24Foreground-2aWJUq{
-    background-image:url(https://discord.com/assets/04457b30c1c2fcb344cb4d12913c5191.svg/f57fff65eb6427350304edd446efbc6d.svg)
+    
 }
  .modal-3BwHH2{
     border-radius:5px;
@@ -86917,4 +86917,41 @@ html .invoiceCancelRow-dVOR64{
 .notSelectAdds{
     background-color: hsl(139, calc(var(--saturation-factor, 1) * 47.3%), 43.9%) !important;
     color: hsl(0, calc(var(--saturation-factor, 1) * 0%), 100%) !important;
+}
+
+@keyframes openContainer{
+    0%{
+        opacity:0;
+        -webkit-transform:translateX(100%);
+        transform:translateX(100%)
+    }
+    100%{
+        opacity:1;
+        -webkit-transform:translateX(0);
+        transform:translatex(0)
+    }
+}
+
+@keyframes closeContainer{
+    0%{
+        opacity:0;
+        -webkit-transform:translateX(-100%);
+        transform:translateX(-100%)
+    }
+    100%{
+        opacity:1;
+        -webkit-transform:translateX(0%);
+        transform:translatex(0%)
+    }
+}
+
+@keyframes openModal{
+    0%{
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
 }

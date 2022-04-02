@@ -4,17 +4,14 @@ import AddFriendTab from './AddFriendTab';
 import {useState, useEffect} from 'react';
 
 const Friends = (props) => {
-    const [tab, setTab] = useState(`myFriends`)
-    const [myFriendsE, setMyFriends] = useState([])
+    const [tab, setTab] = useState(`add`)
+    const [myFriends, setMyFriends] = useState([])
+    const [typeFriend, setTypeFriend] = useState(`accept`)
+
     useEffect(() => {
-        props.socket.on(`receiveFriend`, user => {
-            
-        })
-        props.socket.on(`getFriends`, friends => {
-            setMyFriends(friends)
-            console.log(friends)
-        })
-    }, [])
+        setMyFriends(props.myFriends)
+    }, [props.myFriends])
+
     return <div 
     className="base-2jDfDU">
         <div className="container-2cd8Mz" 
@@ -38,11 +35,25 @@ const Friends = (props) => {
             <div 
             onClick={() => {
                 setTab(`myFriends`)
+                setTypeFriend(`accept`)
             }}
-            className={`item-3mHhwr item-3XjbnG themed-2-lozF ${tab == `myFriends` ? 'selected-g-kMVV' : ``}`} role="tab" aria-selected="true" aria-controls="online-tab" aria-disabled="false" tabIndex={0}>Disponível</div>
-            <div className="item-3mHhwr item-3XjbnG themed-2-lozF" role="tab" aria-selected="false" aria-controls="all-tab" aria-disabled="false" tabIndex={-1}>Todos</div>
-            <div className="item-3mHhwr item-3XjbnG themed-2-lozF" role="tab" aria-selected="false" aria-controls="pending-tab" aria-disabled="false" tabIndex={-1} aria-label="Pendente">Pendente</div>
-            <div className="item-3mHhwr item-3XjbnG themed-2-lozF" role="tab" aria-selected="false" aria-controls="blocked-tab" aria-disabled="false" tabIndex={-1}>Bloqueado</div>
+            className={`item-3mHhwr item-3XjbnG themed-2-lozF ${tab == `myFriends` && typeFriend == `accept` ? 'selected-g-kMVV' : ``}`} role="tab" aria-selected="true" aria-controls="online-tab" aria-disabled="false" tabIndex={0}>
+                Amigos
+            </div>
+            
+            <div 
+             onClick={() => {
+                setTab(`myFriends`)
+                setTypeFriend(`pending`)
+            }}
+            className={`item-3mHhwr item-3XjbnG themed-2-lozF ${tab == `myFriends` && typeFriend == `pending` ? 'selected-g-kMVV' : ``}`} role="tab" aria-selected="false" aria-controls="pending-tab" aria-disabled="false" tabIndex={-1} aria-label="Pendente">
+                Pendente 
+                {props.myFriends.filter(friend => friend.statusAmizade === 'pending').length > 0 &&
+                <div className="badge-3wMLmL numberBadge-37OJ3S base-3IDx3L baseShapeRound-3epLEv" style={{backgroundColor: 'var(--status-danger)', width: '16px', paddingRight: '0px'}}>
+                {props.myFriends.filter(friend => friend.statusAmizade === 'pending').length}
+                     </div> }
+                </div>
+            
             <div 
             onClick={() => {
                 setTab(`add`)
@@ -77,11 +88,13 @@ const Friends = (props) => {
         </section>
         <div className="tabBody-2dgbAs">
         { tab == `add` &&
-        <AddFriendTab socket={props.socket}/>
+        <AddFriendTab me={props.me} socket={props.socket}/>
         }
         { tab == `myFriends` &&
         <MyFriends 
-        myFriendsE={myFriendsE}
+        me={props.me}
+        typeFriend={typeFriend}
+        myFriends={myFriends}
         socket={props.socket}/>
         }
         </div>

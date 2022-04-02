@@ -67,173 +67,9 @@ const GuildsNav = (props) => {
               <div data-dnd-name="Combinar com 🥋TROPA DO CAIXETA🥋" className="centerTarget-S6BLFQ" />
             </div>
           </div>
-          <div className="listItem-3SmSlK">
-            <div className="pill-2RsI5Q wrapper-z5ab_q" aria-hidden="true" />
-            <div>
-              <div data-dnd-name="Pablo Codes" className="blobContainer-ikKyFs" draggable="true">
-                <div className="wrapper-28eC3z">
-                  <svg width={48} height={48} viewBox="0 0 48 48" className="svg-2zuE5p" overflow="visible">
-                    <defs>
-                      <path d="M48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24Z" id="27205cf5-47cf-4428-9054-bb2f668d27d7-blob_mask" />
-                    </defs>
-                    <mask id="27205cf5-47cf-4428-9054-bb2f668d27d7" fill="black" x={0} y={0} width={48} height={48}>
-                      <use href="#27205cf5-47cf-4428-9054-bb2f668d27d7-blob_mask" fill="white" />
-                    </mask>
-                    <foreignObject mask="url(#27205cf5-47cf-4428-9054-bb2f668d27d7)" x={0} y={0} width={48} height={48}>
-                      <div className="wrapper-3kah-n" role="treeitem" data-list-item-id="guildsnav___870294686504464394" tabIndex={-1} aria-label=" Pablo Codes">
-                        <img className="icon-3AqZ2e" src="https://cdn.discordapp.com/icons/870294686504464394/8ff20391648571f2877fce9b730ebe19.webp?size=96" alt=" " width={48} height={48} aria-hidden="true" />
-                      </div>
-                    </foreignObject>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div className="wrapper-3XVBev" aria-hidden="true">
-              <div data-dnd-name="Acima Pablo Codes" className="target-1eRTCg" />
-              <div data-dnd-name="Combinar com Pablo Codes" className="centerTarget-S6BLFQ" />
-            </div>
-          </div>
-          <div className="listItem-3SmSlK">
-            <div className="pill-2RsI5Q wrapper-z5ab_q" aria-hidden="true">
-              <span className="item-2LIpTv" style={{opacity: 1, height: '8px', transform: 'none'}} />
-            </div>
-            <div>
-              <div data-dnd-name="OpenSea" className="blobContainer-ikKyFs" draggable="true">
-                <div className="wrapperSimple-Js2rIO wrapper-28eC3z">
-                  <svg width={48} height={48} viewBox="0 0 48 48" className="svg-2zuE5p" overflow="visible">
-                    <foreignObject mask="url(#bce15e08-55c7-45f6-99b1-36a51c40e9b3)" x={0} y={0} width={48} height={48}>
-                      <div className="wrapper-3kah-n" role="treeitem" data-list-item-id="guildsnav___397566282729390110" tabIndex={-1} aria-label=" OpenSea">
-                        <img className="icon-3AqZ2e" src="https://cdn.discordapp.com/icons/397566282729390110/a_65bdec193bc990bd97c7a35e682fa59a.webp?size=96" alt=" " width={48} height={48} aria-hidden="true" />
-                      </div>
-                    </foreignObject>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div className="wrapper-3XVBev" aria-hidden="true">
-              <div data-dnd-name="Acima OpenSea" className="target-1eRTCg" />
-              <div data-dnd-name="Combinar com OpenSea" className="centerTarget-S6BLFQ" />
-            </div>
-          </div>
-          <div className="listItem-3SmSlK">
-            <div className="pill-2RsI5Q wrapper-z5ab_q" aria-hidden="true" />
-            <div>
-              <div data-dnd-name="geralzão" className="blobContainer-ikKyFs" draggable="true">
-                <div className="wrapper-28eC3z">
-                  <svg width={48} height={48} viewBox="0 0 48 48" className="svg-2zuE5p" overflow="visible">
-                    <defs>
-                      <path d="M48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24Z" id="b210e89a-195f-4d9b-9842-ce7f54c421b6-blob_mask" />
-                    </defs>
-                    <mask id="b210e89a-195f-4d9b-9842-ce7f54c421b6" fill="black" x={0} y={0} width={48} height={48}>
-                      <use href="#b210e89a-195f-4d9b-9842-ce7f54c421b6-blob_mask" fill="white" />
-                    </mask>
-                    <foreignObject mask="url(#b210e89a-195f-4d9b-9842-ce7f54c421b6)" x={0} y={0} width={48} height={48}>
-                      <div className="wrapper-3kah-n" role="treeitem" data-list-item-id="guildsnav___930150495497093140" tabIndex={-1} aria-label=" geralzão">
-                        <img className="icon-3AqZ2e" src="https://cdn.discordapp.com/icons/930150495497093140/d23cbd06d8d2ecf5e5c6a4392a594f6e.webp?size=96" alt=" " width={48} height={48} aria-hidden="true" />
-                      </div>
-                    </foreignObject>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div className="wrapper-3XVBev" aria-hidden="true">
-              <div data-dnd-name="Acima geralzão" className="target-1eRTCg" />
-              <div data-dnd-name="Combinar com geralzão" className="centerTarget-S6BLFQ" />
-            </div>
-          </div>
-          <div className="listItem-3SmSlK">
-            <div className="pill-2RsI5Q wrapper-z5ab_q" aria-hidden="true">
-              <span className="item-2LIpTv" style={{opacity: 1, height: '8px', transform: 'none'}} />
-            </div>
-            <div>
-              <div data-dnd-name="Jogatina" className="blobContainer-ikKyFs" draggable="true">
-                <div className="wrapper-28eC3z">
-                  <svg width={48} height={48} viewBox="0 0 48 48" className="svg-2zuE5p" overflow="visible">
-                    <defs>
-                      <path d="M48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24Z" id="7b6be765-fc8c-4c20-bae2-2ab9b9fd4d09-blob_mask" />
-                    </defs>
-                    <mask id="7b6be765-fc8c-4c20-bae2-2ab9b9fd4d09" fill="black" x={0} y={0} width={48} height={48}>
-                      <use href="#7b6be765-fc8c-4c20-bae2-2ab9b9fd4d09-blob_mask" fill="white" />
-                    </mask>
-                    <foreignObject mask="url(#7b6be765-fc8c-4c20-bae2-2ab9b9fd4d09)" x={0} y={0} width={48} height={48}>
-                      <div className="wrapper-3kah-n" role="treeitem" data-list-item-id="guildsnav___929445662142124162" tabIndex={-1} aria-label=" Jogatina">
-                        <img className="icon-3AqZ2e" src="https://cdn.discordapp.com/icons/929445662142124162/207f004dc7b7759f2909239f7544be5f.webp?size=96" alt=" " width={48} height={48} aria-hidden="true" />
-                      </div>
-                    </foreignObject>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div className="wrapper-3XVBev" aria-hidden="true">
-              <div data-dnd-name="Acima Jogatina" className="target-1eRTCg" />
-              <div data-dnd-name="Combinar com Jogatina" className="centerTarget-S6BLFQ" />
-            </div>
-          </div>
-          <div className="listItem-3SmSlK">
-            <div className="pill-2RsI5Q wrapper-z5ab_q" aria-hidden="true">
-              <span className="item-2LIpTv" style={{opacity: 1, height: '8px', transform: 'none'}} />
-            </div>
-            <div>
-              <div data-dnd-name="New Revolution (Science and technology)" className="blobContainer-ikKyFs" draggable="true">
-                <div className="wrapper-28eC3z">
-                  <svg width={48} height={48} viewBox="0 0 48 48" className="svg-2zuE5p" overflow="visible">
-                    <defs>
-                      <path d="M48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24Z" id="d8264f35-8dbc-439f-b902-24a8d483c66f-blob_mask" />
-                      <rect id="d8264f35-8dbc-439f-b902-24a8d483c66f-upper_badge_masks" x={28} y={-4} width={24} height={24} rx={12} ry={12} transform="translate(20 -20)" />
-                      <rect id="d8264f35-8dbc-439f-b902-24a8d483c66f-lower_badge_masks" x={28} y={28} width={24} height={24} rx={12} ry={12} transform="translate(20 20)" />
-                    </defs>
-                    <mask id="d8264f35-8dbc-439f-b902-24a8d483c66f" fill="black" x={0} y={0} width={48} height={48}>
-                      <use href="#d8264f35-8dbc-439f-b902-24a8d483c66f-blob_mask" fill="white" />
-                      <use href="#d8264f35-8dbc-439f-b902-24a8d483c66f-upper_badge_masks" fill="black" />
-                      <use href="#d8264f35-8dbc-439f-b902-24a8d483c66f-lower_badge_masks" fill="black" />
-                    </mask>
-                    <mask id="d8264f35-8dbc-439f-b902-24a8d483c66f-stroke_mask">
-                      <rect width="150%" height="150%" x="-25%" y="-25%" fill="white" />
-                      <use href="#d8264f35-8dbc-439f-b902-24a8d483c66f-upper_badge_masks" fill="black" />
-                      <use href="#d8264f35-8dbc-439f-b902-24a8d483c66f-lower_badge_masks" fill="black" />
-                    </mask>
-                    <foreignObject mask="url(#d8264f35-8dbc-439f-b902-24a8d483c66f)" x={0} y={0} width={48} height={48}>
-                      <div className="wrapper-3kah-n" role="treeitem" data-list-item-id="guildsnav___880951477441544242" tabIndex={-1} aria-label=" New Revolution (Science and technology)">
-                        <img className="icon-3AqZ2e" src="https://cdn.discordapp.com/icons/880951477441544242/a_fc0a75350f646569ad56fc992e74ec0d.webp?size=96" alt=" " width={48} height={48} aria-hidden="true" />
-                      </div>
-                    </foreignObject>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div className="wrapper-3XVBev" aria-hidden="true">
-              <div data-dnd-name="Acima New Revolution (Science and technology)" className="target-1eRTCg" />
-              <div data-dnd-name="Combinar com New Revolution (Science and technology)" className="centerTarget-S6BLFQ" />
-            </div>
-          </div>
-          <div className="listItem-3SmSlK">
-            <div className="pill-2RsI5Q wrapper-z5ab_q" aria-hidden="true">
-              <span className="item-2LIpTv" style={{opacity: 1, height: '8px', transform: 'none'}} />
-            </div>
-            <div>
-              <div data-dnd-name="The Court of the Crimson King -▲=" className="blobContainer-ikKyFs" draggable="true">
-                <div className="wrapper-28eC3z">
-                  <svg width={48} height={48} viewBox="0 0 48 48" className="svg-2zuE5p" overflow="visible">
-                    <defs>
-                      <path d="M48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24Z" id="04f82d98-bb6d-4e64-ba20-66963c909a0d-blob_mask" />
-                    </defs>
-                    <mask id="04f82d98-bb6d-4e64-ba20-66963c909a0d" fill="black" x={0} y={0} width={48} height={48}>
-                      <use href="#04f82d98-bb6d-4e64-ba20-66963c909a0d-blob_mask" fill="white" />
-                    </mask>
-                    <foreignObject mask="url(#04f82d98-bb6d-4e64-ba20-66963c909a0d)" x={0} y={0} width={48} height={48}>
-                      <div className="wrapper-3kah-n" role="treeitem" data-list-item-id="guildsnav___430423309092388874" tabIndex={-1} aria-label=" The Court of the Crimson King -▲=">
-                        <img className="icon-3AqZ2e" src="https://cdn.discordapp.com/icons/430423309092388874/47bd794145d7c95091db772f7d94758d.webp?size=96" alt=" " width={48} height={48} aria-hidden="true" />
-                      </div>
-                    </foreignObject>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div className="wrapper-3XVBev" aria-hidden="true">
-              <div data-dnd-name="Acima The Court of the Crimson King -▲=" className="target-1eRTCg" />
-              <div data-dnd-name="Combinar com The Court of the Crimson King -▲=" className="centerTarget-S6BLFQ" />
-            </div>
-          </div>
+        </div>
+        <div className="listItem-3SmSlK">
+          <div className="guildSeparator-a4uisj" />
         </div>
         <div className="tutorialContainer-2jwoiB">
           <div className="listItem-3SmSlK">
@@ -247,7 +83,11 @@ const GuildsNav = (props) => {
                     <use href="#43270225-2986-43de-9298-7c8a90774670-blob_mask" fill="white" />
                   </mask>
                   <foreignObject mask="url(#43270225-2986-43de-9298-7c8a90774670)" x={0} y={0} width={48} height={48}>
-                    <div className="circleIconButton-1VxDrg" aria-label="Adicionar um servidor" role="listitem" data-list-item-id="guildsnav___create-join-button" tabIndex={-1}>
+                    <div 
+                    onClick={() => {
+                      props.setOpenModalServer(true)
+                    }}
+                    className="circleIconButton-1VxDrg" aria-label="Adicionar um servidor" role="listitem" data-list-item-id="guildsnav___create-join-button" tabIndex={-1}>
                       <svg className="circleIcon-3489FI" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
                         <path fill="currentColor" d="M20 11.1111H12.8889V4H11.1111V11.1111H4V12.8889H11.1111V20H12.8889V12.8889H20V11.1111Z" />
                       </svg>
@@ -265,39 +105,10 @@ const GuildsNav = (props) => {
           <div className="pill-1NRFie">
             <div className="wrapper-z5ab_q" aria-hidden="true" />
           </div>
-          <div className="listItemWrapper-3d87LP">
-            <div className="wrapperSimple-Js2rIO wrapper-28eC3z">
-              <svg width={48} height={48} viewBox="0 0 48 48" className="svg-2zuE5p" overflow="visible">
-                <foreignObject mask="url(#4e5ad6e2-79b8-46a8-b1da-70be8e456864)" x={0} y={0} width={48} height={48}>
-                  <div className="circleIconButton-1VxDrg" aria-label="Explore servidores públicos" role="listitem" data-list-item-id="guildsnav___guild-discover-button" tabIndex={-1}>
-                    <svg aria-hidden="false" className="circleIcon-3489FI" width={24} height={24} viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M12 10.9C11.39 10.9 10.9 11.39 10.9 12C10.9 12.61 11.39 13.1 12 13.1C12.61 13.1 13.1 12.61 13.1 12C13.1 11.39 12.61 10.9 12 10.9ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM14.19 14.19L6 18L9.81 9.81L18 6L14.19 14.19Z" />
-                    </svg>
-                  </div>
-                </foreignObject>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div className="listItem-3SmSlK">
-          <div className="guildSeparator-a4uisj" />
         </div>
         <div className="listItem-3SmSlK">
           <div className="pill-1NRFie">
             <div className="wrapper-z5ab_q" aria-hidden="true" />
-          </div>
-          <div className="listItemWrapper-3d87LP">
-            <div className="wrapperSimple-Js2rIO wrapper-28eC3z">
-              <svg width={48} height={48} viewBox="0 0 48 48" className="svg-2zuE5p" overflow="visible">
-                <foreignObject mask="url(#435c2ad3-4dcd-45c3-bca4-d89df626b36a)" x={0} y={0} width={48} height={48}>
-                  <div className="circleIconButton-1VxDrg" aria-label="Baixar apps" role="listitem" data-list-item-id="guildsnav___app-download-button" tabIndex={-1}>
-                    <svg className="circleIcon-3489FI" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
-                      <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M16.293 9.293L17.707 10.707L12 16.414L6.29297 10.707L7.70697 9.293L11 12.586V2H13V12.586L16.293 9.293ZM18 20V18H20V20C20 21.102 19.104 22 18 22H6C4.896 22 4 21.102 4 20V18H6V20H18Z" />
-                    </svg>
-                  </div>
-                </foreignObject>
-              </svg>
-            </div>
           </div>
         </div>
         <div aria-hidden="true" style={{position: 'absolute', pointerEvents: 'none', minHeight: '0px', minWidth: '1px', flex: '0 0 auto', height: '0px'}} />

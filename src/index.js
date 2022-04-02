@@ -14,10 +14,15 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App page={`dashboard`} />} />
-        <Route path="/login" element={<App page={`login`} />} />
-        <Route path="/register" element={<App page={`register`} />} />
-        <Route path="/channels/@me" element={<App page={`dashboard`} />} />
+        <Route exact path="/" element={<App page={`dashboard`} />} />
+        <Route exact path="/login" element={<App page={`login`} />} />
+        <Route exact path="/register" element={<App page={`register`} />} />
+        <Route exact path="/channels/@me" element={<App page={`dashboard`} 
+        chat={false}
+        />} />
+        <Route exact path="/channels/@me/:chatID" element={<App page={`dashboard`}
+        chat={true}
+        />} />
       </Routes>
   </BrowserRouter>
   </React.StrictMode>,

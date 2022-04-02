@@ -6,10 +6,10 @@ const AddFriendTab = (props) => {
     useState(() => {
       props.socket.on(`notifications`, (data) => {
         if(data.page == `addFriend`){
-          console.log(data)
+          
         }
       })
-    }, [])    
+    }, false)    
 
     return <div className="tabBody-2dgbAs" style={{
       width: `100%`
@@ -42,6 +42,7 @@ const AddFriendTab = (props) => {
               className="inputDefault-3FGxgL input-2g-os5 input-1bmui3 inputText-30IjXy" id="uid_16" maxLength={37} autoComplete="off" name="add-friend" data-lpignore="true" placeholder="Insira um nome de usuário" aria-label="Insira um nome de usuário" aria-describedby="uid_16-decription" type="text" />
             </div>
             <button 
+            disabled={username.length < 1}
             type="submit" className="button-f2h6uQ lookFilled-yCfaCM colorBrand-I6CyqQ sizeSmall-wU2dO- grow-2sR_-F">
               <div className="contents-3ca1mk">Enviar pedido de amizade</div>
             </button>
@@ -51,7 +52,8 @@ const AddFriendTab = (props) => {
       <div className="emptyState-30PyIN">
         <div className="friendsEmpty-gs15T1" style={{opacity: 1}}>
           <div className="flex-2S1XBF flex-3BkGQD vertical-3aLnqW flex-3BkGQD directionColumn-3pi1nm justifyCenter-rrurWZ alignCenter-14kD11 noWrap-hBpHBz wrapper-5BaSTh" style={{flex: '1 1 auto'}}>
-            <div className="image-20MDYu marginBottom40-fvAlAV" style={{flex: '0 1 auto', width: '376px', height: '162px', backgroundImage: 'url("/assets/b5eb2f7d6b3f8cc9b60be4a5dcf28015.svg")'}} />
+            <div className="image-20MDYu marginBottom40-fvAlAV" 
+            style={{flex: '0 1 auto', width: '376px', height: '162px', backgroundImage: 'url("../assets/b5eb2f7d6b3f8cc9b60be4a5dcf28015.svg")'}} />
             <div className="flexChild-3PzYmX" direction="vertical-3aLnqW flex-3BkGQD directionColumn-3pi1nm" style={{flex: '0 1 auto'}}>
               <div className="text-27cdrj marginTop8-24uXGp">Wumpus está esperando os amigos. Mas você não precisa esperar!</div>
             </div>

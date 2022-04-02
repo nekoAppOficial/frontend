@@ -16,13 +16,19 @@ const MyFriends = (props) => {
     </div>
     </div>
     <div>
-    <h2 className="title-x4dI75 container-q97qHp">Online — {props.myFriendsE.length}</h2>
+    <h2 className="title-x4dI75 container-q97qHp">
+        {props.typeFriend == `accept` ? `ACEITOS` : `PENDENTES`}
+         — {props.myFriends.filter(friend => friend.statusAmizade === props.typeFriend).length}</h2>
     </div>
     <div className="peopleList-2VBrVI auto-2K3UW5 scrollerBase-_bVAAt" dir="ltr" role="list" tabIndex={0} data-list-id="people" style={{overflow: 'hidden scroll', paddingRight: '0px'}}>
+    { props.myFriends.filter(friend => friend.statusAmizade === props.typeFriend).length == 0 && <NoHaveFriends/> }
     {
-        props.myFriendsE.map(friend => (
+        props.myFriends.filter(friend => friend.statusAmizade === props.typeFriend).map(friend => (
             <div>
-                <CardFriend friend={friend}/>
+                <CardFriend 
+                socket={props.socket}
+                me={props.me}
+                friend={friend}/>
             </div>
     ))}
     <div aria-hidden="true" style={{position: 'absolute', pointerEvents: 'none', minHeight: '0px', minWidth: '1px', flex: '0 0 auto', height: '8px'}} />
@@ -43,10 +49,12 @@ const CardFriend = (props) => {
                 style={{
                     borderRadius: `50%`
                 }}
-                src="https://cdn.discordapp.com/avatars/294144189464313857/a_cac4a28f5e3901639932bc107687adac.webp?size=32" alt=" " className="avatar-b5OQ1N" aria-hidden="true" />
+                src="../assets/default.webp" alt=" " className="avatar-b5OQ1N" aria-hidden="true" />
                 </div>
             </foreignObject>
-            <rect width={10} height={10} x={22} y={22} fill="hsl(139, calc(var(--saturation-factor, 1) * 47.3%), 43.9%)" mask="url(#svg-mask-status-online)" className="pointerEvents-9SZWKj" />
+            <rect 
+            rx={"32"}
+            width={10} height={10} x={22} y={22} fill="hsl(139, calc(var(--saturation-factor, 1) * 47.3%), 43.9%)" mask="url(#svg-mask-status-online)" className="pointerEvents-9SZWKj" />
             </svg>
         </div>
         <div className="text-3j8t_e">
@@ -55,28 +63,89 @@ const CardFriend = (props) => {
             <span className="discriminator-WV5K5s"></span>
             </div>
             <div className="subtext-xfubwR">
+            { props.friend.statusAmizade == `accept` && 
             <div className="text-MPIeXO">{props.friend.status == `offline` ? `Offline` : `Online`}</div>
+            }
+            { props.friend.statusAmizade !== `accept` && 
+            <div className="subtext-xfubwR">
+                { props.friend.createdBy != props.me.id &&
+                `Pedido de amizade recebido`
+                }  
+                { props.friend.createdBy == props.me.id &&
+                `Pedido de amizade enviado`
+                }       
+                </div>
+            }
             </div>
         </div>
         </div>
-        <div className="actions-YHvpIT">
-        <div className="actionButton-3-B2x-" aria-label="Mensagem" role="button" tabIndex={0}>
-            <svg className="icon-1WVg4I" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24" fill="none">
-            <path fill="currentColor" d="M4.79805 3C3.80445 3 2.99805 3.8055 2.99805 4.8V15.6C2.99805 16.5936 3.80445 17.4 4.79805 17.4H7.49805V21L11.098 17.4H19.198C20.1925 17.4 20.998 16.5936 20.998 15.6V4.8C20.998 3.8055 20.1925 3 19.198 3H4.79805Z" />
-            </svg>
-        </div>
-        <div className="actionButton-3-B2x-" aria-label="Mais" role="button" tabIndex={0}>
+        { props.friend.statusAmizade === `pending` && 
+            <div className="actions-2ZgdH4">
+            {  props.friend.createdBy != props.me.id && 
+            <div 
+            onClick={() => {
+                props.socket.emit(`acceptFriend`, {
+                    token: localStorage.getItem(`token`),
+                    userID: props.friend.id
+                })
+            }}
+            className="actionButton-3-B2x- actionAccept-2nmnLv" aria-label="Aceitar" role="button" tabIndex={0}>
             <svg className="icon-1WVg4I" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
-            <g fill="none" fillRule="evenodd">
-                <path d="M24 0v24H0V0z" />
-                <path fill="currentColor" d="M12 16c1.1045695 0 2 .8954305 2 2s-.8954305 2-2 2-2-.8954305-2-2 .8954305-2 2-2zm0-6c1.1045695 0 2 .8954305 2 2s-.8954305 2-2 2-2-.8954305-2-2 .8954305-2 2-2zm0-6c1.1045695 0 2 .8954305 2 2s-.8954305 2-2 2-2-.8954305-2-2 .8954305-2 2-2z" />
-            </g>
+                <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M8.99991 16.17L4.82991 12L3.40991 13.41L8.99991 19L20.9999 7.00003L19.5899 5.59003L8.99991 16.17Z" />
             </svg>
+            </div>
+            }
+            <div 
+            onClick={() => {
+                props.socket.emit(`recuseFriend`, {
+                    token: localStorage.getItem(`token`),
+                    userID: props.friend.id
+                })
+            }}
+            className="actionButton-3-B2x- actionDeny-1pQVuZ" aria-label="Ignorar" role="button" tabIndex={0}>
+            <svg className="icon-1WVg4I" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
+                <path fill="currentColor" d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z" />
+            </svg>
+            </div>
         </div>
+        }
+        { props.friend.statusAmizade === `accept` &&
+        <div className="actions-YHvpIT">
+            <div className="actionButton-3-B2x-" aria-label="Mensagem" role="button" tabIndex={0}>
+                <svg className="icon-1WVg4I" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24" fill="none">
+                <path fill="currentColor" d="M4.79805 3C3.80445 3 2.99805 3.8055 2.99805 4.8V15.6C2.99805 16.5936 3.80445 17.4 4.79805 17.4H7.49805V21L11.098 17.4H19.198C20.1925 17.4 20.998 16.5936 20.998 15.6V4.8C20.998 3.8055 20.1925 3 19.198 3H4.79805Z" />
+                </svg>
+            </div>
+            <div 
+            onClick={() => {
+                props.socket.emit(`recuseFriend`, {
+                    token: localStorage.getItem(`token`),
+                    userID: props.friend.id
+                })
+            }}
+            className="actionButton-3-B2x-" aria-label="Mais" role="button" tabIndex={0}>
+                <svg className="icon-1WVg4I" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z" />
+                </svg>
+            </div>
         </div>
+        }
     </div>
     </div>
 </div>
+}
+
+const NoHaveFriends = () => {
+    return <div className="emptyStateContainer-1NHrfT">
+      <div className="friendsEmpty-gs15T1" style={{opacity: 1}}>
+        <div className="flex-2S1XBF flex-3BkGQD vertical-3aLnqW flex-3BkGQD directionColumn-3pi1nm justifyCenter-rrurWZ alignCenter-14kD11 noWrap-hBpHBz wrapper-5BaSTh" style={{flex: '1 1 auto'}}>
+          <div className="image-20MDYu marginBottom40-fvAlAV" style={{flex: '0 1 auto', width: '421px', height: '218px', backgroundImage: 'url("../assets/b36de980b174d7b798c89f35c116e5c6.svg")'}} />
+          <div className="flexChild-3PzYmX" direction="vertical-3aLnqW flex-3BkGQD directionColumn-3pi1nm" style={{flex: '0 1 auto'}}>
+            <div className="text-27cdrj marginTop8-24uXGp">Ninguém por perto para brincar com o Wumpus.</div>
+          </div>
+        </div>
+      </div>
+    </div>
 }
 
 export default MyFriends

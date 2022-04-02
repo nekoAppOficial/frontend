@@ -1,0 +1,82 @@
+const MyFriends = (props) => {
+    return <div className="peopleColumn-1wMU14" role="tabpanel" id="online-tab" tabIndex={-1}>
+    <div className="searchBar-2aylmZ container-2oNtJn medium-2NClDM">
+    <div className="inner-2pOSmK">
+        <input className="input-2m5SfJ" placeholder="Buscar" aria-label="Buscar" />
+        <div className="iconLayout-3Bjizv medium-2NClDM" tabIndex={-1} aria-hidden="true" role="button">
+        <div className="iconContainer-6pgShY">
+            <svg className="icon-3CDcPB visible-CwPfRb" aria-label="Buscar" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
+            <path fill="currentColor" d="M21.707 20.293L16.314 14.9C17.403 13.504 18 11.799 18 10C18 7.863 17.167 5.854 15.656 4.344C14.146 2.832 12.137 2 10 2C7.863 2 5.854 2.832 4.344 4.344C2.833 5.854 2 7.863 2 10C2 12.137 2.833 14.146 4.344 15.656C5.854 17.168 7.863 18 10 18C11.799 18 13.504 17.404 14.9 16.314L20.293 21.706L21.707 20.293ZM10 16C8.397 16 6.891 15.376 5.758 14.243C4.624 13.11 4 11.603 4 10C4 8.398 4.624 6.891 5.758 5.758C6.891 4.624 8.397 4 10 4C11.603 4 13.109 4.624 14.242 5.758C15.376 6.891 16 8.398 16 10C16 11.603 15.376 13.11 14.242 14.243C13.109 15.376 11.603 16 10 16Z" />
+            </svg>
+            <svg className="clear-3102V9 icon-3CDcPB" aria-label="Limpar" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
+            <path fill="currentColor" d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z" />
+            </svg>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div>
+    <h2 className="title-x4dI75 container-q97qHp">Online — {props.myFriendsE.length}</h2>
+    </div>
+    <div className="peopleList-2VBrVI auto-2K3UW5 scrollerBase-_bVAAt" dir="ltr" role="list" tabIndex={0} data-list-id="people" style={{overflow: 'hidden scroll', paddingRight: '0px'}}>
+    {
+        props.myFriendsE.map(friend => (
+            <div>
+                <CardFriend friend={friend}/>
+            </div>
+    ))}
+    <div aria-hidden="true" style={{position: 'absolute', pointerEvents: 'none', minHeight: '0px', minWidth: '1px', flex: '0 0 auto', height: '8px'}} />
+    </div>
+</div>
+}
+
+const CardFriend = (props) => {
+    return <div>
+    <div className="peopleListItem-u6dGxF" role="listitem" data-list-item-id="people___294144189464313857" tabIndex={-1} style={{height: '62px', opacity: 1}}>
+    <div className="listItemContents-2n2Uy9">
+        <div className="userInfo-2WpsYG">
+        <div className="avatar-2MSPKk wrapper-1VLyxH" role="img" aria-hidden="false" style={{width: '32px', height: '32px'}}>
+            <svg width={40} height={32} viewBox="0 0 40 32" className="mask-1FEkla svg-2azL_l" aria-hidden="true">
+            <foreignObject x={0} y={0} width={32} height={32} mask="url(#svg-mask-avatar-status-round-32)">
+                <div className="avatarStack-3vfSFa">
+                <img 
+                style={{
+                    borderRadius: `50%`
+                }}
+                src="https://cdn.discordapp.com/avatars/294144189464313857/a_cac4a28f5e3901639932bc107687adac.webp?size=32" alt=" " className="avatar-b5OQ1N" aria-hidden="true" />
+                </div>
+            </foreignObject>
+            <rect width={10} height={10} x={22} y={22} fill="hsl(139, calc(var(--saturation-factor, 1) * 47.3%), 43.9%)" mask="url(#svg-mask-status-online)" className="pointerEvents-9SZWKj" />
+            </svg>
+        </div>
+        <div className="text-3j8t_e">
+            <div className="discordTag-3HiQI9 nameTag-H6kSJ0">
+            <span className="username-3JLfHz username-Qpc78p">{props.friend.username}</span>
+            <span className="discriminator-WV5K5s"></span>
+            </div>
+            <div className="subtext-xfubwR">
+            <div className="text-MPIeXO">{props.friend.status == `offline` ? `Offline` : `Online`}</div>
+            </div>
+        </div>
+        </div>
+        <div className="actions-YHvpIT">
+        <div className="actionButton-3-B2x-" aria-label="Mensagem" role="button" tabIndex={0}>
+            <svg className="icon-1WVg4I" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24" fill="none">
+            <path fill="currentColor" d="M4.79805 3C3.80445 3 2.99805 3.8055 2.99805 4.8V15.6C2.99805 16.5936 3.80445 17.4 4.79805 17.4H7.49805V21L11.098 17.4H19.198C20.1925 17.4 20.998 16.5936 20.998 15.6V4.8C20.998 3.8055 20.1925 3 19.198 3H4.79805Z" />
+            </svg>
+        </div>
+        <div className="actionButton-3-B2x-" aria-label="Mais" role="button" tabIndex={0}>
+            <svg className="icon-1WVg4I" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
+            <g fill="none" fillRule="evenodd">
+                <path d="M24 0v24H0V0z" />
+                <path fill="currentColor" d="M12 16c1.1045695 0 2 .8954305 2 2s-.8954305 2-2 2-2-.8954305-2-2 .8954305-2 2-2zm0-6c1.1045695 0 2 .8954305 2 2s-.8954305 2-2 2-2-.8954305-2-2 .8954305-2 2-2zm0-6c1.1045695 0 2 .8954305 2 2s-.8954305 2-2 2-2-.8954305-2-2 .8954305-2 2-2z" />
+            </g>
+            </svg>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+}
+
+export default MyFriends

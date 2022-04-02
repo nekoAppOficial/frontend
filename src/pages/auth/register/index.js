@@ -20,7 +20,7 @@ const Register = props => {
             //Set localStorage token
             localStorage.setItem('token', response.data.token);
             //Window location to app 
-            window.location.href = '/app';
+            window.location.href = '/channels/@me';
         } else{
             setError(true)
             setMessageEror(response.data.message)

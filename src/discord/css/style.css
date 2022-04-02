@@ -86908,3 +86908,13 @@ html .invoiceCancelRow-dVOR64{
     padding:0
 }
 /*# sourceMappingURL=40532.d9d647e6afaf1087489f.css.map*/
+
+.selectAdds{
+    color: hsl(139, calc(var(--saturation-factor, 1) * 47.3%), 43.9%) !important;
+    background: transparent !important;
+}
+
+.notSelectAdds{
+    background-color: hsl(139, calc(var(--saturation-factor, 1) * 47.3%), 43.9%) !important;
+    color: hsl(0, calc(var(--saturation-factor, 1) * 0%), 100%) !important;
+}

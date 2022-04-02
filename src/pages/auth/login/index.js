@@ -15,12 +15,11 @@ const Login = props => {
         username,
         password
     });
-    console.log(response.data)
-    if(response.data.user){
+    if(response.data.user && typeof response.data.error == `undefined`){
         //Set localStorage token
         localStorage.setItem('token', response.data.user.token);
         //Window location to app 
-        window.location.href = '/app';
+        window.location.href = '/channels/@me';
     } else{
         setError(true)
         setMessageEror(response.data.message)

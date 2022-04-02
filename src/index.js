@@ -16,8 +16,8 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App page={`dashboard`} />} />
         <Route path="/login" element={<App page={`login`} />} />
-        <Route path="/app" element={<App page={`dashboard`} />} />
         <Route path="/register" element={<App page={`register`} />} />
+        <Route path="/channels/@me" element={<App page={`dashboard`} />} />
       </Routes>
   </BrowserRouter>
   </React.StrictMode>,

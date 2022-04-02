@@ -32,7 +32,7 @@ const Dashboard = props => {
     useEffect(() => {
         //Fecth validation post
         validationToken()
-        socket = io('http://localhost:7000')
+        socket = io('https://server-nekoapp.herokuapp.com/')
         socket.on(`online`, user => {
             setLoading(true)
         })

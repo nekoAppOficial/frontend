@@ -2,11 +2,14 @@ import {useState, useEffect} from 'react'
 
 const AddFriendTab = (props) => {
     const [username, setUsername] = useState('');
+    const [error, setError] = useState(false);
+    const [messageError, setMessageError] = useState('');
 
     useState(() => {
       props.socket.on(`notifications`, (data) => {
         if(data.page == `addFriend`){
-          
+          setError(!data.sucess)
+          setMessageError(data.message)
         }
       })
     }, false)    
@@ -27,7 +30,8 @@ const AddFriendTab = (props) => {
         }}
         autoComplete="off">
           <div className="colorStandard-21JIj7 size14-3fJ-ot description-30xx7u formText-2ngGjI modeDefault-2fEh7a" id="uid_16-decription">Você pode adicionar amigos com a Discord Tag deles. CuIdAdO cOm As MaIúScUlAs!</div>
-          <div className="addFriendInputWrapper-kkoSV9">
+          <div 
+          className={`addFriendInputWrapper-kkoSV9 ${error ? `error-31k8Cx` : ``}`}>
             <div className="inputWrapper-1YNMmM addFriendInput-1Ta-rO inputText-30IjXy">
               <input 
               onKeyUp={(e) => {
@@ -46,6 +50,9 @@ const AddFriendTab = (props) => {
             type="submit" className="button-f2h6uQ lookFilled-yCfaCM colorBrand-I6CyqQ sizeSmall-wU2dO- grow-2sR_-F">
               <div className="contents-3ca1mk">Enviar pedido de amizade</div>
             </button>
+          </div>
+          <div className="colorStandard-21JIj7 size14-3fJ-ot error-30DGjS description-30xx7u formText-2ngGjI marginTop8-24uXGp modeDefault-2fEh7a" role="alert" id="uid_16-error">
+            {messageError}
           </div>
         </form>
       </header>

@@ -7,6 +7,8 @@ import ChannelsMe from './channelsMe';
 import Friends from './friends';
 import Modal from './server/modal'
 import ChatPrivate from './ChatPrivate';
+import ToolTipServer from './toolTipServer'
+
 let socket = null
 
 const Dashboard = props => {
@@ -85,6 +87,7 @@ const Dashboard = props => {
         </div>
     </>
     } 
+    <ToolTipServer/>
     </>
 }
 

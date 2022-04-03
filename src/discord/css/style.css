@@ -86955,3 +86955,27 @@ html .invoiceCancelRow-dVOR64{
         transform: scale(1);
     }
 }
+
+.tooltipPrimary-3qLMbS, .theme-light .tooltipPrimary-3qLMbS {
+    background-color: var(--background-floating);
+}
+
+.tooltip-14MtrL, .theme-light .tooltip-14MtrL {
+    -webkit-box-shadow: var(--elevation-high);
+    box-shadow: var(--elevation-high);
+    color: var(--text-normal);
+}
+
+.tooltipPrimary-3qLMbS .tooltipPointer-3L49xb, .theme-light .tooltipPrimary-3qLMbS .tooltipPointer-3L49xb {
+    border-top-color: var(--background-floating);
+}
+
+.tooltipRight-2TSb42 .tooltipPointer-3L49xb {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    margin-top: -5px;
+    border-left-width: 5px;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}

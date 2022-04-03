@@ -1,3 +1,4 @@
+
 const GuildsNav = (props) => {
     return <nav className="wrapper-1_HaEi guilds-2JjMmN" aria-label="Barra lateral dos servidores">
     <ul role="tree" tabIndex={0} data-list-id="guildsnav" data-jump-section="global" className="tree-3agP2X">

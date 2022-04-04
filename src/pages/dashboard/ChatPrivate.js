@@ -6,12 +6,19 @@ const ChatPrivate = (props) => {
     const [user, setUser] = useState({messages: [], user: {username: ``}});
     const [messages, setMessagens] = useState([]);
 
+    const timer = setInterval(() => {
+     if( userId != window.location.pathname.split(`@me/`)[1] ){
+      setUserId(window.location.pathname.split(`@me/`)[1])
+     }
+    }, 1000);
+
     useEffect(() => {
      props.socket.emit(`getUser`, {userID: userId, token: localStorage.getItem('token')})
-    }, [false])
+    }, [false, userId])
 
     useEffect(() => {
       props.socket.on(`getUserProfile`, (user) => {
+        // console.log(user)
         setUser(user);
         setMessagens(user.messages)
         //Scroll to the bottom
@@ -161,17 +168,17 @@ const ChatPrivate = (props) => {
                   <h1 className="header-1dhDWV base-21yXnu size32-5yOQel">{user.username}</h1>
                   <div className="size16-rrJ6ag description-22d6ux">Este é o começo do seu histórico de mensagens diretas com <strong>@{user.user.username}</strong>. <div className="container-12Vzf8">
                       <div className="colorHeaderSecondary-g5teka size14-3fJ-ot">Nenhum servidor em comum</div>
-                      <div className="divider-2BCfFf" />
-                      <button 
+                      {/* <div className="divider-2BCfFf" /> */}
+                      {/* <button 
                       onClick={() => {
                         props.socket.emit(`recuseFriend`, {
                             token: localStorage.getItem(`token`),
                             userID: userId
                         })
-                    }}
+                      }}
                       type="button" className="action-1R6ERA button-f2h6uQ lookFilled-yCfaCM colorPrimary-2AuQVo sizeTiny-3y2SSK grow-2sR_-F">
                         <div className="contents-3ca1mk">Desfazer amizade</div>
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>
@@ -330,8 +337,15 @@ const ChatPrivate = (props) => {
 }
 
 const Message = props => {
+  const [hover, setHover] = useState(false)
   return <li id="chat-messages-959854144162758668" className="messageListItem-ZZ7v6g" aria-setsize={-1}>
-  <div className="message-2CShn3 cozyMessage-1DWF9U groupStart-3Mlgv1 wrapper-30-Nkg cozy-VmLDNB zalgo-26OfGz" role="article" data-list-item-id="chat-messages___chat-messages-959854144162758668" tabIndex={-1} aria-setsize={-1} aria-roledescription="Mensagem" aria-labelledby="message-username-959854144162758668 uid_1 message-content-959854144162758668 uid_2 message-timestamp-959854144162758668">
+  <div 
+  onMouseOut={() => setHover(false)}
+  onMouseOver={() => setHover(true)}
+  className={`
+  message-2CShn3 cozyMessage-1DWF9U groupStart-3Mlgv1 wrapper-30-Nkg cozy-VmLDNB zalgo-26OfGz
+  ${hover ? `message-2CShn3 selected-2LX7Jy` : ``}
+  `} role="article" data-list-item-id="chat-messages___chat-messages-959854144162758668" tabIndex={-1} aria-setsize={-1} aria-roledescription="Mensagem" aria-labelledby="message-username-959854144162758668 uid_1 message-content-959854144162758668 uid_2 message-timestamp-959854144162758668">
     <div className="contents-2MsGLg">
       <img src="/assets/6f26ddd1bf59740c536d2274bb834a05.png" aria-hidden="true" className="avatar-2e8lTP clickable-31pE3P" alt=" " />
       <h2 className="header-2jRmjb" aria-labelledby="message-username-959854144162758668 message-timestamp-959854144162758668">
@@ -355,7 +369,7 @@ const Message = props => {
     <div className="buttonContainer-1502pf">
       <div 
       style={{
-        opacity: `1`
+        opacity: `${hover ? 1 : 0}`,
       }}
       className="buttons-3dF5Kd container-2gUZhU isHeader-2bbX-L" aria-label="Ações de mensagem">
         <div className="wrapper-2vIMkT">

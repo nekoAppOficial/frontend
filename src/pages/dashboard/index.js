@@ -61,7 +61,9 @@ const Dashboard = props => {
             setOpenModalServer={setOpenModalServer}
             />
             <div class="content-1SgpWY">
-                <GuildsNav setOpenModalServer={setOpenModalServer}/>
+                <GuildsNav 
+                myFriends={myFriends}
+                setOpenModalServer={setOpenModalServer}/>
                 <ChannelsMe 
                 chat={props.chat}
                 myFriends={myFriends}

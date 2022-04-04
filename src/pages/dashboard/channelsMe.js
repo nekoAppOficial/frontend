@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom';
 
 const ChannelsMe = props => {
     const [myFriends, setMyFriends] = useState([])
+    const [userId, setUserID] = useState(0)
+
     useEffect(() => {
         setMyFriends(props.myFriends)
     }, [props.myFriends])
@@ -71,6 +73,8 @@ const ChannelsMe = props => {
         </svg> }
         {  myFriends.filter(friend => friend.statusAmizade === `accept`).map((friend) => (
           <Friend 
+          setUserID={setUserID}
+          userId={userId}
           chat={props.chat}
           friend={friend}
           />
@@ -83,14 +87,25 @@ const ChannelsMe = props => {
 }
 
 const Friend = (props) => {
+
+  useEffect(() => {
+    if(window.location.pathname.split(`/`)[3] && window.location.pathname.split(`/`)[3] == props.friend.id){
+        props.setUserID(props.friend.id)
+    }
+  }, [false])
+
   return <li className="channel-1Shao0 container-32HW5s" role="listitem" aria-setsize={8} aria-posinset={3}>
-  <div className={`interactive-1vLZ_I interactive-iyXY_x interactiveSelected-29CP8y ${props.chat && window.location.pathname.split(`@me/`)[1] == props.friend.id 
-  ? `selected-3veCBZ` : ``}`}>
-    <Link className="link-39sEB3" aria-label="caixeta (mensagem direta)" data-list-item-id="private-channels-uid_975___886332857520377867" tabIndex={-1} 
+  <div className={`interactive-1vLZ_I interactive-iyXY_x ${window.location.pathname.split(`/`)[3] && props.chat && props.userId == props.friend.id 
+  ? `interactiveSelected-29CP8y selected-3veCBZ` : ``}`}>
+    <Link
+    onClick={() => {
+      props.setUserID(props.friend.id)
+    }}
+    className="link-39sEB3" aria-label="username (mensagem direta)" data-list-item-id="private-channels-uid_975___886332857520377867" tabIndex={-1} 
     to={`/channels/@me/${props.friend.id}`}>
       <div className="layout-1LjVue">
         <div className="avatar-1HDIsL">
-          <div className="wrapper-1VLyxH" role="img" aria-label="caixeta, Não perturbar" aria-hidden="false" style={{width: '32px', height: '32px'}}>
+          <div className="wrapper-1VLyxH" role="img" aria-label="username, Não perturbar" aria-hidden="false" style={{width: '32px', height: '32px'}}>
             <svg width={40} height={32} viewBox="0 0 40 32" className="mask-1FEkla svg-2azL_l" aria-hidden="true">
               <foreignObject x={0} y={0} width={32} height={32} mask="url(#svg-mask-avatar-status-round-32)">
                 <div className="avatarStack-3vfSFa">

@@ -4,11 +4,13 @@ const AddFriendTab = (props) => {
     const [username, setUsername] = useState('');
     const [error, setError] = useState(false);
     const [messageError, setMessageError] = useState('');
+    const [sucess, setSucess] = useState(false);
 
     useState(() => {
       props.socket.on(`notifications`, (data) => {
         if(data.page == `addFriend`){
           setError(!data.sucess)
+          setSucess(data.sucess)
           setMessageError(data.message)
         }
       })
@@ -51,7 +53,11 @@ const AddFriendTab = (props) => {
               <div className="contents-3ca1mk">Enviar pedido de amizade</div>
             </button>
           </div>
-          <div className="colorStandard-21JIj7 size14-3fJ-ot error-30DGjS description-30xx7u formText-2ngGjI marginTop8-24uXGp modeDefault-2fEh7a" role="alert" id="uid_16-error">
+          <div 
+          style={{
+            color: `${sucess ? `var(--text-positive)` : ``}`
+          }}
+          className="colorStandard-21JIj7 size14-3fJ-ot error-30DGjS description-30xx7u formText-2ngGjI marginTop8-24uXGp modeDefault-2fEh7a" role="alert" id="uid_16-error">
             {messageError}
           </div>
         </form>

@@ -48,9 +48,9 @@ const Friends = (props) => {
             }}
             className={`item-3mHhwr item-3XjbnG themed-2-lozF ${tab == `myFriends` && typeFriend == `pending` ? 'selected-g-kMVV' : ``}`} role="tab" aria-selected="false" aria-controls="pending-tab" aria-disabled="false" tabIndex={-1} aria-label="Pendente">
                 Pendente 
-                {props.myFriends.filter(friend => friend.statusAmizade === 'pending').length > 0 &&
+                {props.myFriends.filter(friend => friend.statusAmizade === 'pending' && friend.createdBy != props.me.id).length > 0 &&
                 <div className="badge-3wMLmL numberBadge-37OJ3S base-3IDx3L baseShapeRound-3epLEv" style={{backgroundColor: 'var(--status-danger)', width: '16px', paddingRight: '0px'}}>
-                {props.myFriends.filter(friend => friend.statusAmizade === 'pending').length}
+                {props.myFriends.filter(friend => friend.statusAmizade === 'pending' && friend.createdBy != props.me.id).length}
                      </div> }
                 </div>
             

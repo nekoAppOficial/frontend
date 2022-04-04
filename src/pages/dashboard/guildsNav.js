@@ -32,11 +32,11 @@ const GuildsNav = (props) => {
                     </div>
                   </foreignObject>
                 </svg>
-                { props.myFriends.filter(friend => friend.statusAmizade === 'pending').length > 0 &&
+                { props.myFriends.filter(friend => friend.statusAmizade === 'pending' && friend.createdBy != props.user.id).length > 0 &&
                 <div className="numberBadge-37OJ3S base-3IDx3L baseShapeRound-3epLEv" 
                 style={{height: '28px', backgroundColor: 'var(--status-danger)', width: '28px', paddingRight: '1px', border: '4px solid #202225', 
                 borderRadius: '50%', transform: 'scale(0.8) translate(31px, 30px)'}}>
-                  {props.myFriends.filter(friend => friend.statusAmizade === 'pending').length}
+                  {props.myFriends.filter(friend => friend.statusAmizade === 'pending' && friend.createdBy != props.user.id).length}
                 </div> }
               </div>
             </div>

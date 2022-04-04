@@ -36,8 +36,8 @@ const ChannelsMe = props => {
                   </div>
                 </div>
               </Link>
-              {props.myFriends.filter(friend => friend.statusAmizade === 'pending').length > 0 &&<div className="numberBadge-37OJ3S base-3IDx3L baseShapeRound-3epLEv" style={{backgroundColor: 'var(--status-danger)', width: '16px', paddingRight: '1px'}}>
-                {props.myFriends.filter(friend => friend.statusAmizade === 'pending').length}
+              {props.myFriends.filter(friend => friend.statusAmizade === 'pending' && friend.createdBy != props.user.id).length > 0 &&<div className="numberBadge-37OJ3S base-3IDx3L baseShapeRound-3epLEv" style={{backgroundColor: 'var(--status-danger)', width: '16px', paddingRight: '1px'}}>
+                {props.myFriends.filter(friend => friend.statusAmizade === 'pending' && friend.createdBy != props.user.id).length}
               </div> }
             </div>
           </li>

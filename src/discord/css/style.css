@@ -86979,3 +86979,24 @@ html .invoiceCancelRow-dVOR64{
     -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
 }
+
+.chatFloat{
+    position: fixed;
+    width: 399px;
+    height: 365px;
+    bottom: 0px;
+    box-shadow: 3px 2px 1px rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    padding: 10px;
+    right: 20px;
+    z-index: 5000;
+    filter: drop-shadow(0px 0px 5px rgb(0 0 0 / 10%));
+}
+
+.opacity-100{
+    opacity: 0.5;
+}
+
+.opacity-100:hover{
+    opacity: 1;
+}

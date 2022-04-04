@@ -1,6 +1,5 @@
 import MyFriends from './myFriends';
 import AddFriendTab from './AddFriendTab';
-
 import {useState, useEffect} from 'react';
 
 const Friends = (props) => {

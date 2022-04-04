@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import ChatFloat from './chatFloat'
 
 const ChatPrivate = (props) => {
     const [message, setMessage] = useState('');
@@ -36,7 +37,15 @@ const ChatPrivate = (props) => {
     }, [false])
     
 
-    return <div className="chat-2ZfjoI">
+    return <>
+    <ChatFloat myFriends={props.myFriends}
+    chatFloating={props.chatFloating}
+    socket={props.socket}
+    me={props.user}
+    setUserID={setUserId}
+    />
+    <div 
+    className={`chat-2ZfjoI ${props.chatFloating ? `chatFloat` : ``}`}>
     <div className="uploadArea-2uvx-B uploadArea-2Nu_Vc">
       <div className="uploadDropModal-13Kd20">
         <div className="bgScale-1iWuPF" />
@@ -139,11 +148,31 @@ const ChatPrivate = (props) => {
             <path d="M19 3H4.99C3.88 3 3.01 3.89 3.01 5L3 19C3 20.1 3.88 21 4.99 21H19C20.1 21 21 20.1 21 19V5C21 3.89 20.1 3 19 3ZM19 15H15C15 16.66 13.65 18 12 18C10.35 18 9 16.66 9 15H4.99V5H19V15Z" fill="currentColor" />
           </svg>
         </div>
-        <a tabIndex={-1} className="anchor-1MIwyf anchorUnderlineOnHover-2qPutX" href="https://support.discord.com" rel="noreferrer noopener" target="_blank">
+        <a tabIndex={-1} className="anchor-1MIwyf anchorUnderlineOnHover-2qPutX" rel="noreferrer noopener" target="_blank">
           <div className="iconWrapper-2awDjA clickable-ZD7xvu" role="button" aria-label="Ajuda" tabIndex={0}>
-            <svg x={0} y={0} className="icon-2xnN2Y" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
-              <path fill="hsl(139, calc(var(--saturation-factor, 1) * 47.3%), 43.9%)" d="M12 2C6.486 2 2 6.487 2 12C2 17.515 6.486 22 12 22C17.514 22 22 17.515 22 12C22 6.487 17.514 2 12 2ZM12 18.25C11.31 18.25 10.75 17.691 10.75 17C10.75 16.31 11.31 15.75 12 15.75C12.69 15.75 13.25 16.31 13.25 17C13.25 17.691 12.69 18.25 12 18.25ZM13 13.875V15H11V12H12C13.104 12 14 11.103 14 10C14 8.896 13.104 8 12 8C10.896 8 10 8.896 10 10H8C8 7.795 9.795 6 12 6C14.205 6 16 7.795 16 10C16 11.861 14.723 13.429 13 13.875Z" />
-            </svg>
+          <svg
+          onClick={() => {
+            props.setChatFloating(!props.chatFloating)
+          }}
+          className="opacity-100"
+          width={24} height={24} viewBox="0 0 500.000000 500.000000" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+              <path 
+              fill={`${props.chatFloating ? `hsl(139, calc(var(--saturation-factor, 1) * 47.3%), 43.9%)` : `hsl(139, calc(var(--saturation-factor, 1) * 2%), 43.9%)`}`}
+              d="M585 3903 c-35 -9 -87 -54 -101 -89 -11 -27 -14 -129 -14 -535 0
+    -554 -1 -546 64 -592 24 -17 45 -22 91 -22 46 0 67 5 91 22 64 46 64 48 64
+    497 l0 406 1720 0 1720 0 0 -1090 0 -1090 -882 -2 c-863 -3 -884 -3 -916 -23
+    -101 -60 -101 -206 -2 -268 l35 -22 970 -3 970 -2 44 22 c25 13 54 36 65 51
+    21 28 21 32 21 1337 0 1305 0 1309 -21 1337 -11 15 -40 38 -64 51 l-44 22
+    -1896 -1 c-1042 -1 -1904 -4 -1915 -6z" />
+              <path 
+              fill={`${props.chatFloating ? `hsl(139, calc(var(--saturation-factor, 1) * 47.3%), 43.9%)` : `hsl(139, calc(var(--saturation-factor, 1) * 2%), 43.9%)`}`}
+              d="M552 2323 c-18 -9 -43 -30 -55 -47 l-22 -31 0 -527 c0 -516 0 -527
+    21 -555 11 -15 40 -38 64 -50 l44 -23 646 0 646 0 44 23 c24 12 53 35 64 50
+    20 28 21 41 23 545 l3 517 -23 39 c-46 80 -8 76 -757 76 -592 0 -669 -2 -698
+    -17z m1168 -603 l0 -310 -470 0 -470 0 0 310 0 310 470 0 470 0 0 -310z" />
+            </g>
+          </svg>
           </div>
         </a>
       </div>
@@ -260,9 +289,6 @@ const ChatPrivate = (props) => {
                   </div>
                 </div>
                 <div 
-                style={{
-                  position: 'fixed',
-                }}
                 className="buttons-uaqb-5">
                   {/* <button aria-label="Enviar um presente" type="button" className="button-f2h6uQ lookBlank-21BCro colorBrand-I6CyqQ grow-2sR_-F">
                     <div className="contents-3ca1mk button-2fCJ0o button-3BaQ4X">
@@ -333,7 +359,7 @@ const ChatPrivate = (props) => {
         <div className="layerContainer-2v_Sit" />
       </main>
     </div>
-  </div>
+  </div></>
 }
 
 const Message = props => {

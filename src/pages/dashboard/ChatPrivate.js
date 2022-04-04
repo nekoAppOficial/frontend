@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import { Navigate } from 'react-router-dom';
 import ChatFloat from './chatFloat'
 
 const ChatPrivate = (props) => {
@@ -38,12 +39,13 @@ const ChatPrivate = (props) => {
     
 
     return <>
-    <ChatFloat myFriends={props.myFriends}
+    { props.chatFloating && <ChatFloat myFriends={props.myFriends}
     chatFloating={props.chatFloating}
     socket={props.socket}
     me={props.user}
     setUserID={setUserId}
-    />
+    />}
+    
     <div 
     className={`chat-2ZfjoI ${props.chatFloating ? `chatFloat` : ``}`}>
     <div className="uploadArea-2uvx-B uploadArea-2Nu_Vc">
@@ -152,7 +154,13 @@ const ChatPrivate = (props) => {
           <div className="iconWrapper-2awDjA clickable-ZD7xvu" role="button" aria-label="Ajuda" tabIndex={0}>
           <svg
           onClick={() => {
-            props.setChatFloating(!props.chatFloating)
+            
+            if(props.chatFloating){
+              props.setChatFloating(!props.chatFloating)
+              return <Navigate to={`/channels/@me/${userId}`}/>
+            } else{
+              props.setChatFloating(!props.chatFloating)
+            }
           }}
           className="opacity-100"
           width={24} height={24} viewBox="0 0 500.000000 500.000000" preserveAspectRatio="xMidYMid meet">

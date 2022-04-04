@@ -1,11 +1,12 @@
-import {Link} from 'react-router-dom';
+import {Link, Navigate} from 'react-router-dom';
 import { useEffect } from 'react';
 
 const ChatFloat = props => {
     return <div className="scroller-WSmht3 thin-31rlnD scrollerBase-_bVAAt fade-1R6FHN" tabIndex={0} data-list-id="private-channels-uid_975" data-jump-section="global" 
     style={{overflow: 'hidden scroll', paddingRight: '0px', width: '240px', position: 'fixed', right: '20px', bottom: '382px', height: '156px'
     , borderRadius: `4px`, boxShadow:` 3px 2px 1px rgb(0 0 0 / 10%)`,
-    filter: `drop-shadow(0px 0px 5px rgb(0 0 0 / 10%))`
+    filter: `drop-shadow(0px 0px 5px rgb(0 0 0 / 10%))`,
+    zIndex: 5000
     }}>
     <ul role="list" aria-label="Mensagens diretas" className="content-2a4AW9" style={{height: '155px'}}>
       <div aria-hidden="true" style={{height: '8px'}} />
@@ -57,6 +58,7 @@ const Friend = (props) => {
     <Link
     onClick={() => {
       props.setUserID(props.friend.id)
+      return <Navigate to={`/channels/@me/${props.friend.id}`}/>
     }}
     className="link-39sEB3" aria-label="username (mensagem direta)" data-list-item-id="private-channels-uid_975___886332857520377867" tabIndex={-1} 
     to={`/channels/@me/${props.friend.id}`}>

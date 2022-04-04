@@ -81,7 +81,7 @@ const Dashboard = props => {
                     socket={socket}/>}
                     { chatFloating && props.chat && 
                     <>
-                        { chatFloating && typeof window.location.pathname.split(`/`)[3] == `string` && 
+                        { chatFloating && typeof window.location.pathname.split(`/`)[3] == `string` && props.chat && 
                         <ChatFloat
                         chat={props.chat}
                         myFriends={myFriends}
@@ -97,7 +97,7 @@ const Dashboard = props => {
                     }
                     { !chatFloating && props.chat && 
                     <>
-                        { chatFloating && typeof window.location.pathname.split(`/`)[3] == `string` && <ChatFloat
+                        { props.chat && chatFloating && <ChatFloat
                         chat={props.chat}
                         myFriends={myFriends}
                         user={user}/> }

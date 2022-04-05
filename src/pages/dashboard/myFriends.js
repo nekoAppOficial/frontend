@@ -51,7 +51,7 @@ const CardFriend = (props) => {
                 style={{
                     borderRadius: `50%`
                 }}
-                src="../assets/default.webp" alt=" " className="avatar-b5OQ1N" aria-hidden="true" />
+                src={`${ typeof props.friend.photo != `object` ? props.friend.photo : window[`getPath`]() + `assets/default.webp`}`} alt=" " className="avatar-b5OQ1N" aria-hidden="true" />
                 </div>
             </foreignObject>
             <rect 

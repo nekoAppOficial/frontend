@@ -83055,7 +83055,7 @@ html .invoiceCancelRow-3s2UuC{
     position:relative;
     width:300px;
     min-width:300px;
-    min-height:280px;
+    height: 165px;
     background-color:var(--background-floating);
     border-radius:8px;
     overflow:hidden;
@@ -86949,6 +86949,17 @@ html .invoiceCancelRow-dVOR64{
     0%{
         opacity: 0;
         transform: scale(0.5);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes openModal2{
+    0%{
+        opacity: 0;
+        transform: scale(0.9);
     }
     100%{
         opacity: 1;

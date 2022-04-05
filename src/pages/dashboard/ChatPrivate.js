@@ -7,6 +7,7 @@ const ChatPrivate = (props) => {
     const [userId, setUserId] = useState(window.location.pathname.split(`@me/`)[1]);
     const [user, setUser] = useState({messages: [], user: {username: ``}});
     const [messages, setMessagens] = useState([]);
+    
 
     const timer = setInterval(() => {
      if( userId != window.location.pathname.split(`@me/`)[1] ){
@@ -197,7 +198,11 @@ const ChatPrivate = (props) => {
                     <svg width={92} height={80} viewBox="0 0 92 80" className="mask-1FEkla svg-2azL_l" aria-hidden="true">
                       <foreignObject x={0} y={0} width={80} height={80} mask="url(#svg-mask-avatar-default)">
                         <div className="avatarStack-3vfSFa">
-                          <img src="" alt=" " className="avatar-b5OQ1N" aria-hidden="true" />
+                          <img 
+                          style={{
+                            borderRadius: '50%',
+                          }}
+                          src={`${ typeof user.user.photo != `object` ? user.user.photo : window[`getPath`]() + `assets/default.webp`}`} alt=" " className="avatar-b5OQ1N" aria-hidden="true" />
                         </div>
                       </foreignObject>
                     </svg>
@@ -381,7 +386,14 @@ const Message = props => {
   ${hover ? `message-2CShn3 selected-2LX7Jy` : ``}
   `} role="article" data-list-item-id="chat-messages___chat-messages-959854144162758668" tabIndex={-1} aria-setsize={-1} aria-roledescription="Mensagem" aria-labelledby="message-username-959854144162758668 uid_1 message-content-959854144162758668 uid_2 message-timestamp-959854144162758668">
     <div className="contents-2MsGLg">
-      <img src="/assets/6f26ddd1bf59740c536d2274bb834a05.png" aria-hidden="true" className="avatar-2e8lTP clickable-31pE3P" alt=" " />
+      { !props.realTime && props.message.createdBy == props.me.id && 
+      <img 
+      src={`${ typeof props.me.photo != `object` ? props.me.photo : window[`getPath`]() + `assets/default.webp`}`}
+      aria-hidden="true" className="avatar-2e8lTP clickable-31pE3P" alt=" " />}
+       { !props.realTime && props.message.createdBy != props.me.id && 
+      <img 
+      src={`${ typeof props.userStranger.user.photo != `object` ? props.userStranger.user.photo : window[`getPath`]() + `assets/default.webp`}`}
+      aria-hidden="true" className="avatar-2e8lTP clickable-31pE3P" alt=" " />}
       <h2 className="header-2jRmjb" aria-labelledby="message-username-959854144162758668 message-timestamp-959854144162758668">
         <span id="message-username-959854144162758668" className="headerText-2z4IhQ">
           <span className="username-h_Y3Us desaturateUserColors-1O-G89 clickable-31pE3P" aria-controls="popout_40" aria-expanded="false" role="button" tabIndex={0}>

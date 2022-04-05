@@ -40,7 +40,14 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <script>
-      window[`friends`] = []
+      window[`getPath`] = () => {
+        var path = `./`
+
+        for(var i = 0; i < window.location.pathname.split(`/`).length - 2 ; i++){
+            path += `../`
+        }
+        return path
+    }
     </script>
   </body>
 </html>

@@ -8,6 +8,7 @@ import Friends from './friends';
 import Modal from './server/modal'
 import ChatPrivate from './ChatPrivate';
 import ToolTipServer from './toolTipServer'
+import Ajustes from './ajustes' 
 
 let socket = null
 
@@ -17,6 +18,7 @@ const Dashboard = props => {
     const [user, setUser] = useState({username: ''})
     const [myFriends, setMyFriends] = useState([])
     const [chatFloating, setChatFloating] = useState(false)
+    const [ajustes, setAjustes] = useState(true)
     const validationToken = async () => {
         const response = await axios.post('https://server-nekoapp.herokuapp.com/auth/validationToken', {
             token: localStorage.getItem('token')
@@ -38,6 +40,9 @@ const Dashboard = props => {
         socket.on(`online`, user => {
             setLoading(true)
         })
+        socket.on(`refreshMe`, () => {
+            validationToken()
+        })
     }, false)
 
     React.useEffect(() => {
@@ -55,16 +60,27 @@ const Dashboard = props => {
     { loading &&
     <>
         <div className='container-1eFtFS'>
-            <Modal
-            openModalServer={openModalServer}
-            setOpenModalServer={setOpenModalServer}
-            />
+            
             <div class="content-1SgpWY">
+                
+                { ajustes && <Ajustes myFriends={myFriends}
+                user={user}
+                setAjustes={setAjustes}
+                ajustes={ajustes}
+                socket={socket}
+                setOpenModalServer={setOpenModalServer}/> }
+                { !ajustes && <>
+                <Modal
+                openModalServer={openModalServer}
+                setOpenModalServer={setOpenModalServer}
+                />
                 <GuildsNav 
                 myFriends={myFriends}
                 user={user}
                 setOpenModalServer={setOpenModalServer}/>
                 <ChannelsMe 
+                setAjustes={setAjustes}
+                ajustes={ajustes}
                 chat={props.chat}
                 myFriends={myFriends}
                 user={user}/>
@@ -125,7 +141,7 @@ const Dashboard = props => {
                         />
                     </>
                     }
-                </div>
+                </div> </> }
             </div>
         </div>
     </>

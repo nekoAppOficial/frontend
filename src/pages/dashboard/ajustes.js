@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const Ajustes = props => {
-    const inputFile = useRef(null) 
+    const [tab, setTab] = useState(0)
     useEffect(() => {
       //Press esc
       document.addEventListener("keydown", (e) => {
@@ -10,26 +10,13 @@ const Ajustes = props => {
         }
       })
     }, )
-    const onChangeFile = (event) => {
-      event.stopPropagation();
-      event.preventDefault();
-      var file = event.target.files[0];
-      var reader = new FileReader();
-          reader.readAsDataURL(file);
-          reader.onload = function () {
-            var avatar = reader.result;
-            console.log(avatar)
-            props.socket.emit("change-avatar", {avatar, token: window.localStorage.getItem("token")})
-          }
-  }
+    
     return <div 
     style={{
       zIndex: 5000
     }}
     className="layers-OrUESM layers-1YQhyW">
-    <input 
-    onChange={onChangeFile.bind(this)}
-    type='file' id='file' ref={inputFile} style={{display: 'none'}}/>
+    
     <div aria-hidden="true" className="layer-86YKbF baseLayer-W6S8cY stop-animations" style={{opacity: 1, transform: 'scale(0.93) translateZ(0px)'}}>
       <div className="container-1eFtFS">
         <nav className="wrapper-1_HaEi guilds-2JjMmN" aria-label="Barra lateral dos servidores">
@@ -89,46 +76,7 @@ const Ajustes = props => {
                     <span className="item-2LIpTv" style={{opacity: 1, height: '8px', transform: 'none'}} />
                   </div>
                   <div>
-                    <div data-dnd-name="Ballerini" className="blobContainer-ikKyFs" draggable="true">
-                      <div className="wrapper-28eC3z">
-                        <svg width={48} height={48} viewBox="0 0 48 48" className="svg-2zuE5p" overflow="visible">
-                          <defs>
-                            <path d="M48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24Z" id="bfef8b63-09bb-4d80-be26-01a90f0c9563-blob_mask" />
-                            <rect id="bfef8b63-09bb-4d80-be26-01a90f0c9563-upper_badge_masks" x={28} y={-4} width={24} height={24} rx={12} ry={12} transform="translate(0 0)" />
-                            <rect id="bfef8b63-09bb-4d80-be26-01a90f0c9563-lower_badge_masks" x={28} y={28} width={24} height={24} rx={12} ry={12} transform="translate(0 0)" />
-                          </defs>
-                          <mask id="bfef8b63-09bb-4d80-be26-01a90f0c9563" fill="black" x={0} y={0} width={48} height={48}>
-                            <use href="#bfef8b63-09bb-4d80-be26-01a90f0c9563-blob_mask" fill="white" />
-                            <use href="#bfef8b63-09bb-4d80-be26-01a90f0c9563-upper_badge_masks" fill="black" />
-                            <use href="#bfef8b63-09bb-4d80-be26-01a90f0c9563-lower_badge_masks" fill="black" />
-                          </mask>
-                          <mask id="bfef8b63-09bb-4d80-be26-01a90f0c9563-stroke_mask">
-                            <rect width="150%" height="150%" x="-25%" y="-25%" fill="white" />
-                            <use href="#bfef8b63-09bb-4d80-be26-01a90f0c9563-upper_badge_masks" fill="black" />
-                            <use href="#bfef8b63-09bb-4d80-be26-01a90f0c9563-lower_badge_masks" fill="black" />
-                          </mask>
-                          <foreignObject mask="url(#bfef8b63-09bb-4d80-be26-01a90f0c9563)" x={0} y={0} width={48} height={48}>
-                            <div className="wrapper-3kah-n" role="treeitem" data-list-item-id="guildsnav___789888698673922078" tabIndex={-1} aria-label="1 menção Ballerini">
-                              <img className="icon-3AqZ2e" src="https://cdn.discordapp.com/icons/789888698673922078/5b8bd1387815d5042ee5022a39e59acb.webp?size=96" alt=" " width={48} height={48} aria-hidden="true" />
-                            </div>
-                          </foreignObject>
-                        </svg>
-                        <div className="lowerBadge-3WTshO" style={{opacity: 1, transform: 'translate(0px, 0px)'}}>
-                          <div className="numberBadge-37OJ3S base-3IDx3L baseShapeRound-3epLEv" style={{backgroundColor: 'var(--status-danger)', width: '16px', paddingRight: '1px'}}>1</div>
-                        </div>
-                        <div className="upperBadge-1V6Iyi" style={{opacity: 1, transform: 'translate(0px, 0px)'}}>
-                          <div className="iconBadge-32fMme iconBadge-1D5-9X base-3IDx3L baseShapeRound-3epLEv">
-                            <svg className="icon-2Ug6UV" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
-                              <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M4 2.5C2.897 2.5 2 3.397 2 4.5V15.5C2 16.604 2.897 17.5 4 17.5H11V19.5H7V21.5H17V19.5H13V17.5H20C21.103 17.5 22 16.604 22 15.5V4.5C22 3.397 21.103 2.5 20 2.5H4ZM20 4.5V13.5H4V4.5H20Z" />
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="wrapper-3XVBev" aria-hidden="true">
-                    <div data-dnd-name="Acima Ballerini" className="target-1eRTCg" />
-                    <div data-dnd-name="Combinar com Ballerini" className="centerTarget-S6BLFQ" />
+                    
                   </div>
                 </div>
               </div>
@@ -461,7 +409,19 @@ const Ajustes = props => {
             <nav className="sidebar-nqHbhN">
               <div className="side-2ur1Qk" role="tablist" aria-orientation="vertical" aria-label="Configurações de Usuário">
                 <div className="header-2Kx1US" tabIndex={-1} role="button">Configurações de Usuário</div>
-                <div className="item-3XjbnG selected-g-kMVV themed-2-lozF" role="tab" aria-selected="true" aria-controls="profile-customization-tab" aria-disabled="false" tabIndex={0} aria-label="Perfil do usuário">Perfil do usuário</div>
+                <div 
+                onClick={() => {
+                  setTab(0)
+                }}
+                className={`item-3XjbnG ${tab == 0 ? `selected-g-kMVV` : ``} themed-2-lozF`} role="tab" aria-selected="true" aria-controls="profile-customization-tab" aria-disabled="false" tabIndex={0} aria-label="Perfil do usuário">Perfil do usuário</div>
+                <div className="separator-2wx7h6" />
+                <div 
+                onClick={() => {
+                  setTab(1)
+                }}
+                className={`item-3XjbnG ${tab == 1 ? `selected-g-kMVV` : ``} themed-2-lozF`} role="tab" aria-selected="true" aria-controls="appearance-tab" aria-disabled="false" tabIndex={0}>
+                  Aparência
+                </div>
                 <div className="separator-2wx7h6" />
                 <div 
                 className="item-3XjbnG themed-2-lozF" role="tab" aria-selected="false" aria-controls="logout-tab" aria-disabled="false" tabIndex={-1} aria-label="Sair">
@@ -489,7 +449,112 @@ const Ajustes = props => {
                     <h1 className="colorStandard-21JIj7 size14-3fJ-ot h1-34Txb0 title-3hptVQ defaultColor-2cKwKo defaultMarginh1-EURXsm" id="uid_54">Perfil do usuário</h1>
                   </div>
                   <div className="children-1xdcWE">
-                    <div className="divider-ogkn3u" />
+                    { tab == 0 && <UserProfile
+                    user={props.user}
+                    />}
+                    { tab == 1 && <Aparencia
+                    setTab={setTab}
+                    user={props.user}/>}
+                  </div>
+                </div>
+              </div>
+              <div className="toolsContainer-25FL6V">
+                <div 
+                onClick={() => {
+                  props.setAjustes(!props.ajustes)
+                }}
+                className="tools-kIrEGr">
+                  <div className="container-O54IuJ">
+                    <div className="closeButton-PCZcma" aria-label="Fechar" role="button" tabIndex={0}>
+                      <svg aria-hidden="true" width={18} height={18} viewBox="0 0 24 24">
+                        <path fill="hsl(210, calc(var(--saturation-factor, 1) * 2.9%), 86.7%)" d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z" />
+                      </svg>
+                    </div>
+                    <div 
+                    className="keybind-13vtq8" aria-hidden="true">ESC</div>
+                  </div>
+                </div>
+              </div>
+              <div aria-hidden="true" style={{position: 'absolute', pointerEvents: 'none', minHeight: '0px', minWidth: '1px', flex: '0 0 auto', height: '0px'}} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+const Aparencia = props => {
+  return (
+      <div className="marginTop8-24uXGp">
+    <h5 className="colorStandard-21JIj7 size14-3fJ-ot h5-2RwDNl title-3hptVQ defaultMarginh5-3Jxf6f" id="uid_55">Tema</h5>
+    <div role="radiogroup" aria-labelledby="uid_55" aria-orientation="vertical" aria-disabled="false">
+      <div 
+      className="item-2idW98 marginBottom8-emkd0_ horizontal-1Piu5- flex-3BkGQD directionRow-2Iu2A9 itemFilled-1cPbtg" role="radio" aria-checked={window.localStorage.getItem(`theme`) == `theme-dark`} tabIndex={0}>
+        <div 
+        onClick={() => {
+          window.localStorage.setItem(`theme`, `theme-dark`)
+          window.document.querySelector(`#root`).classList.remove(`theme-light`);
+          window.document.querySelector(`#root`).classList.add(`theme-dark`);
+        }}
+        className="radioBar-3w9XY-" style={{padding: '10px'}}>
+          <div>
+            <svg aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
+              <path fillRule="evenodd" clipRule="evenodd" d="M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="currentColor" />
+              <circle cx={12} cy={12} r={5} className="radioIconForeground-2BMavi" fill="currentColor" />
+            </svg>
+          </div>
+          <div className="info-2FZci4">
+            <div className="size16-rrJ6ag title-1yyp9V">Escuro</div>
+          </div>
+        </div>
+      </div>
+      <div 
+      onClick={() => {
+        window.localStorage.setItem(`theme`, `theme-white`)
+        window.document.querySelector(`#root`).classList.remove(`theme-dark`);
+        window.document.querySelector(`#root`).classList.add(`theme-light`);
+
+      }}
+      className="item-2idW98 marginBottom8-emkd0_ horizontal-1Piu5- flex-3BkGQD directionRow-2Iu2A9 itemFilled-1cPbtg" role="radio" 
+      aria-checked={window.localStorage.getItem(`theme`) == `theme-light`} tabIndex={-1}>
+        <div className="radioBar-3w9XY-" style={{padding: '10px'}}>
+          <div>
+          <svg aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
+              <path fillRule="evenodd" clipRule="evenodd" d="M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="currentColor" />
+              <circle cx={12} cy={12} r={5} className="radioIconForeground-2BMavi" fill="currentColor" />
+            </svg>
+          </div>
+          <div className="info-2FZci4">
+            <div className="size16-rrJ6ag title-1yyp9V">Claro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  )
+}
+
+const UserProfile = props => {
+  const inputFile = useRef(null) 
+  const onChangeFile = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+    var file = event.target.files[0];
+    var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+          var avatar = reader.result;
+          console.log(avatar)
+          props.socket.emit("change-avatar", {avatar, token: window.localStorage.getItem("token")})
+        }
+}
+  return (
+    <>
+    <input 
+    onChange={onChangeFile.bind(this)}
+    type='file' id='file' ref={inputFile} style={{display: 'none'}}/>
+    <div className="divider-ogkn3u" />
                     <div className="baseLayout-8AMrwn">
                       <div>
                         <div className="customizationSection-IGy2fS">
@@ -497,7 +562,7 @@ const Ajustes = props => {
                           <div className="buttonsContainer-12kYno">
                             <button 
                             onClick={() => {
-                              inputFile.current.click();
+                              props.inputFile.current.click();
                             }}
                             type="button" className="button-f2h6uQ lookFilled-yCfaCM colorBrand-I6CyqQ sizeSmall-wU2dO- grow-2sR_-F">
                               <div className="contents-3ca1mk">Mudar avatar</div>
@@ -604,7 +669,7 @@ const Ajustes = props => {
                           </div>
                           <div 
                           onClick={() => {
-                            inputFile.current.click();
+                            props.inputFile.current.click();
                           }}
                           className="imageUploader-1X7wVc avatarUploaderNormal-2m2hFm avatarUploader-qEFQS2">
                             <div className="imageUploaderInner-IIRaFr avatarUploaderInner-p38nm2" 
@@ -612,7 +677,7 @@ const Ajustes = props => {
                               <span aria-hidden="true" />
                               <div className="imageUploaderHint-33zkjZ" aria-hidden="true">Mudar avatar</div>
                               <div className="fileInput-1LZSb9" aria-label="Mudar
-  avatar" role="button" tabIndex={0} />
+                              avatar" role="button" tabIndex={0} />
                               <div 
                               style={{
                                 backgroundImage: `url("${ window[`getPath`]() + `assets/4a1000a95b1aad334e98f9d15b9d0ec4.svg`}")`
@@ -631,33 +696,8 @@ const Ajustes = props => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div className="toolsContainer-25FL6V">
-                <div 
-                onClick={() => {
-                  props.setAjustes(!props.ajustes)
-                }}
-                className="tools-kIrEGr">
-                  <div className="container-O54IuJ">
-                    <div className="closeButton-PCZcma" aria-label="Fechar" role="button" tabIndex={0}>
-                      <svg aria-hidden="true" width={18} height={18} viewBox="0 0 24 24">
-                        <path fill="hsl(210, calc(var(--saturation-factor, 1) * 2.9%), 86.7%)" d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z" />
-                      </svg>
-                    </div>
-                    <div 
-                    className="keybind-13vtq8" aria-hidden="true">ESC</div>
-                  </div>
-                </div>
-              </div>
-              <div aria-hidden="true" style={{position: 'absolute', pointerEvents: 'none', minHeight: '0px', minWidth: '1px', flex: '0 0 auto', height: '0px'}} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </>
+  )
 }
 
 export default Ajustes

@@ -9,6 +9,18 @@ import './discord/css/style.css';
 import './discord/css/modify.css';
 
 function App(props) {
+
+  useEffect(() => {
+    const theme = window.localStorage.getItem('theme');
+    //Theme
+    if (theme != null) {
+      window.document.querySelector(`#root`).classList.add(theme);
+    } else{
+      window.localStorage.setItem(`theme`, `theme-dark`)
+      window.document.querySelector(`#root`).classList.add(`theme-dark`);
+    }
+  }, false)
+
   const [page, setPage] = useState(props.page);
   const [logged, setLogged] = useState(true)
   return (

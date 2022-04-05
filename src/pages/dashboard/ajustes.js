@@ -562,7 +562,7 @@ const UserProfile = props => {
                           <div className="buttonsContainer-12kYno">
                             <button 
                             onClick={() => {
-                              props.inputFile.current.click();
+                              inputFile.current.click();
                             }}
                             type="button" className="button-f2h6uQ lookFilled-yCfaCM colorBrand-I6CyqQ sizeSmall-wU2dO- grow-2sR_-F">
                               <div className="contents-3ca1mk">Mudar avatar</div>
@@ -669,7 +669,7 @@ const UserProfile = props => {
                           </div>
                           <div 
                           onClick={() => {
-                            props.inputFile.current.click();
+                            inputFile.current.click();
                           }}
                           className="imageUploader-1X7wVc avatarUploaderNormal-2m2hFm avatarUploader-qEFQS2">
                             <div className="imageUploaderInner-IIRaFr avatarUploaderInner-p38nm2" 

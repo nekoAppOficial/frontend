@@ -52,7 +52,7 @@ const PapersMe = props => {
         }}
         onMouseOver={() => {
           if(!props.toolTipBottom){
-            props.toolTipShowBottom(`Configurações de Usuário`, ajustesButton.current.offsetLeft - 76, ajustesButton.current.offsetTop - 40)
+            props.toolTipShowBottom(`Configurações de Usuário`, ajustesButton.current.offsetLeft - 60, ajustesButton.current.offsetTop - 35)
           }
         }}
         onMouseLeave={() => {

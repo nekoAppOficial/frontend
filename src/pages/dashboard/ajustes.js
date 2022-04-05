@@ -24,14 +24,13 @@ const Ajustes = props => {
   }
     return <div 
     style={{
-      zIndex: 5000,
-      animation: `openModal2 0.4s ease-in-out`,
+      zIndex: 5000
     }}
     className="layers-OrUESM layers-1YQhyW">
     <input 
     onChange={onChangeFile.bind(this)}
     type='file' id='file' ref={inputFile} style={{display: 'none'}}/>
-    <div aria-hidden="true" className="layer-86YKbF baseLayer-W6S8cY stop-animations" style={{opacity: 0, transform: 'scale(0.93) translateZ(0px)'}}>
+    <div aria-hidden="true" className="layer-86YKbF baseLayer-W6S8cY stop-animations" style={{opacity: 1, transform: 'scale(0.93) translateZ(0px)'}}>
       <div className="container-1eFtFS">
         <nav className="wrapper-1_HaEi guilds-2JjMmN" aria-label="Barra lateral dos servidores">
           <ul role="tree" tabIndex={0} data-list-id="guildsnav" data-jump-section="global" className="tree-3agP2X">
@@ -455,7 +454,7 @@ const Ajustes = props => {
       </div>
       <div className="pictureInPicture-1GQX91" />
     </div>
-    <div aria-hidden="false" className="layer-86YKbF" style={{}}>
+    <div aria-hidden="false" className="layer-86YKbF" style={{animation: `openModal2 0.4s ease-in-out`}}>
       <div className="standardSidebarView-E9Pc3j">
         <div className="sidebarRegion-1VBisG">
           <div className="sidebarRegionScroller-FXiQOh thin-31rlnD scrollerBase-_bVAAt fade-1R6FHN" dir="ltr" style={{overflow: 'hidden scroll', paddingRight: '0px'}}>

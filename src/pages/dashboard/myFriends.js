@@ -104,7 +104,7 @@ const CardFriend = (props) => {
             }}
             onMouseOver={(e) => {
                 if(!props.toolTipBottom){
-                    props.toolTipShowBottom(`Aceitar`, acceptFriendButton.current.offsetLeft + 295, acceptFriendButton.current.offsetTop + 115)
+                    props.toolTipShowBottom(`Aceitar`, acceptFriendButton.current.offsetLeft + 304, acceptFriendButton.current.offsetTop + 130)
                 }
             }}
             onMouseLeave={(e) => {
@@ -127,7 +127,7 @@ const CardFriend = (props) => {
             }}
             onMouseOver={(e) => {
                 if(!props.toolTipBottom){
-                    props.toolTipShowBottom(`Recusar`, recuseFriendButton.current.offsetLeft + 295, recuseFriendButton.current.offsetTop + 115)
+                    props.toolTipShowBottom(`Recusar`, recuseFriendButton.current.offsetLeft + 300, recuseFriendButton.current.offsetTop + 130)
                 }
             }}
             onMouseLeave={(e) => {
@@ -146,7 +146,7 @@ const CardFriend = (props) => {
             ref={chatFriendButton}
             onMouseOver={(e) => {
                 if(!props.toolTipBottom){
-                    props.toolTipShowBottom(`Mensagem`, chatFriendButton.current.offsetLeft + 285, chatFriendButton.current.offsetTop + 115)
+                    props.toolTipShowBottom(`Mensagem`, chatFriendButton.current.offsetLeft + 293, chatFriendButton.current.offsetTop + 130)
                 }
             }}
             onMouseLeave={(e) => {
@@ -166,7 +166,7 @@ const CardFriend = (props) => {
             ref={recuseFriendButton}
             onMouseOver={(e) => {
                 if(!props.toolTipBottom){
-                    props.toolTipShowBottom(`Desfazer Amizade`, recuseFriendButton.current.offsetLeft + 235, recuseFriendButton.current.offsetTop + 115)
+                    props.toolTipShowBottom(`Desfazer Amizade`, recuseFriendButton.current.offsetLeft + 250, recuseFriendButton.current.offsetTop + 130)
                 }
             }}
             onMouseLeave={(e) => {

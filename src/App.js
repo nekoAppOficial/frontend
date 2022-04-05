@@ -6,6 +6,7 @@ import Dashboard from './pages/dashboard';
 import {useState, useEffect} from 'react';
 
 import './discord/css/style.css';
+import './discord/css/modify.css';
 
 function App(props) {
   const [page, setPage] = useState(props.page);

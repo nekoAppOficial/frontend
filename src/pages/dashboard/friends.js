@@ -66,7 +66,7 @@ const Friends = (props) => {
             <div 
             ref={novoGrupoPrivado}
             onMouseOver={() => {
-                props.toolTipShow(`Novo grupo privado`, novoGrupoPrivado.current.offsetLeft + 255, novoGrupoPrivado.current.offsetTop + 35)
+                props.toolTipShow(`Novo grupo privado`, novoGrupoPrivado.current.offsetLeft + 265, novoGrupoPrivado.current.offsetTop + 35)
             }}
             onMouseLeave={() => {
                 props.toolTipHide()

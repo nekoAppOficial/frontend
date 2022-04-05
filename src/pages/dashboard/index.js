@@ -153,7 +153,8 @@ const Dashboard = props => {
 const ChatFloat = () => {
     return <div className="noChannel-1GDIAZ">
     <div className="flex-2S1XBF flex-3BkGQD vertical-3aLnqW flex-3BkGQD directionColumn-3pi1nm justifyCenter-rrurWZ alignCenter-14kD11 noWrap-hBpHBz wrapper-5BaSTh" style={{flex: '1 1 auto'}}>
-      <div className="image-20MDYu marginBottom40-fvAlAV" style={{flex: '0 1 auto', width: '272px', height: '222px', backgroundImage: 'url("../assets/ed2007aab2da31a5436e70a28b4d59f9.svg")'}} />
+      <div className="image-20MDYu marginBottom40-fvAlAV" style={{flex: '0 1 auto', width: '272px', height: '222px', 
+      backgroundImage: `url("${window[`getPath`]()}assets/ed2007aab2da31a5436e70a28b4d59f9.svg")`}} />
       <div className="flexChild-3PzYmX" direction="vertical-3aLnqW flex-3BkGQD directionColumn-3pi1nm" style={{flex: '0 1 auto'}}>
         <h4 className="title-2CL_z0">Sem canais de texto</h4>
         <div className="text-27cdrj marginTop8-24uXGp">Você se vê em um lugar estranho. Você não tem acesso a nenhum canal de texto, ou não há nenhum neste servidor.</div>

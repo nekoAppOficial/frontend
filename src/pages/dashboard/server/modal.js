@@ -40,7 +40,9 @@ const Modal = props => {
               <div className="step3Character-1YijNc art-1l0MMj step24Animation-3P7kDF" />
               <div className="step4Character-1LhczU art-1l0MMj step24Animation-3P7kDF" />
               <div 
-              style={{backgroundImage: `url(/assets/30b0855344a020eac6b0ca6eac7032ec.svg)`}}
+              style={{backgroundImage: `
+              url(${window[`getPath`]()}assets/30b0855344a020eac6b0ca6eac7032ec.svg)`
+            }}
               className="step24Foreground-2aWJUq art-1l0MMj step12Animation-9yjKBd show-1be-x2" />
             </div>
           </div>
@@ -73,7 +75,7 @@ const CreateServer = (props) => {
         <div className="content-2hZxGK optionsList-dmHy1l thin-31rlnD scrollerBase-_bVAAt" dir="ltr" style={{overflow: 'hidden scroll', paddingRight: '8px'}}>
           <button
           className="container-x8Y1ix">
-            <img className="icon-AynerZ desaturate-_Twf3u" alt="" src="/assets/45d6946387a0c66f4eb4e62a6e7758ea.svg" />
+            <img className="icon-AynerZ desaturate-_Twf3u" alt="" src={`${window[`getPath`]()}assets/45d6946387a0c66f4eb4e62a6e7758ea.svg`} />
             <div 
             style={{
                 fontWeight: 700,
@@ -82,12 +84,12 @@ const CreateServer = (props) => {
                 color: 'var(--text-normal)'
             }}
             className="colorStandard-21JIj7 size16-rrJ6ag text-PdAsFQ">Para meus amigos e eu</div>
-            <img className="arrow-2yY1Tm" alt="" src="/assets/dea5252276408a8bfca6dda585ca5216.svg" />
+            <img className="arrow-2yY1Tm" alt="" src={`${window[`getPath`]()}assets/dea5252276408a8bfca6dda585ca5216.svg`} />
           </button>
           <button className="container-x8Y1ix">
-            <img className="icon-AynerZ desaturate-_Twf3u" alt="" src="/assets/5d8898dd9356f25901bae20fc8c980d9.svg" />
+            <img className="icon-AynerZ desaturate-_Twf3u" alt="" src={`${window[`getPath`]()}/assets/5d8898dd9356f25901bae20fc8c980d9.svg`} />
             <div className="colorStandard-21JIj7 size16-rrJ6ag text-PdAsFQ">Para um clube ou comunidade</div>
-            <img className="arrow-2yY1Tm" alt="" src="/assets/dea5252276408a8bfca6dda585ca5216.svg" />
+            <img className="arrow-2yY1Tm" alt="" src={`${window[`getPath`]()}assets/dea5252276408a8bfca6dda585ca5216.svg`} />
           </button>
           <div className="colorHeaderSecondary-g5teka size14-3fJ-ot skip-2hTIXL">Não sabe? Você pode <a className="anchor-1MIwyf anchorUnderlineOnHover-2qPutX" role="button" tabIndex={0}>pular essa pergunta</a> por enquanto. </div>
           <div aria-hidden="true" style={{position: 'absolute', pointerEvents: 'none', minHeight: '0px', minWidth: '1px', flex: '0 0 auto', height: '8px'}} />
@@ -123,9 +125,9 @@ const Inicio = props => {
             <button 
             onClick={() => props.setStep(1)}
             className="container-x8Y1ix">
-              <img className="icon-AynerZ desaturate-_Twf3u" alt="" src="../assets/f303eeb986430817ee8a52a9b81aea45.svg" />
+              <img className="icon-AynerZ desaturate-_Twf3u" alt="" src={`${window[`getPath`]()}assets/f303eeb986430817ee8a52a9b81aea45.svg`} />
               <div className="colorStandard-21JIj7 size16-rrJ6ag text-PdAsFQ">Criar o meu</div>
-              <img className="arrow-2yY1Tm" alt="" src="../assets/dea5252276408a8bfca6dda585ca5216.svg" />
+              <img className="arrow-2yY1Tm" alt="" src={`${window[`getPath`]()}assets/dea5252276408a8bfca6dda585ca5216.svg`} />
             </button>
            
             <div aria-hidden="true" style={{position: 'absolute', pointerEvents: 'none', minHeight: '0px', minWidth: '1px', flex: '0 0 auto'}} />

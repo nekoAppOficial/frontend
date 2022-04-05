@@ -615,7 +615,11 @@ const Ajustes = props => {
                               <div className="imageUploaderHint-33zkjZ" aria-hidden="true">Mudar avatar</div>
                               <div className="fileInput-1LZSb9" aria-label="Mudar
   avatar" role="button" tabIndex={0} />
-                              <div className="imageUploaderIcon-2OHmFu" />
+                              <div 
+                              style={{
+                                backgroundImage: `url("${ window[`getPath`]() + `assets/4a1000a95b1aad334e98f9d15b9d0ec4.svg`}")`
+                              }}
+                              className="imageUploaderIcon-2OHmFu" />
                             </div>
                           </div>
                           <div className="headerTop-3GPUSF">

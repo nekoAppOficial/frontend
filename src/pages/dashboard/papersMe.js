@@ -1,4 +1,7 @@
+import {useRef} from 'react';
+
 const PapersMe = props => {
+    const ajustesButton = useRef(null);
     return <section className="panels-3wFtMD" aria-label="Área do usuário">
     <div className="wrapper-3Hk9OB" />
     <div className="container-YkUktl">
@@ -42,8 +45,18 @@ const PapersMe = props => {
           </div>
         </button>
         <button 
+        ref={ajustesButton}
         onClick={() => {
           props.setAjustes(!props.ajustes)
+          props.toolTipHideBottom()
+        }}
+        onMouseOver={() => {
+          if(!props.toolTipBottom){
+            props.toolTipShowBottom(`Configurações de Usuário`, ajustesButton.current.offsetLeft - 76, ajustesButton.current.offsetTop - 40)
+          }
+        }}
+        onMouseLeave={() => {
+          props.toolTipHideBottom()
         }}
         aria-label="Configurações de Usuário" type="button" className="button-12Fmur enabled-9OeuTA button-f2h6uQ lookBlank-21BCro colorBrand-I6CyqQ grow-2sR_-F">
           <div className="contents-3ca1mk">

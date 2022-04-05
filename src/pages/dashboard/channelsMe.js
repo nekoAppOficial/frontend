@@ -83,6 +83,9 @@ const ChannelsMe = props => {
       </div>
     </nav>
     <PapersMe
+    toolTipBottom={props.toolTipBottom}
+    toolTipHideBottom={props.toolTipHideBottom}
+    toolTipShowBottom={props.toolTipShowBottom}
     setAjustes={props.setAjustes}
     ajustes={props.ajustes}
     user={props.user}/>

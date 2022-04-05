@@ -107,6 +107,9 @@ const Dashboard = props => {
                 user={user}
                 setOpenModalServer={setOpenModalServer}/>
                 <ChannelsMe 
+                toolTipBottom={toolTipBottom}
+                toolTipHideBottom={toolTipHideBottom}
+                toolTipShowBottom={toolTipShowBottom}
                 setAjustes={setAjustes}
                 ajustes={ajustes}
                 chat={props.chat}

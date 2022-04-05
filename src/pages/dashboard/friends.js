@@ -68,7 +68,7 @@ const Friends = (props) => {
             onMouseOver={() => {
                 props.toolTipShow(`Novo grupo privado`, novoGrupoPrivado.current.offsetLeft + 255, novoGrupoPrivado.current.offsetTop + 35)
             }}
-            onMouseOut={() => {
+            onMouseLeave={() => {
                 props.toolTipHide()
             }}
             className="inviteToolbar-2k2nqz">

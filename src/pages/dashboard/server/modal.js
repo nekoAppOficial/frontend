@@ -62,7 +62,7 @@ const Modal = props => {
 }
 
 const CreateServer = (props) => {
-    return <div style={{position: 'relative', overflow: 'hidden', width: '440px', height: '394px',}}>
+    return <div style={{position: 'relative', overflow: 'hidden', width: '440px', height: '454px',}}>
     <div style={{
         animation: 'openContainer 0.4s ease-in-out forwards',
         position: 'absolute', flexDirection: 'column', backfaceVisibility: 'hidden', transform: 'scale(1, 1)', left: 'auto', right: 'auto'}}>
@@ -96,7 +96,10 @@ const CreateServer = (props) => {
         </div>
       </div>
     </div>
-    <div className="flex-2S1XBF flex-3BkGQD horizontalReverse-60Katr horizontalReverse-2QssvL flex-3BkGQD directionRowReverse-HZatnx justifyBetween-wAERV6 alignStretch-Uwowzr noWrap-hBpHBz footer-31IekZ footer-1bRyji footerSeparator-VzAYwb" style={{flex: '0 0 auto'}}>
+    <div 
+    className="flex-2S1XBF flex-3BkGQD horizontalReverse-60Katr horizontalReverse-2QssvL flex-3BkGQD directionRowReverse-HZatnx justifyBetween-wAERV6 alignStretch-Uwowzr noWrap-hBpHBz footer-31IekZ footer-1bRyji footerSeparator-VzAYwb" 
+    style={{flex: '0 0 auto',position: `absolute`,
+    bottom: `0px`}}>
         <button 
         style={{
             color: `white`
@@ -112,7 +115,7 @@ const CreateServer = (props) => {
 
 const Inicio = props => {
     return  <div className="content-rR1mSS theme-light">
-    <div style={{position: 'relative', overflow: 'hidden', width: '440px', height: '414px'}}>
+    <div style={{position: 'relative', overflow: 'hidden', width: '440px', height: '454px'}}>
       <div style={{
           animation: 'closeContainer 0.4s ease-in-out forwards',
           position: 'absolute', flexDirection: 'column', backfaceVisibility: 'hidden', transform: 'scale(1, 1)', left: 'auto', right: 'auto'}}>
@@ -158,7 +161,8 @@ const EntrarServer = props => {
         animation: 'openContainer 0.4s ease-in-out forwards',
         position: 'absolute', flexDirection: 'column', backfaceVisibility: 'hidden', transform: 'scale(1, 1)', left: 'auto', right: 'auto'}}>
     <div className="container-1dhHuV standardFooter-2LtMwu">
-      <div className="flex-2S1XBF flex-3BkGQD vertical-3aLnqW flex-3BkGQD directionColumn-3pi1nm justifyStart-2Mwniq alignCenter-14kD11 noWrap-hBpHBz header-1zd7se header-gJE1Nw" id="uid_154" style={{flex: '0 0 auto'}}>
+      <div className="flex-2S1XBF flex-3BkGQD vertical-3aLnqW flex-3BkGQD directionColumn-3pi1nm justifyStart-2Mwniq alignCenter-14kD11 noWrap-hBpHBz header-1zd7se header-gJE1Nw" id="uid_154" 
+      style={{flex: '0 0 auto'}}>
         <div className="colorHeaderPrimary-jN_yGr size24-17l95E title-2X7fMW">Entrar em um servidor</div>
         <div className="colorHeaderSecondary-g5teka size16-rrJ6ag">Insira um convite abaixo para entrar em um servidor existente</div>
       </div>

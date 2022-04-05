@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import { useRef } from 'react'
 
 const MyFriends = (props) => {
     return <div className="peopleColumn-1wMU14" role="tabpanel" id="online-tab" tabIndex={-1}>
@@ -28,8 +29,11 @@ const MyFriends = (props) => {
         props.myFriends.filter(friend => friend.statusAmizade === props.typeFriend).map(friend => (
             <div>
                 <CardFriend 
+                toolTipShowBottom={props.toolTipShowBottom}
+                toolTipHideBottom={props.toolTipHideBottom}
                 socket={props.socket}
                 me={props.me}
+                toolTipBottom={props.toolTipBottom}
                 friend={friend}/>
             </div>
     ))}
@@ -39,6 +43,9 @@ const MyFriends = (props) => {
 }
 
 const CardFriend = (props) => {
+    const acceptFriendButton = useRef(null) 
+    const recuseFriendButton = useRef(null) 
+    const chatFriendButton = useRef(null) 
     return <div>
     <div className="peopleListItem-u6dGxF" role="listitem" data-list-item-id="people___294144189464313857" tabIndex={-1} style={{height: '62px', opacity: 1}}>
     <div className="listItemContents-2n2Uy9">
@@ -85,11 +92,20 @@ const CardFriend = (props) => {
             <div className="actions-2ZgdH4">
             {  props.friend.createdBy != props.me.id && 
             <div 
+            ref={acceptFriendButton}
             onClick={() => {
                 props.socket.emit(`acceptFriend`, {
                     token: localStorage.getItem(`token`),
                     userID: props.friend.id
                 })
+            }}
+            onMouseOver={(e) => {
+                if(!props.toolTipBottom){
+                    props.toolTipShowBottom(`Aceitar`, acceptFriendButton.current.offsetLeft + 295, acceptFriendButton.current.offsetTop + 115)
+                }
+            }}
+            onMouseLeave={(e) => {
+                props.toolTipHideBottom()
             }}
             className="actionButton-3-B2x- actionAccept-2nmnLv" aria-label="Aceitar" role="button" tabIndex={0}>
             <svg className="icon-1WVg4I" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
@@ -98,11 +114,20 @@ const CardFriend = (props) => {
             </div>
             }
             <div 
+            ref={recuseFriendButton}
             onClick={() => {
                 props.socket.emit(`recuseFriend`, {
                     token: localStorage.getItem(`token`),
                     userID: props.friend.id
                 })
+            }}
+            onMouseOver={(e) => {
+                if(!props.toolTipBottom){
+                    props.toolTipShowBottom(`Recusar`, recuseFriendButton.current.offsetLeft + 295, recuseFriendButton.current.offsetTop + 115)
+                }
+            }}
+            onMouseLeave={(e) => {
+                props.toolTipHideBottom()
             }}
             className="actionButton-3-B2x- actionDeny-1pQVuZ" aria-label="Ignorar" role="button" tabIndex={0}>
             <svg className="icon-1WVg4I" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
@@ -113,14 +138,33 @@ const CardFriend = (props) => {
         }
         { props.friend.statusAmizade === `accept` &&
         <div className="actions-YHvpIT">
-            <Link to={`/channels/@me/${props.friend.id}`}>
+            <Link 
+            ref={chatFriendButton}
+            onMouseOver={(e) => {
+                if(!props.toolTipBottom){
+                    props.toolTipShowBottom(`Mensagem`, chatFriendButton.current.offsetLeft + 285, chatFriendButton.current.offsetTop + 115)
+                }
+            }}
+            onMouseLeave={(e) => {
+                props.toolTipHideBottom()
+            }}
+            to={`/channels/@me/${props.friend.id}`}>
                 <div className="actionButton-3-B2x-" aria-label="Mensagem" role="button" tabIndex={0}>
                     <svg className="icon-1WVg4I" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24" fill="none">
                     <path fill="currentColor" d="M4.79805 3C3.80445 3 2.99805 3.8055 2.99805 4.8V15.6C2.99805 16.5936 3.80445 17.4 4.79805 17.4H7.49805V21L11.098 17.4H19.198C20.1925 17.4 20.998 16.5936 20.998 15.6V4.8C20.998 3.8055 20.1925 3 19.198 3H4.79805Z" />
                     </svg>
                 </div>
             </Link>
-            <div 
+            <div
+            ref={recuseFriendButton}
+            onMouseOver={(e) => {
+                if(!props.toolTipBottom){
+                    props.toolTipShowBottom(`Desfazer Amizade`, recuseFriendButton.current.offsetLeft + 235, recuseFriendButton.current.offsetTop + 115)
+                }
+            }}
+            onMouseLeave={(e) => {
+                props.toolTipHideBottom()
+            }}
             onClick={() => {
                 props.socket.emit(`recuseFriend`, {
                     token: localStorage.getItem(`token`),

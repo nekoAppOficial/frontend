@@ -2138,11 +2138,11 @@
     box-shadow:0 1px 0 0 rgba(24,25,28,.3),0 1px 2px 0 rgba(24,25,28,.3)
 }
 .theme-dark .footer-31IekZ{
-    background-color:#2f3136
+    /* background-color:#2f3136 */
 }
 .theme-dark .footerSeparator-VzAYwb{
-    -webkit-box-shadow:inset 0 1px 0 rgba(47,49,54,.6);
-    box-shadow:inset 0 1px 0 rgba(47,49,54,.6)
+    /* -webkit-box-shadow:inset 0 1px 0 rgba(47,49,54,.6);
+    box-shadow:inset 0 1px 0 rgba(47,49,54,.6) */
 }
 .theme-light .separator-2lLxgC{
     -webkit-box-shadow:0 1px 0 0 rgba(185,187,190,.3);
@@ -43877,9 +43877,6 @@ strong{
 }
 .theme-dark .notFriends-lSusTz .errorStateIcon-3y6XWh{
     background-image:url(https://discord.com/assets/04457b30c1c2fcb344cb4d12913c5191.svg/35000dd88d1b338a790f3e387cbd7e7a.svg)
-}
-.theme-dark .noFriends-1Y8EWR .errorStateIcon-3y6XWh{
-    background-image:url(https://discord.com/assets/04457b30c1c2fcb344cb4d12913c5191.svg/1dabb8ee5d7cb5137c06f958e0091573.svg)
 }
 .theme-dark .partyFull-kwAvJT .errorStateIcon-3y6XWh{
     background-image:url(https://discord.com/assets/04457b30c1c2fcb344cb4d12913c5191.svg/25f3555f54d3c872f0ac7a5922c8eccf.svg)
@@ -86949,10 +86946,12 @@ html .invoiceCancelRow-dVOR64{
     0%{
         opacity: 0;
         transform: scale(0.5);
+        z-index: 1000;
     }
     100%{
         opacity: 1;
         transform: scale(1);
+        z-index: 1000;
     }
 }
 

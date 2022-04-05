@@ -12,7 +12,7 @@ const ChatPrivate = (props) => {
     const timer = setInterval(() => {
      if( userId != window.location.pathname.split(`@me/`)[1] ){
        if(typeof window.location.pathname.split(`@me/`)[1] != `undefined`){
-        setUserId(window.location.pathname.split(`@me/`)[1])
+          setUserId(window.location.pathname.split(`@me/`)[1])
        }
      }
     }, 1000);
@@ -27,28 +27,39 @@ const ChatPrivate = (props) => {
         setUser(user);
         setMessagens(user.messages)
         //Scroll to the bottom
-        setTimeout(() => {
-          document.querySelector(`.scroller-kQBbkU`).scrollTo(0, 9999999999999999999999)
-        }, 200)
+        try {
+          setTimeout(() => {
+            document.querySelector(`.scroller-kQBbkU`).scrollTo(0, 9999999999999999999999)
+          }, 200)
+        } catch (error) {
+          
+        }
+        
       })
       props.socket.on(`message`, (message) => {
         if(message.userDe.id == userId || message.userPara.id == userId){
           setMessagens(old => [...old, message])
           //Scroll to the bottom
-          document.querySelector(`.scroller-kQBbkU`).scrollTo(0, 9999999999999999999999)
+          try {
+            document.querySelector(`.scroller-kQBbkU`).scrollTo(0, 9999999999999999999999)
+          } catch (error) {
+            
+          }
         } 
       })
     }, [false])
     
 
     return <>
-    { props.chatFloating && <ChatFloat myFriends={props.myFriends}
+    { user.user.username == `` && <ChatFloatB/> }
+    { user.user.username !== `` && 
+    props.chatFloating && <ChatFloat myFriends={props.myFriends}
     chatFloating={props.chatFloating}
     socket={props.socket}
     me={props.user}
     setUserID={setUserId}
     />}
-    
+    { user.user.username !== `` && 
     <div 
     className={`chat-2ZfjoI ${props.chatFloating ? `chatFloat` : ``}`}>
     <div className="uploadArea-2uvx-B uploadArea-2Nu_Vc">
@@ -374,7 +385,7 @@ const ChatPrivate = (props) => {
         <div className="layerContainer-2v_Sit" />
       </main>
     </div>
-  </div></>
+  </div> } </> 
 }
 
 const Message = props => {
@@ -442,6 +453,29 @@ const Message = props => {
     </div>
   </div>
 </li>
+}
+
+const ChatFloatB = () => {
+  return <div className="noChannel-1GDIAZ">
+  <div className="flex-2S1XBF flex-3BkGQD vertical-3aLnqW flex-3BkGQD directionColumn-3pi1nm justifyCenter-rrurWZ alignCenter-14kD11 noWrap-hBpHBz wrapper-5BaSTh" style={{flex: '1 1 auto'}}>
+    <div className="image-20MDYu marginBottom40-fvAlAV" style={{flex: '0 1 auto', width: '272px', height: '222px', 
+    backgroundImage: `url("${window[`getPath`]()}assets/ed2007aab2da31a5436e70a28b4d59f9.svg")`}} />
+    <div className="flexChild-3PzYmX" direction="vertical-3aLnqW flex-3BkGQD directionColumn-3pi1nm" style={{flex: '0 1 auto'}}>
+      <h4 className="title-2CL_z0">Sem canais de texto</h4>
+      <div className="text-27cdrj marginTop8-24uXGp">Você se vê em um lugar estranho. Você não tem acesso a nenhum canal de texto, ou não há nenhum neste servidor.</div>
+    </div>
+    <br/><br/>
+    <div className="spinner-2RT7ZC spinningCircle-CmRLnP">
+    <div className="spinningCircleInner-C1kTEL inner-26JK4f">
+      <svg className="circular-3Fmqjd" viewBox="25 25 50 50">
+        <circle className="path-lhsLSV path3-3tVOpU" cx={50} cy={50} r={20} />
+        <circle className="path-lhsLSV path2-F-M5gP" cx={50} cy={50} r={20} />
+        <circle className="path-lhsLSV" cx={50} cy={50} r={20} />
+      </svg>
+    </div>
+  </div>
+  </div>
+</div>
 }
 
 export default ChatPrivate

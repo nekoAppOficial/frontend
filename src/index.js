@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { render } from "react-dom";
 import {
   BrowserRouter,
   Routes,
@@ -18,6 +17,9 @@ ReactDOM.render(
         <Route exact path="/login" element={<App page={`login`} />} />
         <Route exact path="/register" element={<App page={`register`} />} />
         <Route exact path="/channels/@me" element={<App page={`dashboard`} 
+        chat={false}
+        />} />
+        <Route exact path="/channels/@me/friends/add" element={<App page={`dashboard`} 
         chat={false}
         />} />
         <Route exact path="/channels/@me/:chatID" element={<App page={`dashboard`}

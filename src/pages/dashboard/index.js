@@ -9,6 +9,7 @@ import Modal from './server/modal'
 import ChatPrivate from './ChatPrivate';
 import ToolTipServer from './toolTipServer'
 import Ajustes from './ajustes' 
+import CreateChatGroup from './createChatGroup';
 
 let socket = null
 
@@ -19,6 +20,33 @@ const Dashboard = props => {
     const [myFriends, setMyFriends] = useState([])
     const [chatFloating, setChatFloating] = useState(false)
     const [ajustes, setAjustes] = useState(false)
+    const [toolTip, setToolTip] = useState(false)
+    const [toolTipText, setToolTipText] = useState(``)
+    const [toolTipBottom, setToolTipBottom] = useState(false)
+    const [toolTipPosition, SetToolTipPosition] = useState({top: 0, left: 0})
+
+    const toolTipShow = (text, x, y) => {
+        setToolTip(true)
+        setToolTipText(text)
+        SetToolTipPosition({left: x, top: y})
+    }
+
+    const toolTipHide = (text) => {
+        setToolTip(false)
+        setToolTipText(``)
+    }
+
+    const toolTipShowBottom = (text, x, y) => {
+        setToolTipBottom(true)
+        setToolTipText(text)
+        SetToolTipPosition({left: x, top: y})
+    }
+
+    const toolTipHideBottom = (text) => {
+        setToolTipBottom(false)
+        setToolTipText(``)
+    }
+
     const validationToken = async () => {
         const response = await axios.post('https://server-nekoapp.herokuapp.com/auth/validationToken', {
             token: localStorage.getItem('token')
@@ -88,17 +116,27 @@ const Dashboard = props => {
                 className='base-2jDfDU theme-dark container-2cd8Mz'
                 >
                     { !props.chat && chatFloating && <Friends 
+                    toolTipBottom={toolTipBottom}
+                    toolTipHideBottom={toolTipHideBottom}
+                    toolTipShowBottom={toolTipShowBottom}
+                    toolTipHide={toolTipHide}
+                    toolTipShow={toolTipShow}
                     myFriends={myFriends}
                     me={user}
                     socket={socket}/>}
                     { !props.chat && !chatFloating && <Friends 
                     myFriends={myFriends}
+                    toolTipBottom={toolTipBottom}
+                    toolTipShowBottom={toolTipShowBottom}
+                    toolTipHideBottom={toolTipHideBottom}
+                    toolTipHide={toolTipHide}
+                    toolTipShow={toolTipShow}
                     me={user}
                     socket={socket}/>}
                     { chatFloating && props.chat && 
                     <>
                         { chatFloating && typeof window.location.pathname.split(`/`)[3] == `string` && props.chat && 
-                        <ChatFloat
+                        <ChatFloatB
                         chat={props.chat}
                         myFriends={myFriends}
                         user={user}/> }
@@ -113,7 +151,7 @@ const Dashboard = props => {
                     }
                     { !chatFloating && props.chat && 
                     <>
-                        { props.chat && chatFloating && <ChatFloat
+                        { props.chat && chatFloating && <ChatFloatB
                         chat={props.chat}
                         myFriends={myFriends}
                         user={user}/> }
@@ -128,11 +166,12 @@ const Dashboard = props => {
                     }
                     { chatFloating && !props.chat && 
                     <>
-                        { chatFloating  && typeof window.location.pathname.split(`/`)[3] == `string` && <ChatFloat
+                        { chatFloating  && typeof window.location.pathname.split(`/`)[3] == `string` && <ChatFloatB
                         chat={props.chat}
                         myFriends={myFriends}
                         user={user}/> }
                         <ChatPrivate
+                        ChatFloatB={ChatFloatB}
                         myFriends={myFriends}
                         chatFloating={chatFloating}
                         setChatFloating={setChatFloating}
@@ -147,10 +186,52 @@ const Dashboard = props => {
     </>
     } 
     <ToolTipServer/>
+    <div className="layerContainer-2v_Sit">
+        { toolTip && 
+        <ToolTipTop
+        toolTipPosition={toolTipPosition}
+        text={toolTipText}
+        />
+        }
+        { toolTipBottom && <ToolTipBottom 
+        text={toolTipText}
+        toolTipPosition={toolTipPosition}/>}
+        {/* <CreateChatGroup/> */}
+    </div>
     </>
 }
 
-const ChatFloat = () => {
+const ToolTipTop = props => {
+    return (
+        <div className="layer-2aCOJ3 disabledPointerEvents-2AmYRc" style={{
+            position: 'absolute', 
+            left: `${props.toolTipPosition.left}px`, 
+            top: `${props.toolTipPosition.top}px`, animation: `openModal 0.4s`
+            }}>
+            <div className="tooltip-14MtrL tooltipBottom-2WzfVx tooltipPrimary-3qLMbS tooltipDisablePointerEvents-1huO19" style={{opacity: 1, transform: 'none'}}>
+                <div className="tooltipPointer-3L49xb" style={{left: 'calc(50% + 0px)'}} />
+                <div className="tooltipContent-Nejnvh">{props.text}</div>
+            </div>
+        </div>
+    )
+}
+
+const ToolTipBottom = props => {
+    return (
+        <div className="layer-2aCOJ3 disabledPointerEvents-2AmYRc" style={{
+        position: 'absolute', 
+        left: `${props.toolTipPosition.left}px`, 
+        top: `${props.toolTipPosition.top}px`, 
+        animation: `openModal 0.4s`}}>
+        <div className="tooltip-14MtrL tooltipTop-1wv5UJ tooltipPrimary-3qLMbS tooltipDisablePointerEvents-1huO19" style={{opacity: 1, transform: 'none'}}>
+            <div className="tooltipPointer-3L49xb" style={{left: 'calc(50% + 0px)'}} />
+            <div className="tooltipContent-Nejnvh">{props.text}</div>
+        </div>
+        </div>
+    )
+}
+
+const ChatFloatB = () => {
     return <div className="noChannel-1GDIAZ">
     <div className="flex-2S1XBF flex-3BkGQD vertical-3aLnqW flex-3BkGQD directionColumn-3pi1nm justifyCenter-rrurWZ alignCenter-14kD11 noWrap-hBpHBz wrapper-5BaSTh" style={{flex: '1 1 auto'}}>
       <div className="image-20MDYu marginBottom40-fvAlAV" style={{flex: '0 1 auto', width: '272px', height: '222px', 
@@ -159,6 +240,18 @@ const ChatFloat = () => {
         <h4 className="title-2CL_z0">Sem canais de texto</h4>
         <div className="text-27cdrj marginTop8-24uXGp">Você se vê em um lugar estranho. Você não tem acesso a nenhum canal de texto, ou não há nenhum neste servidor.</div>
       </div>
+    </div>
+  </div>
+}
+
+const LoadSpinner = () => {
+    return <div className="spinner-2RT7ZC spinningCircle-CmRLnP">
+    <div className="spinningCircleInner-C1kTEL inner-26JK4f">
+      <svg className="circular-3Fmqjd" viewBox="25 25 50 50">
+        <circle className="path-lhsLSV path3-3tVOpU" cx={50} cy={50} r={20} />
+        <circle className="path-lhsLSV path2-F-M5gP" cx={50} cy={50} r={20} />
+        <circle className="path-lhsLSV" cx={50} cy={50} r={20} />
+      </svg>
     </div>
   </div>
 }

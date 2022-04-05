@@ -18,7 +18,7 @@ const Dashboard = props => {
     const [user, setUser] = useState({username: ''})
     const [myFriends, setMyFriends] = useState([])
     const [chatFloating, setChatFloating] = useState(false)
-    const [ajustes, setAjustes] = useState(true)
+    const [ajustes, setAjustes] = useState(false)
     const validationToken = async () => {
         const response = await axios.post('https://server-nekoapp.herokuapp.com/auth/validationToken', {
             token: localStorage.getItem('token')

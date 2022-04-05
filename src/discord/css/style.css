@@ -87008,3 +87008,8 @@ html .invoiceCancelRow-dVOR64{
 .opacity-100:hover{
     opacity: 1;
 }
+
+.interativoBtn{
+    background-color: #0000;
+    box-shadow: inset var(--channelBarWidth) 0 #7289da66;
+}

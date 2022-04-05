@@ -164,7 +164,7 @@ const ChatPrivate = (props) => {
             <path d="M19 3H4.99C3.88 3 3.01 3.89 3.01 5L3 19C3 20.1 3.88 21 4.99 21H19C20.1 21 21 20.1 21 19V5C21 3.89 20.1 3 19 3ZM19 15H15C15 16.66 13.65 18 12 18C10.35 18 9 16.66 9 15H4.99V5H19V15Z" fill="currentColor" />
           </svg>
         </div>
-        <a tabIndex={-1} className="anchor-1MIwyf anchorUnderlineOnHover-2qPutX" rel="noreferrer noopener" target="_blank">
+        {/* <a tabIndex={-1} className="anchor-1MIwyf anchorUnderlineOnHover-2qPutX" rel="noreferrer noopener" target="_blank">
           <div className="iconWrapper-2awDjA clickable-ZD7xvu" role="button" aria-label="Ajuda" tabIndex={0}>
           <svg
           onClick={() => {
@@ -196,7 +196,7 @@ const ChatPrivate = (props) => {
             </g>
           </svg>
           </div>
-        </a>
+        </a> */}
       </div>
     </section>
     <div className="content-1jQy2l">

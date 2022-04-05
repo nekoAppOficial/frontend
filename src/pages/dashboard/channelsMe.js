@@ -18,7 +18,7 @@ const ChannelsMe = props => {
         <ul role="list" aria-label="Mensagens diretas" className="content-2a4AW9" style={{height: '408px'}}>
           <div aria-hidden="true" style={{height: '8px'}} />
           <li className="channel-1Shao0 container-32HW5s" role="listitem" aria-posinset={1} aria-setsize={8}>
-            <div className={`interactive-1vLZ_I interactive-iyXY_x linkButton-2NshQj ${window.location.pathname == `/channels/@me` ? `interativoBtn` : ``}`}>
+            <div className={`interactive-1vLZ_I interactive-iyXY_x linkButton-2NshQj ${window.location.pathname == `/channels/@me` || window.location.pathname == `/channels/@me/` ? `interativoBtn` : ``}`}>
               <Link className="link-39sEB3" data-list-item-id="private-channels-uid_975___friends" tabIndex={-1} to="/channels/@me">
                 <div className="layout-1LjVue">
                   <div className="avatar-1HDIsL">

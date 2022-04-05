@@ -450,6 +450,7 @@ const Ajustes = props => {
                   </div>
                   <div className="children-1xdcWE">
                     { tab == 0 && <UserProfile
+                    socket={props.socket}
                     user={props.user}
                     />}
                     { tab == 1 && <Aparencia

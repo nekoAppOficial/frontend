@@ -4,14 +4,16 @@ import ChatFloat from './chatFloat'
 
 const ChatPrivate = (props) => {
     const [message, setMessage] = useState('');
-    const [userId, setUserId] = useState(window.location.pathname.split(`@me/`)[1]);
+    const [userId, setUserId] = useState(0);
     const [user, setUser] = useState({messages: [], user: {username: ``}});
     const [messages, setMessagens] = useState([]);
     
 
     const timer = setInterval(() => {
      if( userId != window.location.pathname.split(`@me/`)[1] ){
-      setUserId(window.location.pathname.split(`@me/`)[1])
+       if(typeof window.location.pathname.split(`@me/`)[1] != `undefined`){
+        setUserId(window.location.pathname.split(`@me/`)[1])
+       }
      }
     }, 1000);
 

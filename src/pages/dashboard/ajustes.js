@@ -603,7 +603,7 @@ const Ajustes = props => {
                           }}
                           className="imageUploader-1X7wVc avatarUploaderNormal-2m2hFm avatarUploader-qEFQS2">
                             <div className="imageUploaderInner-IIRaFr avatarUploaderInner-p38nm2" 
-                            style={{backgroundImage: `url("${ window[`getPath`]()}assets/default.webp")`}}>
+                            style={{backgroundImage: `url("${ typeof props.user.photo != `object` ? props.user.photo : window[`getPath`]() + `assets/default.webp`}")`}}>
                               <span aria-hidden="true" />
                               <div className="imageUploaderHint-33zkjZ" aria-hidden="true">Mudar avatar</div>
                               <div className="fileInput-1LZSb9" aria-label="Mudar

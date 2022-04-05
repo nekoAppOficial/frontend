@@ -1,11 +1,14 @@
 import {Link} from 'react-router-dom'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 const MyFriends = (props) => {
+    const [filterFriends, setFilterFriends] = useState(``)
     return <div className="peopleColumn-1wMU14" role="tabpanel" id="online-tab" tabIndex={-1}>
     <div className="searchBar-2aylmZ container-2oNtJn medium-2NClDM">
     <div className="inner-2pOSmK">
-        <input className="input-2m5SfJ" placeholder="Buscar" aria-label="Buscar" />
+        <input 
+        onChange={(e) => setFilterFriends(e.target.value)}
+        className="input-2m5SfJ" placeholder="Buscar" aria-label="Buscar" />
         <div className="iconLayout-3Bjizv medium-2NClDM" tabIndex={-1} aria-hidden="true" role="button">
         <div className="iconContainer-6pgShY">
             <svg className="icon-3CDcPB visible-CwPfRb" aria-label="Buscar" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
@@ -21,15 +24,15 @@ const MyFriends = (props) => {
     <div>
     <h2 className="title-x4dI75 container-q97qHp">
         {props.typeFriend == `accept` ? `ACEITOS` : `PENDENTES`}
-         — {props.myFriends.filter(friend => friend.statusAmizade === props.typeFriend).length}</h2>
+         — {props.myFriends.filter(friend => friend.statusAmizade === props.typeFriend && friend.username.includes(filterFriends)).length}</h2>
     </div>
     <div className="peopleList-2VBrVI auto-2K3UW5 scrollerBase-_bVAAt" dir="ltr" role="list" tabIndex={0} data-list-id="people" style={{overflow: 'hidden scroll', paddingRight: '0px'}}>
-    { props.myFriends.filter(friend => friend.statusAmizade === props.typeFriend).length == 0 && <NoHaveFriends/> }
+    { props.myFriends.filter(friend => friend.statusAmizade === props.typeFriend && friend.username.includes(filterFriends)).length == 0 && <NoHaveFriends/> }
     {
-        props.myFriends.filter(friend => friend.statusAmizade === props.typeFriend).map(friend => (
+        props.myFriends.filter(friend => friend.statusAmizade === props.typeFriend && friend.username.includes(filterFriends)).map(friend => (
             <div>
                 <CardFriend 
-                toolTipShowBottom={props.toolTipShowBottom}
+                toolTipShowBottom={props.toolTipShowBottom} 
                 toolTipHideBottom={props.toolTipHideBottom}
                 socket={props.socket}
                 me={props.me}

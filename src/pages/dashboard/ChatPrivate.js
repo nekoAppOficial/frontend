@@ -290,7 +290,6 @@ const ChatPrivate = (props) => {
                 <div className="textArea-2CLwUE textA reaSlate-9-y-k2 slateContainer-3x9zil">
                   <div>
                     <div
-      
                     className="markup-eYLPri editor-H2NA06 slateTextArea-27tjG0 fontSize16Padding-XoMpjI" style={{position: 'relative', outline: 'none', whiteSpace: 'no-wrap', overflow: `hidden`}}>
                       <div 
                       data-slate-node="element">
@@ -299,6 +298,9 @@ const ChatPrivate = (props) => {
                         onKeyDown={(e) => {
                           setMessage(e.target.value)
                         }}
+                        autoComplete={`off`}
+                        autoCorrect={false}
+                        autoCapitalize={true}
                         style={{
                           width: `100%`,
                           height: `40px`,

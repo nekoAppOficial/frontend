@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react"
-import { Navigate } from "react-router-dom"
 
 const Ajustes = props => {
     const inputFile = useRef(null) 

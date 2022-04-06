@@ -4,7 +4,7 @@ import ChatFloat from './chatFloat'
 
 const ChatPrivate = (props) => {
     const [message, setMessage] = useState('');
-    const [userId, setUserId] = useState(0);
+    const [userId, setUserId] = useState(window.location.pathname.split(`@me/`)[1]);
     const [user, setUser] = useState({messages: [], user: {username: ``}});
     const [messages, setMessagens] = useState([]);
     
@@ -34,10 +34,10 @@ const ChatPrivate = (props) => {
         } catch (error) {
           
         }
-        
       })
       props.socket.on(`message`, (message) => {
         if(message.userDe.id == userId || message.userPara.id == userId){
+
           setMessagens(old => [...old, message])
           //Scroll to the bottom
           try {
@@ -47,7 +47,7 @@ const ChatPrivate = (props) => {
           }
         } 
       })
-    }, [false])
+    }, false)
     
 
     return <>

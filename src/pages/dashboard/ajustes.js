@@ -173,7 +173,6 @@ const UserProfile = props => {
         reader.readAsDataURL(file);
         reader.onload = function () {
           var avatar = reader.result;
-          console.log(avatar)
           props.socket.emit("change-avatar", {avatar, token: window.localStorage.getItem("token")})
         }
 }

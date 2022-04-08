@@ -26124,7 +26124,7 @@ html .progress-2Otdc-{
     padding-right:48px!important
 }
 .message-2CShn3.selected-2LX7Jy,.mouse-mode.full-motion .message-2CShn3:hover{
-    background-color:var(--background-message-hover)
+    background-color:var(--background-message-hover) !important;
 }
 .message-2CShn3.mentioned-Tre-dv.selected-2LX7Jy,.mouse-mode.full-motion .mentioned-Tre-dv:hover{
     background-color:var(--background-mentioned-hover)
@@ -86861,9 +86861,6 @@ html .invoiceCancelRow-dVOR64{
     box-shadow:0 0 0 4px #fff;
     background-color:#f6f6f7
 }
-.theme-light .fromToWrapper-7A2MIP{
-    background-image:url(https://discord.com/assets/04457b30c1c2fcb344cb4d12913c5191.svg/04457b30c1c2fcb344cb4d12913c5191.svg)
-}
  .gifPicker-3ATLsE{
     padding-top:16px;
     max-height:560px;
@@ -87009,4 +87006,19 @@ html .invoiceCancelRow-dVOR64{
 .interativoBtn{
     background-color: #0000;
     box-shadow: inset var(--channelBarWidth) 0 #7289da66;
+}
+
+.avatar-b5OQ1N{
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+}
+
+.chat-2ZfjoI .avatar-b5OQ1N, .avatarSpeaking-33RRJU{
+    width: 80px;
+    height: 80px;
+}
+
+.message-2CShn3 .avatar-2e8lTP{
+    object-fit: cover;
 }

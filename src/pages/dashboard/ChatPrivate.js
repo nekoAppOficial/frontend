@@ -1,13 +1,14 @@
-import {useEffect, useState} from 'react';
-import { Navigate } from 'react-router-dom';
+import {useEffect, useState, useRef} from 'react';
 import ChatFloat from './chatFloat'
+import NotFriendMessage from './notFriendMessage'
+import PopOutProfile from './profile/popout'
 
 const ChatPrivate = (props) => {
     const [message, setMessage] = useState('');
     const [userId, setUserId] = useState(window.location.pathname.split(`@me/`)[1]);
     const [user, setUser] = useState({messages: [], user: {username: ``}});
     const [messages, setMessagens] = useState([]);
-    
+    const [popUser, setPopUser] = useState({user: {username: null}})
 
     const timer = setInterval(() => {
      if( userId != window.location.pathname.split(`@me/`)[1] ){
@@ -36,8 +37,9 @@ const ChatPrivate = (props) => {
         }
       })
       props.socket.on(`message`, (message) => {
-        if(message.userDe.id == userId || message.userPara.id == userId){
+        console.log(message)
 
+        if(message.userDe.id == userId || message.userPara.id == userId){
           setMessagens(old => [...old, message])
           //Scroll to the bottom
           try {
@@ -243,10 +245,13 @@ const ChatPrivate = (props) => {
                 { messages.map((message, index) => (
                   <Message
                   stranger={userId}
+                  index={index}
                   userStranger={user}
                   me={props.me}
                   message={message}
                   realTime={false}
+                  popUser={popUser}
+                  setPopUser={setPopUser}
                   />
                 ))}
                 <br/>
@@ -384,13 +389,36 @@ const ChatPrivate = (props) => {
             </div>
           </div>
         </form>
-        <div className="layerContainer-2v_Sit" />
+        <div className="layerContainer-2v_Site"
+        >
+        {  popUser.user.username &&
+        <>
+          <PopOutProfile 
+          user={popUser}
+          setPopUser={setPopUser}
+          /> 
+        </>
+        }
+        
+        </div>
       </main>
     </div>
   </div> } </> 
 }
 
 const Message = props => {
+  const openPopOut = (el, user) => {
+    const {clientX, clientY} = el
+    props.setPopUser({
+      user, clientX, clientY
+    })
+  }
+  const openPopOutT = (el, user) => {
+    const {clientX, clientY} = el
+    props.setPopUser({
+      user: user.user, clientX, clientY
+    })
+  }
   const [hover, setHover] = useState(false)
   return <li id="chat-messages-959854144162758668" className="messageListItem-ZZ7v6g" aria-setsize={-1}>
   <div 
@@ -399,14 +427,22 @@ const Message = props => {
   className={`
   message-2CShn3 cozyMessage-1DWF9U groupStart-3Mlgv1 wrapper-30-Nkg cozy-VmLDNB zalgo-26OfGz
   ${hover ? `message-2CShn3 selected-2LX7Jy` : ``}
+  ${props.message.error ? `cozyMessage-1DWF9U ephemeral-2nDdnn groupStart-3Mlgv1 wrapper-30-Nkg cozy-VmLDNB zalgo-26OfGz`: ``}
   `} role="article" data-list-item-id="chat-messages___chat-messages-959854144162758668" tabIndex={-1} aria-setsize={-1} aria-roledescription="Mensagem" aria-labelledby="message-username-959854144162758668 uid_1 message-content-959854144162758668 uid_2 message-timestamp-959854144162758668">
     <div className="contents-2MsGLg">
+      { !props.message.error && <>
       { !props.realTime && props.message.createdBy == props.me.id && 
-      <img 
+      <img
+      onClick={(el) => {
+        openPopOut(el, props.me)
+      }}
       src={`${ typeof props.me.photo != `object` ? props.me.photo : window[`getPath`]() + `assets/default.webp`}`}
       aria-hidden="true" className="avatar-2e8lTP clickable-31pE3P" alt=" " />}
-       { !props.realTime && props.message.createdBy != props.me.id && 
+      { !props.realTime && props.message.createdBy != props.me.id && 
       <img 
+      onClick={(el) => {
+        openPopOutT(el, props.userStranger)
+      }}
       src={`${ typeof props.userStranger.user.photo != `object` ? props.userStranger.user.photo : window[`getPath`]() + `assets/default.webp`}`}
       aria-hidden="true" className="avatar-2e8lTP clickable-31pE3P" alt=" " />}
       <h2 className="header-2jRmjb" aria-labelledby="message-username-959854144162758668 message-timestamp-959854144162758668">
@@ -425,8 +461,13 @@ const Message = props => {
       <div id="message-content-959854144162758668" className="markup-eYLPri messageContent-2t3eCI">
         {props.message.message}
       </div>
+      </>}
+      { props.message.error &&
+        <NotFriendMessage/>
+      }
     </div>
     <div id="message-accessories-959854144162758668" className="container-2sjPya" />
+    { !props.message.error && 
     <div className="buttonContainer-1502pf">
       <div 
       style={{
@@ -452,7 +493,7 @@ const Message = props => {
           </div>
         </div>
       </div>
-    </div>
+    </div> }
   </div>
 </li>
 }

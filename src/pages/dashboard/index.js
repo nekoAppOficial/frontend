@@ -10,6 +10,7 @@ import ChatPrivate from './ChatPrivate';
 import ToolTipServer from './toolTipServer'
 import Ajustes from './ajustes' 
 import CreateChatGroup from './createChatGroup';
+import ModalProfile from './profile/modal'
 
 let socket = null
 
@@ -65,6 +66,7 @@ const Dashboard = props => {
         //Fecth validation post
         validationToken()
         socket = io('https://server-nekoapp.herokuapp.com/')
+        //socket = io(`http://localhost:7000/`)
         socket.on(`online`, user => {
             setLoading(true)
         })
@@ -188,8 +190,9 @@ const Dashboard = props => {
         </div>
     </>
     } 
-    <ToolTipServer/>
+    {/* <ToolTipServer/> */}
     <div className="layerContainer-2v_Sit">
+        {/* <ModalProfile/> */}
         { toolTip && 
         <ToolTipTop
         toolTipPosition={toolTipPosition}
@@ -247,16 +250,5 @@ const ChatFloatB = () => {
   </div>
 }
 
-const LoadSpinner = () => {
-    return <div className="spinner-2RT7ZC spinningCircle-CmRLnP">
-    <div className="spinningCircleInner-C1kTEL inner-26JK4f">
-      <svg className="circular-3Fmqjd" viewBox="25 25 50 50">
-        <circle className="path-lhsLSV path3-3tVOpU" cx={50} cy={50} r={20} />
-        <circle className="path-lhsLSV path2-F-M5gP" cx={50} cy={50} r={20} />
-        <circle className="path-lhsLSV" cx={50} cy={50} r={20} />
-      </svg>
-    </div>
-  </div>
-}
 
 export default Dashboard

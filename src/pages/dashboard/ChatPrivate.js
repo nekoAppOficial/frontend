@@ -409,14 +409,20 @@ const ChatPrivate = (props) => {
 }
 
 const Message = props => {
-  const openPopOut = (el, user) => {
-    const {clientX, clientY} = el
+  const openPopOut = (el, user, cond) => {
+    let {clientX, clientY} = el
+    if(cond){
+      clientX += 40 
+    }
     props.setPopUser({
       user, clientX, clientY
     })
   }
-  const openPopOutT = (el, user) => {
-    const {clientX, clientY} = el
+  const openPopOutT = (el, user, cond) => {
+    let {clientX, clientY} = el
+    if(cond){
+      clientX += 40 
+    }
     props.setPopUser({
       user: user.user, clientX, clientY
     })
@@ -436,14 +442,14 @@ const Message = props => {
       { !props.realTime && props.message.createdBy == props.me.id && 
       <img
       onClick={(el) => {
-        openPopOut(el, props.me)
+        openPopOut(el, props.me, false)
       }}
       src={`${ typeof props.me.photo != `object` ? props.me.photo : window[`getPath`]() + `assets/default.webp`}`}
       aria-hidden="true" className="avatar-2e8lTP clickable-31pE3P" alt=" " />}
       { !props.realTime && props.message.createdBy != props.me.id && 
       <img 
       onClick={(el) => {
-        openPopOutT(el, props.userStranger)
+        openPopOutT(el, props.userStranger, false)
       }}
       src={`${ typeof props.userStranger.user.photo != `object` ? props.userStranger.user.photo : window[`getPath`]() + `assets/default.webp`}`}
       aria-hidden="true" className="avatar-2e8lTP clickable-31pE3P" alt=" " />}
@@ -451,7 +457,7 @@ const Message = props => {
         <span id="message-username-959854144162758668" className="headerText-2z4IhQ">
           <span 
           onClick={(el) => {
-            openPopOut(el, !props.realTime && props.message.createdBy == props.me.id ? props.me : props.userStranger.user)
+            openPopOut(el, !props.realTime && props.message.createdBy == props.me.id ? props.me : props.userStranger.user, true)
           }}
           className="username-h_Y3Us desaturateUserColors-1O-G89 clickable-31pE3P" aria-controls="popout_40" aria-expanded="false" role="button" tabIndex={0}>
             { !props.realTime && props.message.createdBy == props.me.id ? props.me.username : props.userStranger.user.username}

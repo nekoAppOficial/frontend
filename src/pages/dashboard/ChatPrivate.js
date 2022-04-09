@@ -359,7 +359,7 @@ const ChatPrivate = (props) => {
                     <button tabIndex={0} aria-label="Selecionar emoji" type="button" className="emojiButtonNormal-35P0_i emojiButton-3FRTuj emojiButton-1fMsf3 button-3BaQ4X button-f2h6uQ lookBlank-21BCro colorBrand-I6CyqQ grow-2sR_-F">
                       <div className="contents-3ca1mk">
                         <div className="sprite-2lxwfc" style={{
-                          background-image: `${`${window[`getPath`]()}assets/7e5013a9afc1404b0b89d99aaec0b398.png`}`,
+                          backgroundImage: `${`${window[`getPath`]()}assets/7e5013a9afc1404b0b89d99aaec0b398.png`}`,
                           backgroundPosition: '0px 0px', backgroundSize: '242px 110px', transform: 'scale(1)', filter: 'grayscale(100%)'}} />
                       </div>
                     </button>

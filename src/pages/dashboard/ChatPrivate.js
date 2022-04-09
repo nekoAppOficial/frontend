@@ -411,20 +411,14 @@ const ChatPrivate = (props) => {
 const Message = props => {
   const openPopOut = (el, user, cond) => {
     let {clientX, clientY} = el
-    if(cond){
-      clientX += 40 
-    }
     props.setPopUser({
-      user, clientX, clientY
+      user, clientX, clientY, cond
     })
   }
   const openPopOutT = (el, user, cond) => {
     let {clientX, clientY} = el
-    if(cond){
-      clientX += 40 
-    }
     props.setPopUser({
-      user: user.user, clientX, clientY
+      user: user.user, clientX, clientY, cond
     })
   }
   const [hover, setHover] = useState(false)

@@ -1,4 +1,5 @@
 const PopOutProfile = props => {
+    console.log(props.user.cond)
     return <>
     <div 
     onClick={() => {
@@ -19,6 +20,7 @@ const PopOutProfile = props => {
     position: `absolute`,
     animation: `popOutProfile 0.2s ease-out both`,
     left: `70px`,
+    marginLeft: `${props.user.cond ? `30px`: ``}`,
     top: props.user.clientY - 100+`px`,
     zIndex: 901
     }}>

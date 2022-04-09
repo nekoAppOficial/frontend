@@ -447,7 +447,11 @@ const Message = props => {
       aria-hidden="true" className="avatar-2e8lTP clickable-31pE3P" alt=" " />}
       <h2 className="header-2jRmjb" aria-labelledby="message-username-959854144162758668 message-timestamp-959854144162758668">
         <span id="message-username-959854144162758668" className="headerText-2z4IhQ">
-          <span className="username-h_Y3Us desaturateUserColors-1O-G89 clickable-31pE3P" aria-controls="popout_40" aria-expanded="false" role="button" tabIndex={0}>
+          <span 
+          onClick={(el) => {
+            openPopOut(el, !props.realTime && props.message.createdBy == props.me.id ? props.me : props.userStranger.user)
+          }}
+          className="username-h_Y3Us desaturateUserColors-1O-G89 clickable-31pE3P" aria-controls="popout_40" aria-expanded="false" role="button" tabIndex={0}>
             { !props.realTime && props.message.createdBy == props.me.id ? props.me.username : props.userStranger.user.username}
             </span>
         </span>

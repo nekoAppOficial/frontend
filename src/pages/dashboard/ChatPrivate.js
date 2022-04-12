@@ -58,7 +58,6 @@ const ChatPrivate = (props) => {
       })
       props.socket.on(`message`, (message) => {
         if(message.userDe.id == userId || message.userPara.id == userId){
-          console.log(message)
           setMessagens(old => [...old, message])
           //Scroll to the bottom
           try {

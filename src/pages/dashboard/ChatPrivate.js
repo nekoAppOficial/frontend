@@ -602,7 +602,7 @@ const Message = props => {
       </h2>
       <div id="message-content-959854144162758668" className="markup-eYLPri messageContent-2t3eCI">
         { ParseMessage(props.message.message)  }
-        { props.message.photo != `null` || props.message.photo != `` && 
+        { typeof props.message.photo == `string` && props.message.photo.length > 100 && 
         ( <div id="message-accessories-963540623007293481" className="container-2sjPya">
         <div className="messageAttachment-CZp8Iv">
           <div className="imageWrapper-oMkQl4 imageZoom-3yLCXY clickable-LksVCf embedWrapper-1MtIDg" style={{width: '201px', height: '300px'}}>

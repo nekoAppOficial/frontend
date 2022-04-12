@@ -2,6 +2,7 @@ import {useEffect, useState, useRef} from 'react';
 import ChatFloat from './chatFloat'
 import NotFriendMessage from './notFriendMessage'
 import PopOutProfile from './profile/popout'
+import ParseMessage from './util/messageParse'
 
 const ChatPrivate = (props) => {
     const [message, setMessage] = useState('');
@@ -9,6 +10,25 @@ const ChatPrivate = (props) => {
     const [user, setUser] = useState({messages: [], user: {username: ``}});
     const [messages, setMessagens] = useState([]);
     const [popUser, setPopUser] = useState({user: {username: null}})
+    const spoilerButton = useRef(null);
+    const modificarButton = useRef(null);
+    const removerButton = useRef(null);
+    const anexarArquivo = useRef(null);
+    const [spoiler, setSpoiler] = useState(false);
+    const [anexoImage, setAnexoImage] = useState(null)
+
+    const inputFile = useRef(null) 
+    const onChangeFile = (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+      var file = event.target.files[0];
+      var reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = function () {
+            const image = reader.result;
+            setAnexoImage(image)
+          }
+    }
 
     const timer = setInterval(() => {
      if( userId != window.location.pathname.split(`@me/`)[1] ){
@@ -37,8 +57,6 @@ const ChatPrivate = (props) => {
         }
       })
       props.socket.on(`message`, (message) => {
-        console.log(message)
-
         if(message.userDe.id == userId || message.userPara.id == userId){
           setMessagens(old => [...old, message])
           //Scroll to the bottom
@@ -64,6 +82,9 @@ const ChatPrivate = (props) => {
     { user.user.username !== `` && 
     <div 
     className={`chat-2ZfjoI ${props.chatFloating ? `chatFloat` : ``}`}>
+    <input 
+    onChange={onChangeFile.bind(this)}
+    type='file' id='file' ref={inputFile} style={{display: 'none'}}/>
     <div className="uploadArea-2uvx-B uploadArea-2Nu_Vc">
       <div className="uploadDropModal-13Kd20">
         <div className="bgScale-1iWuPF" />
@@ -266,10 +287,12 @@ const ChatPrivate = (props) => {
           props.socket.emit(`sendMessagePrivate`, {
             token: localStorage.getItem(`token`),
             userID: userId,
-            message: message
+            message: message,
+            image: anexoImage
           })
           document.querySelector(`#inputElement`).value = ``
           setMessage(``)
+          setAnexoImage(null)
           e.preventDefault()
         }}
         className="form-3gdLxP">
@@ -279,12 +302,125 @@ const ChatPrivate = (props) => {
               overflow: 'hidden',
             }}
             className="scrollableContainer-15eg7h webkit-QgSAqd">
+              { anexoImage && (
+              <ul role="list" tabIndex={0} data-list-id="attachments" className="channelAttachmentArea-HwpkuQ scrollbarGhost-dCZKgZ scrollbar-3vVt8d">
+                <li role="listitem" data-list-item-id="attachments___upload7" tabIndex={-1} className="upload-vLbqu-">
+                  <div className="uploadContainer-TCg-Ji">
+                    <div className="imageContainer-ZRSemj">
+                      { spoiler ? (
+                      <div aria-hidden="false">
+                      <div className="spoilerWrapper-3mOkZz">
+                      <div className="spoilerContainer-yhWf7D hidden-3B-Rum spoilerContainer-3wsC0k" aria-expanded="false" role="button" tabIndex={0} aria-label="Spoiler">
+                        <div className="spoilerWarning-8ovW0v">Spoiler</div>
+                        <div aria-hidden="true">
+                          <div className="spoilerWrapper-3mOkZz">
+                            <img className="image-1091CL spoiler-_2cX4d" aria-hidden="true" alt="" 
+                            src={anexoImage} />
+                            <div className="tags-QS4-_T" />
+                          </div>
+                        </div>
+                      </div>
+                        <div className="tags-QS4-_T" />
+                      </div>
+                      </div>
+                      ) : (
+                        <div className="spoilerWrapper-3mOkZz">
+                            <img className="image-1091CL" aria-hidden="true" alt="" 
+                            src={anexoImage} />
+                            <div className="tags-QS4-_T" />
+                        </div>
+                      ) }
+                      <div className="spoilerContainer-yhWf7D spoilerContainer-3wsC0k" aria-expanded="true" role="presentation" tabIndex={-1}>
+                       
+                      </div>
+                    </div>
+                    <div className="filenameContainer-2qwz8w">
+                      <div className="colorStandard-21JIj7 size14-3fJ-ot filename-jyRDv_">Imagem</div>
+                    </div>
+                    <div 
+                    ref={spoilerButton}
+                    className="actionBarContainer-2BJ5hs">
+                      <div className="actionBar-1ozugS" aria-label="Ferramentas de envio de anexo">
+                        <div 
+                        className="wrapper-2vIMkT">
+                          <div 
+                          onClick={() => {
+                            props.toolTipHideBottom()
+                            setSpoiler(!spoiler)
+                          }}
+                          onMouseOver={() => {
+                            props.toolTipShowBottom(`Anexo com spoiler`, spoilerButton.current.offsetLeft + 236, (spoilerButton.current.offsetTop + window.innerHeight - 335))
+                          }}
+                          onMouseLeave={() => {
+                            props.toolTipHideBottom()
+                          }}
+                          className="button-3bklZh" aria-label="Anexo com spoiler" role="button" tabIndex={0}>
+                            { spoiler ? (<svg className="actionBarIcon-2vVzNZ" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24"><rect fill="hsl(359, calc(var(--saturation-factor, 1) * 82.6%), 59.4%)" x={2} y="21.2154" width={26} height={2} transform="rotate(-45 2 21.2154)" /><path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M10.1843 18.8115C10.7713 18.9328 11.3775 19 12 19C18.352 19 23 12 23 12C23 12 21.9643 10.4402 20.2026 8.79322L15.8265 13.1693C15.4393 14.4384 14.4382 15.4393 13.1694 15.8264L10.1843 18.8115ZM12.4818 8.02871C12.3238 8.00975 12.1631 8 12 8C9.791 8 8 9.79 8 12C8 12.1631 8.00975 12.3239 8.0287 12.4818L4.59645 15.914C2.35293 14.0375 1 12 1 12C1 12 5.648 5 12 5C13.0508 5 14.055 5.19157 14.9992 5.51132L12.4818 8.02871Z" /></svg>) :
+                            (<svg className="actionBarIcon-2vVzNZ" aria-hidden="false" width={16} height={16} viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M12 5C5.648 5 1 12 1 12C1 12 5.648 19 12 19C18.352 19 23 12 23 12C23 12 18.352 5 12 5ZM12 16C9.791 16 8 14.21 8 12C8 9.79 9.791 8 12 8C14.209 8 16 9.79 16 12C16 14.21 14.209 16 12 16Z" />
+                            <path fill="currentColor" d="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z" />
+                          </svg>)
+                            }
+                          </div>
+                          <div 
+                          ref={modificarButton}
+                          onClick={() => {
+                            props.toolTipHideBottom()
+                            inputFile.current.click();
+                          }}
+                          onMouseOver={() => {
+                            props.toolTipShowBottom(`Modificar anexo`, modificarButton.current.offsetLeft + 460, (modificarButton.current.offsetTop + window.innerHeight - 335))
+                          }}
+                          onMouseLeave={() => {
+                            props.toolTipHideBottom()
+                          }}
+                          className="button-3bklZh" aria-label="Modificar anexo" role="button" tabIndex={0}>
+                            <svg className="actionBarIcon-2vVzNZ" aria-hidden="false" width={16} height={16} viewBox="0 0 24 24">
+                              <path fillRule="evenodd" clipRule="evenodd" d="M19.2929 9.8299L19.9409 9.18278C21.353 7.77064 21.353 5.47197 19.9409 4.05892C18.5287 2.64678 16.2292 2.64678 14.817 4.05892L14.1699 4.70694L19.2929 9.8299ZM12.8962 5.97688L5.18469 13.6906L10.3085 18.813L18.0201 11.0992L12.8962 5.97688ZM4.11851 20.9704L8.75906 19.8112L4.18692 15.239L3.02678 19.8796C2.95028 20.1856 3.04028 20.5105 3.26349 20.7337C3.48669 20.9569 3.8116 21.046 4.11851 20.9704Z" fill="currentColor" />
+                            </svg>
+                          </div>
+                          <div 
+                          ref={removerButton}
+                          onClick={() => {
+                           props.toolTipHideBottom()
+                           setAnexoImage(null)
+                          }}
+                          onMouseOver={() => {
+                            props.toolTipShowBottom(`Remover anexo`, removerButton.current.offsetLeft + 460, (removerButton.current.offsetTop + window.innerHeight - 335))
+                          }}
+                          onMouseLeave={() => {
+                            props.toolTipHideBottom()
+                          }}
+                          className="button-3bklZh dangerous-Y36ifs" aria-label="Remover anexo" role="button" tabIndex={0}>
+                            <svg className="actionBarIcon-2vVzNZ" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">
+                              <path fill="currentColor" d="M15 3.999V2H9V3.999H3V5.999H21V3.999H15Z" />
+                              <path fill="currentColor" d="M5 6.99902V18.999C5 20.101 5.897 20.999 7 20.999H17C18.103 20.999 19 20.101 19 18.999V6.99902H5ZM11 17H9V11H11V17ZM15 17H13V11H15V17Z" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul> )}
               <div className="inner-NQg18Y sansAttachButton-1ERHue">
                 <div className="uploadInput-YH_iku">
                   <input className="file-input" type="file" tabIndex={-1} multiple accept aria-hidden="true" style={{position: 'absolute', top: '0px', left: '0px', width: '100%', height: '100%', opacity: 0, cursor: 'pointer', fontSize: '0px'}} />
                 </div>
                 <div className="attachWrapper-3slhXI">
-                  <button aria-controls="popout_35" aria-expanded="false" aria-label="Envie um arquivo ou convites" type="button" className="attachButton-_ACFSu attachButton-1ijpt9 button-f2h6uQ lookBlank-21BCro colorBrand-I6CyqQ grow-2sR_-F">
+                  <button 
+                  ref={anexarArquivo}
+                  onClick={() => {
+                   props.toolTipHideBottom()
+                   inputFile.current.click();
+                  }}
+                  onMouseOver={() => {
+                    props.toolTipShowBottom(`Anexar imagem`, anexarArquivo.current.offsetLeft + 318, (anexarArquivo.current.offsetTop + window.innerHeight - 100))
+                  }}
+                  onMouseLeave={() => {
+                    props.toolTipHideBottom()
+                  }}
+                  aria-controls="popout_35" aria-expanded="false" aria-label="Envie um arquivo ou convites" type="button" className="attachButton-_ACFSu attachButton-1ijpt9 button-f2h6uQ lookBlank-21BCro colorBrand-I6CyqQ grow-2sR_-F">
                     <div className="contents-3ca1mk attachButtonInner-2mwer8">
                       <svg width={24} height={24} viewBox="0 0 24 24">
                         <path className="attachButtonPlus-3IYelE" fill="currentColor" d="M12 2.00098C6.486 2.00098 2 6.48698 2 12.001C2 17.515 6.486 22.001 12 22.001C17.514 22.001 22 17.515 22 12.001C22 6.48698 17.514 2.00098 12 2.00098ZM17 13.001H13V17.001H11V13.001H7V11.001H11V7.00098H13V11.001H17V13.001Z" />
@@ -465,7 +601,18 @@ const Message = props => {
         </span>
       </h2>
       <div id="message-content-959854144162758668" className="markup-eYLPri messageContent-2t3eCI">
-        {props.message.message}
+        { ParseMessage(props.message.message) }
+        { props.message.photo && 
+        ( <div id="message-accessories-963540623007293481" className="container-2sjPya">
+        <div className="messageAttachment-CZp8Iv">
+          <div className="imageWrapper-oMkQl4 imageZoom-3yLCXY clickable-LksVCf embedWrapper-1MtIDg" style={{width: '201px', height: '300px'}}>
+            <a tabIndex={-1} aria-hidden="true" className="originalLink-Azwuo9" href={props.message.photo} data-role="img" />
+            <div className="clickableWrapper-2WTAkL" tabIndex={0} aria-label="Imagem" aria-describedby="uid_4" role="button">
+              <img alt="Imagem" src={props.message.photo} style={{width: '201px', height: '300px', objectFit: `cover`}} />
+            </div>
+          </div>
+        </div>
+      </div>) }
       </div>
       </>}
       { props.message.error &&

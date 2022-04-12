@@ -146,6 +146,8 @@ const Dashboard = props => {
                         myFriends={myFriends}
                         user={user}/> }
                         <ChatPrivate
+                        toolTipHideBottom={toolTipHideBottom}
+                        toolTipShowBottom={toolTipShowBottom}
                         myFriends={myFriends}
                         chatFloating={chatFloating}
                         setChatFloating={setChatFloating}
@@ -161,6 +163,8 @@ const Dashboard = props => {
                         myFriends={myFriends}
                         user={user}/> }
                         <ChatPrivate
+                        toolTipHideBottom={toolTipHideBottom}
+                        toolTipShowBottom={toolTipShowBottom}
                         myFriends={myFriends}
                         chatFloating={chatFloating}
                         setChatFloating={setChatFloating}
@@ -176,6 +180,8 @@ const Dashboard = props => {
                         myFriends={myFriends}
                         user={user}/> }
                         <ChatPrivate
+                        toolTipHideBottom={toolTipHideBottom}
+                        toolTipShowBottom={toolTipShowBottom}
                         ChatFloatB={ChatFloatB}
                         myFriends={myFriends}
                         chatFloating={chatFloating}

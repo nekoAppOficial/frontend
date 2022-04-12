@@ -58,6 +58,7 @@ const ChatPrivate = (props) => {
       })
       props.socket.on(`message`, (message) => {
         if(message.userDe.id == userId || message.userPara.id == userId){
+          console.log(message)
           setMessagens(old => [...old, message])
           //Scroll to the bottom
           try {
@@ -601,8 +602,8 @@ const Message = props => {
         </span>
       </h2>
       <div id="message-content-959854144162758668" className="markup-eYLPri messageContent-2t3eCI">
-        { ParseMessage(props.message.message) }
-        { props.message.photo && 
+        { ParseMessage(props.message.message)  }
+        { props.message.photo != `null` && 
         ( <div id="message-accessories-963540623007293481" className="container-2sjPya">
         <div className="messageAttachment-CZp8Iv">
           <div className="imageWrapper-oMkQl4 imageZoom-3yLCXY clickable-LksVCf embedWrapper-1MtIDg" style={{width: '201px', height: '300px'}}>

@@ -11,7 +11,7 @@ const Register = props => {
 
     const register = async() => {
         //Fecth register post
-        const response = await axios.post('https://server-nekoapp.herokuapp.com/auth/register', {
+        const response = await axios.post('http://localhost:7000/auth/register', {
             username,
             password,
             email 

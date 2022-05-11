@@ -49,7 +49,7 @@ const Dashboard = props => {
     }
 
     const validationToken = async () => {
-        const response = await axios.post('https://server-nekoapp.herokuapp.com/auth/validationToken', {
+        const response = await axios.post('http://localhost:7000/auth/validationToken', {
             token: localStorage.getItem('token')
         });
         
@@ -65,8 +65,8 @@ const Dashboard = props => {
     useEffect(() => {
         //Fecth validation post
         validationToken()
-        socket = io('https://server-nekoapp.herokuapp.com/')
-        //socket = io(`http://localhost:7000/`)
+        //socket = io('https://server-nekoapp.herokuapp.com/')
+        socket = io(`http://localhost:7000/`)
         socket.on(`online`, user => {
             setLoading(true)
         })

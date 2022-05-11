@@ -101,6 +101,7 @@ const CardFriend = (props) => {
                     token: localStorage.getItem(`token`),
                     userID: props.friend.id
                 })
+                props.toolTipHideBottom()
             }}
             onMouseOver={(e) => {
                 if(!props.toolTipBottom){
@@ -173,11 +174,11 @@ const CardFriend = (props) => {
                 props.toolTipHideBottom()
             }}
             onClick={() => {
+                props.toolTipHideBottom()
                 props.socket.emit(`recuseFriend`, {
                     token: localStorage.getItem(`token`),
                     userID: props.friend.id
                 })
-                props.toolTipHideBottom()
             }}
             className="actionButton-3-B2x-" aria-label="Mais" role="button" tabIndex={0}>
                 <svg className="icon-1WVg4I" aria-hidden="false" width={24} height={24} viewBox="0 0 24 24">

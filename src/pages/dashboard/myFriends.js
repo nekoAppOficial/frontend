@@ -1,7 +1,45 @@
 import {Link} from 'react-router-dom'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const MyFriends = (props) => {
+    const [myFriends, setMyFriends] = useState(props.myFriends)
+
+    useEffect(() => {
+        setMyFriends(props.myFriends)
+        props.socket.on('onlineB', friend => {
+            const InterVal = setInterval(() => {
+                if(myFriends.length > 0){
+                    const newFriends = [...myFriends]
+                    //Set online friend in myFriends
+                    newFriends.map(f => {
+                        if(f.id == friend.id){
+                            f.status = 'online'
+                        }
+                    })
+                    setMyFriends(newFriends)
+                    clearInterval(InterVal)
+                }
+            }, 500)
+        })
+        
+        props.socket.on('offlineB', friend => {
+            const InterVal = setInterval(() => {
+                if(myFriends.length > 0){
+                    const newFriends = [...myFriends]
+                    //Set online friend in myFriends
+                    newFriends.map(f => {
+                        if(f.id == friend.id){
+                            f.status = 'offline'
+                        }
+                    })
+                    setMyFriends(newFriends)
+                    clearInterval(InterVal)
+                }
+            }, 500)
+        })
+    }, [false])
+
+    
     const [filterFriends, setFilterFriends] = useState(``)
     return <div className="peopleColumn-1wMU14" role="tabpanel" id="online-tab" tabIndex={-1}>
     <div className="searchBar-2aylmZ container-2oNtJn medium-2NClDM">
@@ -24,12 +62,12 @@ const MyFriends = (props) => {
     <div>
     <h2 className="title-x4dI75 container-q97qHp">
         {props.typeFriend == `accept` ? `ACEITOS` : `PENDENTES`}
-         — {props.myFriends.filter(friend => friend.statusAmizade === props.typeFriend && friend.username.includes(filterFriends)).length}</h2>
+         — {myFriends.filter(friend => friend.statusAmizade === props.typeFriend && friend.username.includes(filterFriends)).length}</h2>
     </div>
     <div className="peopleList-2VBrVI auto-2K3UW5 scrollerBase-_bVAAt" dir="ltr" role="list" tabIndex={0} data-list-id="people" style={{overflow: 'hidden scroll', paddingRight: '0px'}}>
-    { props.myFriends.filter(friend => friend.statusAmizade === props.typeFriend && friend.username.includes(filterFriends)).length == 0 && <NoHaveFriends/> }
+    { myFriends.filter(friend => friend.statusAmizade === props.typeFriend && friend.username.includes(filterFriends)).length == 0 && <NoHaveFriends/> }
     {
-        props.myFriends.filter(friend => friend.statusAmizade === props.typeFriend && friend.username.includes(filterFriends)).map(friend => (
+        myFriends.filter(friend => friend.statusAmizade === props.typeFriend && friend.username.includes(filterFriends)).map(friend => (
             <div>
                 <CardFriend 
                 toolTipShowBottom={props.toolTipShowBottom} 
@@ -66,7 +104,9 @@ const CardFriend = (props) => {
             </foreignObject>
             <rect 
             rx={"32"}
-            width={10} height={10} x={22} y={22} fill="hsl(139, calc(var(--saturation-factor, 1) * 47.3%), 43.9%)" mask="url(#svg-mask-status-online)" className="pointerEvents-9SZWKj" />
+            width={10} height={10} x={22} y={22} 
+            fill={props.friend.status == `online` ? `#00B348` : `#D3D3D3`}
+            mask="url(#svg-mask-status-online)" className="pointerEvents-9SZWKj" />
             </svg>
         </div>
         <div className="text-3j8t_e">

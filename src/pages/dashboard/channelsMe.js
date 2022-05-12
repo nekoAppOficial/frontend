@@ -66,23 +66,20 @@ const ChannelsMe = props => {
       })
 
       props.socket.on(`refreshFriends`, friend => {
-        const InterVal = setInterval(() => {
-            if(myFriends.length > 0){
-                const newFriends = [...myFriends]
-                //Set online friend in myFriends
-                newFriends.map((f, index) => {
-                    if(f.id == friend.id){
-                      newFriends[index].photo = friend.photo
-                      newFriends[index].coverPhoto = friend.coverPhoto
-                      newFriends[index].backgroundColor = friend.backgroundColor
-                      newFriends[index].aboutMe = friend.aboutMe
-                      newFriends[index].admin = friend.admin
-                    }
-                })
-                setMyFriends(newFriends)
-                clearInterval(InterVal)
-            }
-        }, 200)
+        if(myFriends.length > 0){
+          const newFriends = [...myFriends]
+          //Set online friend in myFriends
+          newFriends.map((f, index) => {
+              if(f.id == friend.id){
+                newFriends[index].photo = friend.photo
+                newFriends[index].coverPhoto = friend.coverPhoto
+                newFriends[index].backgroundColor = friend.backgroundColor
+                newFriends[index].aboutMe = friend.aboutMe
+                newFriends[index].admin = friend.admin
+              }
+          })
+          setMyFriends(newFriends)
+      }
     })
       
       props.socket.on('offlineB', friend => {

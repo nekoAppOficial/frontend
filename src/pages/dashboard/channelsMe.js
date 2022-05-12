@@ -8,6 +8,11 @@ const ChannelsMe = props => {
 
     useEffect(() => {
         setMyFriends(props.myFriends)
+
+        props.socket.on(`getFriends`, friends => {
+          setMyFriends(friends)
+        })
+
         props.socket.on('onlineB', friend => {
           const InterVal = setInterval(() => {
               if(myFriends.length > 0){

@@ -92,7 +92,7 @@ const Dashboard = props => {
                     setMyFriends(newFriends)
                     clearInterval(InterVal)
                 }
-            }, 500)
+            }, 100)
         })
         socket.on('offlineB', friend => {
             const InterVal = setInterval(() => {
@@ -107,7 +107,7 @@ const Dashboard = props => {
                     setMyFriends(newFriends)
                     clearInterval(InterVal)
                 }
-            }, 500)
+            }, 100)
         })
         socket.on(`refreshFriends`, friend => {
             socket.emit(`getFriends`, localStorage.getItem('token'))

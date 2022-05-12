@@ -23,6 +23,11 @@ const ChatPrivate = (props) => {
         if(friend.id == userId){
           const userOld = user
           userOld.user.status = `online`
+          userOld.user.photo = friend.photo
+          userOld.user.coverPhoto = friend.coverPhoto
+          userOld.user.backgroundColor = friend.backgroundColor
+          userOld.user.aboutMe = friend.aboutMe
+          userOld.user.admin = friend.admin
           setUser(userOld)
         }
       })
@@ -34,6 +39,15 @@ const ChatPrivate = (props) => {
           setUser(userOld)
         }
       })
+
+      props.socket.on(`refreshFriends`, friend => {
+       const userOld = user
+       userOld.user.photo = friend.photo
+       userOld.user.coverPhoto = friend.coverPhoto
+       userOld.user.backgroundColor = friend.backgroundColor
+       userOld.user.aboutMe = friend.aboutMe
+       userOld.user.admin = friend.admin
+    })
 
     const inputFile = useRef(null) 
     const onChangeFile = (event) => {

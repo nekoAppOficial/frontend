@@ -16,7 +16,7 @@ const Friends = (props) => {
     });
 
     props.socket.on(`addFriend`, (friend) => {
-      if (myFriends.find((f) => f.id != friend.id)) {
+      if (myFriends.find((f) => f.id == friend.id)) {
         //
       } else {
         var newFriends = [...myFriends];

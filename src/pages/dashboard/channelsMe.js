@@ -14,7 +14,7 @@ const ChannelsMe = props => {
         })
 
         props.socket.on(`addFriend`, friend => {
-          if(myFriends.find(f => f.id != friend.id)){
+          if(myFriends.find(f => f.id == friend.id)){
               //
           } else{
               var newFriends = [...myFriends]
@@ -34,8 +34,8 @@ const ChannelsMe = props => {
         setMyFriends(newFriends)
      })
 
-        props.socket.on(`acceptFriend`, friend => {
-          if(myFriends.find(f => f.id != friend.id)){
+      props.socket.on(`acceptFriend`, friend => {
+          if(myFriends.find(f => f.id == friend.id)){
             //
           } else{
               var newFriends = [...myFriends]

@@ -79,6 +79,36 @@ const Dashboard = props => {
         socket.on(`getFriends`, friends => {
             setMyFriends(friends)
         })
+        socket.on('onlineB', friend => {
+            const InterVal = setInterval(() => {
+                if(myFriends.length > 0){
+                    const newFriends = [...myFriends]
+                    //Set online friend in myFriends
+                    newFriends.map(f => {
+                        if(f.id == friend.id){
+                            f.status = 'online'
+                        }
+                    })
+                    setMyFriends(newFriends)
+                    clearInterval(InterVal)
+                }
+            }, 500)
+        })
+        socket.on('offlineB', friend => {
+            const InterVal = setInterval(() => {
+                if(myFriends.length > 0){
+                    const newFriends = [...myFriends]
+                    //Set online friend in myFriends
+                    newFriends.map(f => {
+                        if(f.id == friend.id){
+                            f.status = 'offline'
+                        }
+                    })
+                    setMyFriends(newFriends)
+                    clearInterval(InterVal)
+                }
+            }, 500)
+        })
         socket.on(`refreshFriends`, friend => {
             socket.emit(`getFriends`, localStorage.getItem('token'))
         })
@@ -92,7 +122,6 @@ const Dashboard = props => {
         <div className='container-1eFtFS'>
             
             <div class="content-1SgpWY">
-                
                 { ajustes && <Ajustes myFriends={myFriends}
                 user={user}
                 setAjustes={setAjustes}
@@ -110,6 +139,7 @@ const Dashboard = props => {
                 setOpenModalServer={setOpenModalServer}/>
                 <ChannelsMe 
                 toolTipBottom={toolTipBottom}
+                socket={socket}
                 toolTipHideBottom={toolTipHideBottom}
                 toolTipShowBottom={toolTipShowBottom}
                 setAjustes={setAjustes}

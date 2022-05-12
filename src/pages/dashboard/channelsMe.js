@@ -3,12 +3,46 @@ import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 
 const ChannelsMe = props => {
-    const [myFriends, setMyFriends] = useState([])
+    const [myFriends, setMyFriends] = useState(props.myFriends)
     const [userId, setUserID] = useState(0)
 
     useEffect(() => {
         setMyFriends(props.myFriends)
+        props.socket.on('onlineB', friend => {
+          const InterVal = setInterval(() => {
+              if(myFriends.length > 0){
+                  const newFriends = [...myFriends]
+                  //Set online friend in myFriends
+                  newFriends.map(f => {
+                      if(f.id == friend.id){
+                          f.status = 'online'
+                      }
+                  })
+                  setMyFriends(newFriends)
+                  clearInterval(InterVal)
+              }
+          }, 500)
+      })
+      
+      props.socket.on('offlineB', friend => {
+          const InterVal = setInterval(() => {
+              if(myFriends.length > 0){
+                  const newFriends = [...myFriends]
+                  //Set online friend in myFriends
+                  newFriends.map(f => {
+                      if(f.id == friend.id){
+                          f.status = 'offline'
+                      }
+                  })
+                  setMyFriends(newFriends)
+                  clearInterval(InterVal)
+              }
+          }, 500)
+      })
     }, [props.myFriends])
+
+   
+
     return <div className="sidebar-1tnWFu">
     <nav className="privateChannels-oVe7HL" aria-label="Canais privados">
       <div className="searchBar-3TnChZ">
@@ -37,8 +71,8 @@ const ChannelsMe = props => {
                   </div>
                 </div>
               </Link>
-              {props.myFriends.filter(friend => friend.statusAmizade === 'pending' && friend.createdBy != props.user.id).length > 0 &&<div className="numberBadge-37OJ3S base-3IDx3L baseShapeRound-3epLEv" style={{backgroundColor: 'var(--status-danger)', width: '16px', paddingRight: '1px'}}>
-                {props.myFriends.filter(friend => friend.statusAmizade === 'pending' && friend.createdBy != props.user.id).length}
+              {myFriends.filter(friend => friend.statusAmizade === 'pending' && friend.createdBy != props.user.id).length > 0 &&<div className="numberBadge-37OJ3S base-3IDx3L baseShapeRound-3epLEv" style={{backgroundColor: 'var(--status-danger)', width: '16px', paddingRight: '1px'}}>
+                {myFriends.filter(friend => friend.statusAmizade === 'pending' && friend.createdBy != props.user.id).length}
               </div> }
             </div>
           </li>
@@ -123,7 +157,9 @@ const Friend = (props) => {
               </foreignObject>
               <rect 
               rx={"32"}
-              width={10} height={10} x={22} y={22} fill="hsl(359, calc(var(--saturation-factor, 1) * 82.6%), 59.4%)" mask="url(#svg-mask-status-dnd)" className="pointerEvents-9SZWKj" />
+              width={10} height={10} x={22} y={22} 
+              fill={props.friend.status == `online` ? `#00B348` : `#D3D3D3`} 
+              mask="url(#svg-mask-status-dnd)" className="pointerEvents-9SZWKj" />
             </svg>
           </div>
         </div>

@@ -12,6 +12,16 @@ const Friends = (props) => {
 
     props.socket.on(`getFriends`, (friends) => {
       setMyFriends(friends);
+      props.setMyFriendsIndex(friends)
+    });
+
+    props.socket.on(`addFriend`, (friend) => {
+      //Validation if the user is already in myFriends
+      var newFriends = [...myFriends];
+      if (!newFriends.find((f, index) => f.id == friend.id)) {
+        newFriends = [...newFriends, friend];
+        setMyFriends(newFriends);
+      }
     });
 
     props.socket.on(`recuseFriend`, (friend) => {

@@ -94,11 +94,9 @@ const Dashboard = (props) => {
               newFriends[index].backgroundColor = friend.backgroundColor;
               newFriends[index].aboutMe = friend.aboutMe;
               newFriends[index].admin = friend.admin;
-              newFriends[index].statusAmizade = myFriends.find((f) => f.id == friend.id).statusAmizade;
               f.status = "online";
             }
           });
-          setMyFriends(newFriends);
           clearInterval(InterVal);
         }
       }, 100);
@@ -111,10 +109,8 @@ const Dashboard = (props) => {
           newFriends.map((f, index) => {
             if (f.id == friend.id && f.statusAmizade == `accept`) {
               f.status = "offline";
-              newFriends[index].statusAmizade = myFriends.find((f) => f.id == friend.id).statusAmizade;
             }
           });
-          setMyFriends(newFriends);
           clearInterval(InterVal);
         }
       }, 100);
@@ -138,15 +134,6 @@ const Dashboard = (props) => {
           clearInterval(InterVal);
         }
       });
-    });
-
-    socket.on(`addFriend`, (friend) => {
-      //Validation if the user is already in myFriends
-      var newFriends = [...myFriends];
-      if (!newFriends.find((f) => f.id == friend.id)) {
-        newFriends = [...newFriends, friend];
-        setMyFriends(newFriends);
-      }
     });
 
     socket.on(`recuseFriend`, (friend) => {
@@ -195,6 +182,7 @@ const Dashboard = (props) => {
                     setOpenModalServer={setOpenModalServer}
                   />
                   <GuildsNav
+                    socket={socket}
                     myFriends={myFriends}
                     user={user}
                     setOpenModalServer={setOpenModalServer}

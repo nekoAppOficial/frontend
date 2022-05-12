@@ -9,18 +9,8 @@ const ChannelsMe = props => {
     useEffect(() => {
         setMyFriends(props.myFriends)
 
-        props.socket.on(`getFriends`, friends => {
-          setMyFriends(friends)
-        })
-
-        props.socket.on(`addFriend`, friend => {
-          if(myFriends.find(f => f.id == friend.id)){
-              //
-          } else{
-              var newFriends = [...myFriends]
-              newFriends = [...newFriends, friend]
-              setMyFriends(newFriends)
-          } 
+       props.socket.on(`getFriends`, friends => {
+         setMyFriends(friends)
       })
 
       props.socket.on(`recuseFriend`, friend => {
@@ -97,7 +87,7 @@ const ChannelsMe = props => {
               }
           }, 500)
       })
-    }, [props.myFriends])
+    }, [true])
 
    
 

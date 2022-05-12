@@ -7,22 +7,11 @@ const Friends = (props) => {
   const [myFriends, setMyFriends] = useState([]);
   const [typeFriend, setTypeFriend] = useState(`accept`);
   const novoGrupoPrivado = useRef(null);
-
   useEffect(() => {
     setMyFriends(props.myFriends);
 
     props.socket.on(`getFriends`, (friends) => {
       setMyFriends(friends);
-    });
-
-    props.socket.on(`addFriend`, (friend) => {
-      if (myFriends.find((f) => f.id == friend.id)) {
-        //
-      } else {
-        var newFriends = [...myFriends];
-        newFriends = [...newFriends, friend];
-        setMyFriends(newFriends);
-      }
     });
 
     props.socket.on(`recuseFriend`, (friend) => {
@@ -49,6 +38,7 @@ const Friends = (props) => {
               newFriends[index].backgroundColor = friend.backgroundColor;
               newFriends[index].aboutMe = friend.aboutMe;
               newFriends[index].admin = friend.admin;
+              newFriends[index].statusAmizade = myFriends.find((f) => f.id == friend.id).statusAmizade;
             }
           });
           setMyFriends(newFriends);

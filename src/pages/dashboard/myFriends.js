@@ -6,20 +6,25 @@ const MyFriends = (props) => {
 
     useEffect(() => {
         setMyFriends(props.myFriends)
+
+        props.socket.on(`getFriends`, friends => {
+            setMyFriends(friends)
+        })
+
         props.socket.on('onlineB', friend => {
             const InterVal = setInterval(() => {
                 if(myFriends.length > 0){
                     const newFriends = [...myFriends]
                     //Set online friend in myFriends
                     newFriends.map(f => {
-                        if(f.id == friend.id){
+                        if(f.id == friend.id && friend.statusAmizade == 'accept'){
                             f.status = 'online'
                         }
                     })
                     setMyFriends(newFriends)
                     clearInterval(InterVal)
                 }
-            }, 500)
+            }, 100)
         })
         
         props.socket.on('offlineB', friend => {
@@ -28,14 +33,14 @@ const MyFriends = (props) => {
                     const newFriends = [...myFriends]
                     //Set online friend in myFriends
                     newFriends.map(f => {
-                        if(f.id == friend.id){
+                        if(f.id == friend.id && friend.statusAmizade == 'accept'){
                             f.status = 'offline'
                         }
                     })
                     setMyFriends(newFriends)
                     clearInterval(InterVal)
                 }
-            }, 500)
+            }, 100)
         })
     }, [false])
 

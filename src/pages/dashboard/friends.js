@@ -7,8 +7,15 @@ const Friends = (props) => {
     const [myFriends, setMyFriends] = useState([])
     const [typeFriend, setTypeFriend] = useState(`accept`)
     const novoGrupoPrivado = useRef(null)
+
+
     useEffect(() => {
         setMyFriends(props.myFriends)
+
+        props.socket.on(`getFriends`, friends => {
+            setMyFriends(friends)
+        })
+
     }, [props.myFriends])
 
     return <div 

@@ -68,8 +68,10 @@ const Dashboard = (props) => {
   useEffect(() => {
     //Fecth validation post
     validationToken();
+    var client = require('socket.io-client');
+    socket = client(`https://servernekoapp.herokuapp.com/`, { 'multiplex': false, transports: ['websocket'], perMessageDeflate: false })
     //socket = io('https://server-nekoapp.herokuapp.com/')
-    socket = io(`https://servernekoapp.herokuapp.com/`);
+    // socket = io(`https://servernekoapp.herokuapp.com/`);
     socket.on(`online`, (user) => {
       setLoading(true);
     });

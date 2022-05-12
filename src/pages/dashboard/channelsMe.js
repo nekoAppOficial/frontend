@@ -13,6 +13,37 @@ const ChannelsMe = props => {
           setMyFriends(friends)
         })
 
+        props.socket.on(`addFriend`, friend => {
+          if(myFriends.find(f => f.id != friend.id)){
+              //
+          } else{
+              var newFriends = [...myFriends]
+              newFriends = [...newFriends, friend]
+              setMyFriends(newFriends)
+          } 
+      })
+
+      props.socket.on(`recuseFriend`, friend => {
+        //Remove friend from myFriends
+        const newFriends = [...myFriends]
+        newFriends.map((f, index) => {
+            if(f.id == friend.id){
+                newFriends.splice(index, 1)
+            }
+        })
+        setMyFriends(newFriends)
+     })
+
+        props.socket.on(`acceptFriend`, friend => {
+          if(myFriends.find(f => f.id != friend.id)){
+            //
+          } else{
+              var newFriends = [...myFriends]
+              newFriends = [...newFriends, friend]
+              setMyFriends(newFriends)
+          }
+      })
+
         props.socket.on('onlineB', friend => {
           const InterVal = setInterval(() => {
               if(myFriends.length > 0){

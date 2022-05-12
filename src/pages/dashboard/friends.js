@@ -106,6 +106,7 @@ const Friends = (props) => {
         }
         { tab == `myFriends` &&
         <MyFriends 
+        setMyFriendsIndex={props.setMyFriendsIndex}
         toolTipBottom={props.toolTipBottom}
         toolTipShowBottom={props.toolTipShowBottom}
         toolTipHideBottom={props.toolTipHideBottom}

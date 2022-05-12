@@ -84,8 +84,13 @@ const Dashboard = props => {
                 if(myFriends.length > 0){
                     const newFriends = [...myFriends]
                     //Set online friend in myFriends
-                    newFriends.map(f => {
+                    newFriends.map((f, index) => {
                         if(f.id == friend.id){
+                            newFriends[index].photo = friend.photo
+                            newFriends[index].coverPhoto = friend.coverPhoto
+                            newFriends[index].backgroundColor = friend.backgroundColor
+                            newFriends[index].aboutMe = friend.aboutMe
+                            newFriends[index].admin = friend.admin
                             f.status = 'online'
                         }
                     })
@@ -110,7 +115,19 @@ const Dashboard = props => {
             }, 100)
         })
         socket.on(`refreshFriends`, friend => {
-            socket.emit(`getFriends`, localStorage.getItem('token'))
+            const InterVal = setInterval(() => {
+                if(myFriends.length > 0){
+                    const newFriends = [...myFriends]
+                    //Set online friend in myFriends
+                    newFriends.map(f => {
+                        if(f.id == friend.id){
+                            f = friend
+                        }
+                    })
+                    setMyFriends(newFriends)
+                    clearInterval(InterVal)
+                }
+            })
         })
     }, [false])
     
@@ -137,7 +154,8 @@ const Dashboard = props => {
                 myFriends={myFriends}
                 user={user}
                 setOpenModalServer={setOpenModalServer}/>
-                <ChannelsMe 
+                <ChannelsMe
+                setMyFriendsIndex={setMyFriends}
                 toolTipBottom={toolTipBottom}
                 socket={socket}
                 toolTipHideBottom={toolTipHideBottom}
@@ -150,7 +168,8 @@ const Dashboard = props => {
                 <div
                 className='base-2jDfDU theme-dark container-2cd8Mz'
                 >
-                    { !props.chat && chatFloating && <Friends 
+                    { !props.chat && chatFloating && <Friends
+                    setMyFriendsIndex={setMyFriends}
                     toolTipBottom={toolTipBottom}
                     toolTipHideBottom={toolTipHideBottom}
                     toolTipShowBottom={toolTipShowBottom}
@@ -160,6 +179,7 @@ const Dashboard = props => {
                     me={user}
                     socket={socket}/>}
                     { !props.chat && !chatFloating && <Friends 
+                    setMyFriendsIndex={setMyFriends}
                     myFriends={myFriends}
                     toolTipBottom={toolTipBottom}
                     toolTipShowBottom={toolTipShowBottom}

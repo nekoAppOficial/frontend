@@ -61,7 +61,7 @@ const PopOutProfile = props => {
                 src={`${ typeof props.user.user.photo != `object` ? props.user.user.photo : window[`getPath`]() + `assets/default.webp`}`} alt=" " className="avatar-b5OQ1N" aria-hidden="true" />
               </div>
             </foreignObject>
-            <rect width={16} height={16} x={60} y={60} fill="hsl(139, calc(var(--saturation-factor, 1) * 47.3%), 43.9%)" mask="url(#svg-mask-status-online)" className="pointerEvents-9SZWKj" />
+            
           </svg>
         </div>
       </div>

@@ -17,6 +17,24 @@ const ChatPrivate = (props) => {
     const [spoiler, setSpoiler] = useState(false);
     const [anexoImage, setAnexoImage] = useState(null)
 
+
+
+      props.socket.on('onlineB', friend => {
+        if(friend.id == userId){
+          const userOld = user
+          userOld.user.status = `online`
+          setUser(userOld)
+        }
+      })
+
+      props.socket.on('offlineB', friend => {
+        if(friend.id == userId){
+          const userOld = user
+          userOld.user.status = `offline`
+          setUser(userOld)
+        }
+      })
+
     const inputFile = useRef(null) 
     const onChangeFile = (event) => {
       event.stopPropagation();
@@ -46,6 +64,7 @@ const ChatPrivate = (props) => {
       props.socket.on(`getUserProfile`, (user) => {
         // console.log(user)
         setUser(user);
+        console.log(user)
         setMessagens(user.messages)
         //Scroll to the bottom
         try {
@@ -122,7 +141,8 @@ const ChatPrivate = (props) => {
               <polygon points="-2.16506,-2.5 2.16506,0 -2.16506,2.5" fill="black" transform="scale(0) translate(5.625 7.5)" style={{transformOrigin: '5.625px 7.5px'}} />
               <circle fill="black" cx={5} cy="7.5" r={0} />
             </mask>
-            <rect x={0} y={0} width={10} height={15} fill="hsl(359, calc(var(--saturation-factor, 1) * 82.6%), 59.4%)" mask="url(#1266c8e2-8cdd-4e53-8969-fee6e2a6d1e9)" />
+            <rect x={0} y={0} width={10} height={15} 
+            fill={user.user.status == `online` ? `#00B348` : `#D3D3D3`}  mask="url(#1266c8e2-8cdd-4e53-8969-fee6e2a6d1e9)" />
           </svg>
         </div>
         <div className="spacer-1F8G1H" />

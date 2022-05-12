@@ -24,6 +24,7 @@ const MyFriends = (props) => {
               newFriends[index].backgroundColor = friend.backgroundColor;
               newFriends[index].aboutMe = friend.aboutMe;
               newFriends[index].admin = friend.admin;
+              newFriends[index].statusAmizade = myFriends.find((f) => f.id == friend.id).statusAmizade;
             }
           });
           setMyFriends(newFriends);
@@ -44,6 +45,7 @@ const MyFriends = (props) => {
               newFriends[index].backgroundColor = friend.backgroundColor;
               newFriends[index].aboutMe = friend.aboutMe;
               newFriends[index].admin = friend.admin;
+              newFriends[index].statusAmizade = myFriends.find((f) => f.id == friend.id).statusAmizade;
             }
           });
           setMyFriends(newFriends);
@@ -89,8 +91,9 @@ const MyFriends = (props) => {
         if (myFriends.length > 0) {
           const newFriends = [...myFriends];
           //Set online friend in myFriends
-          newFriends.map((f) => {
+          newFriends.map((f, index) => {
             if (f.id == friend.id && friend.statusAmizade == "accept") {
+              newFriends[index].statusAmizade = myFriends.find((f) => f.id == friend.id).statusAmizade;
               f.status = "offline";
             }
           });

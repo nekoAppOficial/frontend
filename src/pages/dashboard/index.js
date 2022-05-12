@@ -88,12 +88,13 @@ const Dashboard = (props) => {
           const newFriends = [...myFriends];
           //Set online friend in myFriends
           newFriends.map((f, index) => {
-            if (f.id == friend.id) {
+            if (f.id == friend.id && f.statusAmizade == `accept`) {
               newFriends[index].photo = friend.photo;
               newFriends[index].coverPhoto = friend.coverPhoto;
               newFriends[index].backgroundColor = friend.backgroundColor;
               newFriends[index].aboutMe = friend.aboutMe;
               newFriends[index].admin = friend.admin;
+              newFriends[index].statusAmizade = myFriends.find((f) => f.id == friend.id).statusAmizade;
               f.status = "online";
             }
           });
@@ -107,9 +108,10 @@ const Dashboard = (props) => {
         if (myFriends.length > 0) {
           const newFriends = [...myFriends];
           //Set online friend in myFriends
-          newFriends.map((f) => {
-            if (f.id == friend.id) {
+          newFriends.map((f, index) => {
+            if (f.id == friend.id && f.statusAmizade == `accept`) {
               f.status = "offline";
+              newFriends[index].statusAmizade = myFriends.find((f) => f.id == friend.id).statusAmizade;
             }
           });
           setMyFriends(newFriends);
@@ -117,6 +119,7 @@ const Dashboard = (props) => {
         }
       }, 100);
     });
+    
     socket.on(`refreshFriends`, (friend) => {
       const InterVal = setInterval(() => {
         if (myFriends.length > 0) {
@@ -136,11 +139,11 @@ const Dashboard = (props) => {
         }
       });
     });
+
     socket.on(`addFriend`, (friend) => {
-      if (myFriends.find((f) => f.id != friend.id)) {
-        //
-      } else {
-        var newFriends = [...myFriends];
+      //Validation if the user is already in myFriends
+      var newFriends = [...myFriends];
+      if (!newFriends.find((f) => f.id == friend.id)) {
         newFriends = [...newFriends, friend];
         setMyFriends(newFriends);
       }

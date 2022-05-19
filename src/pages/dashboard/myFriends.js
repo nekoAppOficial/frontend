@@ -9,6 +9,16 @@ const MyFriends = (props) => {
 
     props.socket.on(`getFriends`, (friends) => {
       setMyFriends(friends);
+      props.setMyFriendsIndex(friends)
+    });
+
+    props.socket.on(`addFriend`, (friend) => {
+      //Validation if the user is already in myFriends
+      var newFriends = [...myFriends];
+      if (!newFriends.find((f, index) => f.id == friend.id)) {
+        newFriends = [...newFriends, friend];
+        setMyFriends(newFriends);
+      }
     });
 
     props.socket.on("onlineB", (friend) => {
@@ -24,7 +34,6 @@ const MyFriends = (props) => {
               newFriends[index].backgroundColor = friend.backgroundColor;
               newFriends[index].aboutMe = friend.aboutMe;
               newFriends[index].admin = friend.admin;
-              newFriends[index].statusAmizade = myFriends.find((f) => f.id == friend.id).statusAmizade;
             }
           });
           setMyFriends(newFriends);

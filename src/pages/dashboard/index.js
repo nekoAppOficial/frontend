@@ -50,7 +50,7 @@ const Dashboard = (props) => {
 
   const validationToken = async () => {
     const response = await axios.post(
-      "http://localhost:7000/auth/validationToken",
+      "https://servernekoapp.herokuapp.com/auth/validationToken",
       {
         token: localStorage.getItem("token"),
       }
@@ -68,8 +68,10 @@ const Dashboard = (props) => {
   useEffect(() => {
     //Fecth validation post
     validationToken();
+    var client = require('socket.io-client');
+    socket = client(`https://servernekoapp.herokuapp.com/`, { 'multiplex': false, transports: ['websocket'], perMessageDeflate: false })
     //socket = io('https://server-nekoapp.herokuapp.com/')
-    socket = io(`http://localhost:7000/`);
+    // socket = io(`https://servernekoapp.herokuapp.com/`);
     socket.on(`online`, (user) => {
       setLoading(true);
     });
@@ -94,11 +96,9 @@ const Dashboard = (props) => {
               newFriends[index].backgroundColor = friend.backgroundColor;
               newFriends[index].aboutMe = friend.aboutMe;
               newFriends[index].admin = friend.admin;
-              newFriends[index].statusAmizade = myFriends.find((f) => f.id == friend.id).statusAmizade;
               f.status = "online";
             }
           });
-          setMyFriends(newFriends);
           clearInterval(InterVal);
         }
       }, 100);
@@ -111,10 +111,8 @@ const Dashboard = (props) => {
           newFriends.map((f, index) => {
             if (f.id == friend.id && f.statusAmizade == `accept`) {
               f.status = "offline";
-              newFriends[index].statusAmizade = myFriends.find((f) => f.id == friend.id).statusAmizade;
             }
           });
-          setMyFriends(newFriends);
           clearInterval(InterVal);
         }
       }, 100);
@@ -138,15 +136,6 @@ const Dashboard = (props) => {
           clearInterval(InterVal);
         }
       });
-    });
-
-    socket.on(`addFriend`, (friend) => {
-      //Validation if the user is already in myFriends
-      var newFriends = [...myFriends];
-      if (!newFriends.find((f) => f.id == friend.id)) {
-        newFriends = [...newFriends, friend];
-        setMyFriends(newFriends);
-      }
     });
 
     socket.on(`recuseFriend`, (friend) => {
@@ -195,6 +184,7 @@ const Dashboard = (props) => {
                     setOpenModalServer={setOpenModalServer}
                   />
                   <GuildsNav
+                    socket={socket}
                     myFriends={myFriends}
                     user={user}
                     setOpenModalServer={setOpenModalServer}

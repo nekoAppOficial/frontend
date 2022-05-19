@@ -7,11 +7,20 @@ const ChannelsMe = props => {
     const [userId, setUserID] = useState(0)
 
     useEffect(() => {
-        setMyFriends(props.myFriends)
+      setMyFriends(props.myFriends)
 
-       props.socket.on(`getFriends`, friends => {
+      props.socket.on(`getFriends`, friends => {
          setMyFriends(friends)
       })
+
+      props.socket.on(`addFriend`, (friend) => {
+        //Validation if the user is already in myFriends
+        var newFriends = [...myFriends];
+        if (!newFriends.find((f, index) => f.id == friend.id)) {
+          newFriends = [...newFriends, friend];
+          setMyFriends(newFriends);
+        }
+      });
 
       props.socket.on(`recuseFriend`, friend => {
         //Remove friend from myFriends

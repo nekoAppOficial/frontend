@@ -1,4 +1,19 @@
+import { useState, useEffect } from "react";
+
 const GuildsNav = (props) => {
+  const [myFriends, setMyFriends] = useState([]);
+
+  useEffect(() => {
+    props.socket.on(`addFriend`, (friend) => {
+      //Validation if the user is already in myFriends
+      var newFriends = [...myFriends];
+      if (!newFriends.find((f, index) => f.id == friend.id)) {
+        newFriends = [...newFriends, friend];
+        setMyFriends(newFriends);
+      }
+    });
+  }, [false])
+
   return (
     <nav
       className="wrapper-1_HaEi guilds-2JjMmN"
@@ -96,7 +111,11 @@ const GuildsNav = (props) => {
                     (friend) =>
                       friend.statusAmizade === "pending" &&
                       friend.createdBy != props.user.id
-                  ).length > 0 && (
+                  ).length + myFriends.filter(
+                    (friend) =>
+                      friend.statusAmizade === "pending" &&
+                      friend.createdBy != props.user.id
+                  ).lengt > 0 && (
                     <div
                       className="numberBadge-37OJ3S base-3IDx3L baseShapeRound-3epLEv"
                       style={{
@@ -114,7 +133,11 @@ const GuildsNav = (props) => {
                           (friend) =>
                             friend.statusAmizade === "pending" &&
                             friend.createdBy != props.user.id
-                        ).length
+                        ).length + myFriends.filter(
+                          (friend) =>
+                            friend.statusAmizade === "pending" &&
+                            friend.createdBy != props.user.id
+                        ).lengt
                       }
                     </div>
                   )}
